@@ -39,17 +39,9 @@
         <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; SDB 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
+			
+			@include('layouts.footer')
+      
     </div>
     <!-- End of Content Wrapper -->
 
@@ -90,14 +82,6 @@
   <!-- Custom scripts for all pages-->
 	<script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
-  <script src=""></script>
-
-  <!-- Page level plugins -->
-  <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
-
-  <!-- Page level custom scripts -->
-  <!-- <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script> -->
 	@yield('scripts')
 
 </body>
