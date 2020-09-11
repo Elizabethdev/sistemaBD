@@ -11,12 +11,7 @@ class DatosController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function cargarArchivo()
     {
         return view('datos.uploadfile');
     }

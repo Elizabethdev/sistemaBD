@@ -18,4 +18,4 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/subirarchivo', 'DatosController@index')->name('uploadfile');
+Route::get('/subirarchivo', 'DatosController@cargarArchivo')->name('uploadfile');
