@@ -41,7 +41,9 @@
 				    @include('layouts.navbar')
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
-                        @yield('contenido')
+                        <div id="app">
+                            @yield('contenido')
+                        </div>
                     </div>
                     <!-- /.container-fluid -->
                 </div>
