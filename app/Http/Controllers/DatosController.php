@@ -16,6 +16,16 @@ class DatosController extends Controller
         return view('datos.uploadfile');
     }
 
+    public function verDatos()
+    {
+        return view('datos.verdatos');
+    }
+
+    public function filtrarDatos()
+    {
+        return view('datos.filtrardatos');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
