@@ -1,7 +1,7 @@
 # sistemaBD
  sistema de carga de datos
  
- clonar el repositorio.
+ # Clonar el repositorio.
 
  Abrir el direcctorio del proyecto y ejecutar en la consola:
 
