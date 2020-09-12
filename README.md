@@ -2,10 +2,11 @@
  sistema de carga de datos
  
  ## Clonar el repositorio.
+ ## importar la BD con el script sql.
 
- Abrir el direcctorio del proyecto y ejecutar en la consola:
+ Abrir la consola en el direcctorio del proyecto y ejecutar:
 
 ### `composer install`
 ### `npm install`
 
-**Note: Es necesario tener instalado un servidor (wamp, xampp). Instalar `npm`, y `composer`**
+**Note: Es necesario tener instalado: (`wamp`, `xampp`), `npm` y `composer`**
