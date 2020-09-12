@@ -10,4 +10,4 @@
 ### `npm install`
 ### `npm run dev`
 
-**Note: Es necesario tener instalado: (`wamp`, `xampp`), `npm` y `composer`**
+**Note: Es necesario tener instalado: (`wamp`, `xampp`), `node.js (LTS)` y `composer`**
