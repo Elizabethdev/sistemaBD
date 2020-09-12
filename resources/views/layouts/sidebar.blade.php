@@ -51,7 +51,7 @@
     <li class="nav-item {{Route::currentRouteNamed('resumenservicios') ? 'active' : ''}}">
       <a class="nav-link" href="{{ route('resumenservicios') }}">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>Filtros POB C/S servicios</span></a>
+        <span>Filtros POB C/S Servicios</span></a>
     </li>
 
     <!-- Nav Item - filtros resumen pob servicios-->

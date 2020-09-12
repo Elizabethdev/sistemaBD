@@ -32,7 +32,7 @@ Resumen Demanda
                                     <th>Suma de DEM_ALC_2030</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <!-- <tfoot>
                                 <tr>
                                     <th>TIPO 2020</th>
                                     <th>Suma de DEM_A_2010</th>
@@ -44,7 +44,7 @@ Resumen Demanda
                                     <th>Suma de DEM_ALC_2020</th>
                                     <th>Suma de DEM_ALC_2030</th>
                                 </tr>
-                            </tfoot>
+                            </tfoot> -->
                             <tbody>
                                 <tr>
                                     <td>RURAL</td>
@@ -63,12 +63,11 @@ Resumen Demanda
                 </div>
             </div>
         </div>
-    </div>
+</div>
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
-
+    <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script> -->
 @stop
