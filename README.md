@@ -8,5 +8,6 @@
 
 ### `composer install`
 ### `npm install`
+### `npm run dev`
 
 **Note: Es necesario tener instalado: (`wamp`, `xampp`), `npm` y `composer`**
