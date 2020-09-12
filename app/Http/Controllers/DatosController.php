@@ -21,9 +21,19 @@ class DatosController extends Controller
         return view('datos.verdatos');
     }
 
-    public function filtrarDatos()
+    public function filtrarDatosdemanda()
     {
-        return view('datos.filtrardatos');
+        return view('datos.resumendemanda');
+    }
+
+    public function filtrarDatosServicio()
+    {
+        return view('datos.resumenservicios');
+    }
+
+    public function filtrarDatosRango()
+    {
+        return view('datos.resumenrangos');
     }
 
     /**

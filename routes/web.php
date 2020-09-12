@@ -20,4 +20,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/subirarchivo', 'DatosController@cargarArchivo')->name('uploadfile');
 Route::get('/verdatos', 'DatosController@verDatos')->name('verdatos');
-Route::get('/filtrardatos', 'DatosController@filtrarDatos')->name('filtrardatos');
+Route::get('/resumendemandas', 'DatosController@filtrarDatosdemanda')->name('resumendemanda');
+Route::get('/resumenservicios', 'DatosController@filtrarDatosServicio')->name('resumenservicios');
+Route::get('/resumenrango', 'DatosController@filtrarDatosRango')->name('resumenrango');

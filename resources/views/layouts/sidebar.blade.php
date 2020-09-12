@@ -11,14 +11,14 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{Route::currentRouteNamed('home') ? 'active' : ''}}">
+    <!-- <li class="nav-item {{Route::currentRouteNamed('home') ? 'active' : ''}}">
       <a class="nav-link" href="{{ route('home') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- <hr class="sidebar-divider"> -->
 
     <!-- Heading -->
     <!-- <div class="sidebar-heading">
@@ -40,11 +40,25 @@
         <span>Datos</span></a>
     </li>
 
-    <!-- Nav Item - filtos -->
-    <li class="nav-item {{Route::currentRouteNamed('filtrardatos') ? 'active' : ''}}">
-      <a class="nav-link" href="{{ route('filtrardatos') }}">
+    <!-- Nav Item - filtros resumen demanda -->
+    <li class="nav-item {{Route::currentRouteNamed('resumendemanda') ? 'active' : ''}}">
+      <a class="nav-link" href="{{ route('resumendemanda') }}">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>Filtros</span></a>
+        <span>Filtros Demanda</span></a>
+    </li>
+
+    <!-- Nav Item - filtros resumen pob servicios-->
+    <li class="nav-item {{Route::currentRouteNamed('resumenservicios') ? 'active' : ''}}">
+      <a class="nav-link" href="{{ route('resumenservicios') }}">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Filtros POB C/S servicios</span></a>
+    </li>
+
+    <!-- Nav Item - filtros resumen pob servicios-->
+    <li class="nav-item {{Route::currentRouteNamed('resumenrango') ? 'active' : ''}}">
+      <a class="nav-link" href="{{ route('resumenrango') }}">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Filtros Rango</span></a>
     </li>
 
     <!-- Divider -->
