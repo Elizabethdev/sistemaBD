@@ -25,7 +25,7 @@
 	@yield('css')
 
 </head>
-<<body class="bg-gradient">
+<body class="bg-gradient">
 
 <div class="container">
 
