@@ -25,7 +25,7 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
     export default {
         name:"upload",
         props:{
-            titulo: ''
+            routeExcel: ''
         },
         components: {
             vueDropzone: vue2Dropzone,
@@ -36,14 +36,14 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
         data: function () {
             return {
                 dropzoneOptions: {
-                    url: 'https://httpbin.org/post',
+                    url: this.routeExcel,
                     // thumbnailWidth: 200,
                     // thumbnailHeight: 250,
                     uploadMultiple: false,
                     maxNumberOfFiles: 1,
-                    acceptedFileTypes: 'application/xlsx,.csv',
-                    // maxFilesize: 0.5,
-                    headers: { "My-Awesome-Header": "header value" },
+                    acceptedFileTypes: 'application/xlsx,.xls,.csv',
+                    // maxFilesize: 20,
+                    headers: { 'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content },
                     addRemoveLinks: true,
                     dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> Seleccionar archivo"
                 }

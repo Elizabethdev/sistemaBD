@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/subirarchivo', 'DatosController@cargarArchivo')->name('uploadfile');
+Route::post('/importarExcel', 'DatosController@importExcel')->name('importarExcel');
 Route::get('/verdatos', 'DatosController@verDatos')->name('verdatos');
 Route::get('/resumendemandas', 'DatosController@filtrarDatosdemanda')->name('resumendemanda');
 Route::get('/resumenservicios', 'DatosController@filtrarDatosServicio')->name('resumenservicios');

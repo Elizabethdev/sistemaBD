@@ -3,5 +3,5 @@
 Uploadfile
 @stop
 @section('contenido')
-    <upload-component></upload-component>
+    <upload-component route-excel="{{ route('importarExcel') }}"></upload-component>
 @endsection
