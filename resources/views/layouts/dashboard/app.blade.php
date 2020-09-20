@@ -31,13 +31,13 @@
 <body id="page-top">
         <!-- Page Wrapper -->
     <div id="wrapper">
-        @include('layouts.sidebar')
+        @include('layouts.dashboard.sidebar')
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
-                @include('layouts.navbar')
+                @include('layouts.dashboard.navbar')
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div id="app">
@@ -48,7 +48,7 @@
             </div>
             <!-- End of Main Content -->
         
-            @include('layouts.footer')
+            @include('layouts.dashboard.footer')
     
         </div>
         <!-- End of Content Wrapper -->

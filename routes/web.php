@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::view('/inicio', 'website/home');
+Route::view('/', 'website/home');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/subirarchivo', 'DatosController@cargarArchivo')->name('uploadfile');
 Route::post('/importarExcel', 'DatosController@importExcel')->name('importarExcel');

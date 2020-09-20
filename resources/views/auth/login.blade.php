@@ -1,4 +1,4 @@
-@extends('layouts.blank')
+@extends('layouts.dashboard.blank')
 @section('title')
 Login
 @stop
