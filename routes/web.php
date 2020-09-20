@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::view('/inicio', 'website/home');
-Route::view('/', 'website/home');
+Route::view('/inicio', 'website/home')->name('inicio');
+Route::view('/', 'website/home')->name('/');
+Route::view('/aguapotable', 'website/aguapotable')->name('aguapotable');
+Route::view('/alcantarillado', 'website/alcantarillado')->name('alcantarillado');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

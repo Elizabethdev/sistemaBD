@@ -1,7 +1,13 @@
 @extends('layouts.website.app')
+@section('title')
+Inicio
+@stop
+
+@section('menu')
+    @include('layouts.website.navmenu')
+@stop
 
 @section('content')
-
     <!-- Banner -->
     <section id="banner">
         <div class="inner">

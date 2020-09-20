@@ -34,7 +34,13 @@
         </header>
 
         <!-- Menu -->
-        @include('layouts.website.navmenu')
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                    @yield('menu')
+                <a href="#" class="close">Close</a>
+            </div>
+        </nav>
 
         @yield('content')
 
