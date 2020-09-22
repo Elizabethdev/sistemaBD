@@ -2165,14 +2165,14 @@ input, select, textarea {
 		}
 
 	label {
-		color: #ffffff;
-		display: block;
+		/* color: #ffffff; */
+		/* display: block;
 		font-family: Raleway, Helvetica, sans-serif;
 		font-size: 0.8em;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		margin: 0 0 0.7em 0;
-		text-transform: uppercase;
+		text-transform: uppercase; */
 	}
 
 	input[type="text"],
@@ -2238,12 +2238,12 @@ input, select, textarea {
 			display: none;
 		}
 
-	input[type="text"],
+	/* input[type="text"],
 	input[type="password"],
 	input[type="email"],
 	select {
 		height: 2.75em;
-	}
+	} */
 
 	textarea {
 		padding: 0.75em 1em;
@@ -2263,7 +2263,7 @@ input, select, textarea {
 		z-index: -1;
 	}
 
-		input[type="checkbox"] + label,
+		/* input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
 			color: #ffffff;
@@ -2277,7 +2277,7 @@ input, select, textarea {
 			padding-left: 2.4em;
 			padding-right: 0.75em;
 			position: relative;
-		}
+		} */
 
 			input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
@@ -2293,7 +2293,7 @@ input, select, textarea {
 				font-weight: 900;
 			}
 
-			input[type="checkbox"] + label:before,
+			/* input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
 				background: rgba(255, 255, 255, 0.025);
 				border-radius: 5px;
@@ -2308,9 +2308,9 @@ input, select, textarea {
 				text-align: center;
 				top: 0;
 				width: 2.0625em;
-			}
+			} */
 
-		input[type="checkbox"]:checked + label:before,
+		/* input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
 			background: #ffffff;
 			border-color: #ffffff;
@@ -2321,7 +2321,7 @@ input, select, textarea {
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
 			border-color: #4c5c96;
-		}
+		} */
 
 	input[type="checkbox"] + label:before {
 		border-radius: 5px;
@@ -2854,7 +2854,7 @@ input, select, textarea {
 
 /* Button */
 
-	input[type="submit"],
+	/* input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
 	button,
@@ -2885,7 +2885,7 @@ input, select, textarea {
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
-	}
+	} */
 
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,

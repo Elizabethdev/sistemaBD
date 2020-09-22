@@ -21,13 +21,13 @@ Agua Potable
         <div class="inner">
             <section>
                 <h3 class="major">Demanda m3 Anuales</h3>
-                
             </section>
-            <section>
+            <section >
                 <h4>Filtrar por:</h4>
-                <pre><code><h5>
-                <p>Estados										Consejo de Cuenca			   						Municipio										Subcuenca</p>
-                <p>Región Económica					 		Localidad											    Urbana o Rural</p></h5></code></pre>
+
+                <div class="" style="border: solid 2px rgba(255, 255, 255, 0.125); padding: 2rem; border-radius: 5px;">
+                    <filtros-component>  </filtros-component>
+                </div>
             </section>
             <section>										
                 <div class="table-wrapper">

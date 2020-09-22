@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Sistema') }} | @yield('title')</title>
 
     <!-- Scripts para vue-->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> --> 
+    <script src="{{ asset('js/page.js') }}" defer></script> 
     
     <!-- Custom fonts for this template-->
 	<link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" type="text/css">
@@ -41,8 +41,9 @@
                 <a href="#" class="close">Close</a>
             </div>
         </nav>
-
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
 
         @include('layouts.website.footer')
 
