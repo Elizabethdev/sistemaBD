@@ -15,12 +15,12 @@
             <span>Alcantarillado</span>
         </a>
     </li>
-    <li><a href="{{ route('alcantarillado')}}">
+    <li><a href="{{ route('saneamiento')}}">
             <i class="fas fa-fw fa-hand-holding-water"></i>
             <span>Saneamiento</span>
         </a>
     </li> 
-    <li><a href="{{ route('alcantarillado')}}">
+    <li><a href="{{ route('calidadagua')}}">
             <i class="fas fa-fw fa-water"></i>
             <span> Calidad del Agua </span>
         </a>

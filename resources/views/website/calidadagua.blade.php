@@ -1,6 +1,6 @@
 @extends('layouts.website.app')
 @section('title')
-Alcantarillado
+Agua Potable
 @stop
 
 @section('menu')
@@ -8,12 +8,11 @@ Alcantarillado
 @stop
 
 @section('content')
-
 <section id="wrapper">
     <header>
         <div class="inner">
-            <h2>ALCANTARILLADO</h2>
-            <h3><p>Se denomina al sistema de estructuras y tuberías usadas para la evacuación de aguas residuales. Esta agua pueden ser albañales (alcantarillado sanitario).</p>
+            <h2>CALIDAD DEL AGUA</h2>
+            <h3><p>Es una medida de la condición del agua en relación con los requisitos de una o más especies bióticas o a cualquier necesidad humana o propósito.</p>
         </div>
     </header>
 
@@ -26,7 +25,8 @@ Alcantarillado
             </section>
             <section>
                 <h4>Filtrar por:</h4>
-                <pre><code><h5><p>Estados										Consejo de Cuenca			   						Municipio										Subcuenca</p>
+                <pre><code><h5>
+                <p>Estados										Consejo de Cuenca			   						Municipio										Subcuenca</p>
                 <p>Región Económica					 		Localidad											    Urbana o Rural</p></h5></code></pre>
             </section>
             <section>										
@@ -129,6 +129,7 @@ Alcantarillado
                         </tbody>												
                     </table>
                 </div>
+
             </section>
             <section>										
                 <ul class="actions">

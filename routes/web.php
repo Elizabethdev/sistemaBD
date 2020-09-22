@@ -20,6 +20,8 @@ Route::view('/inicio', 'website/home')->name('inicio');
 Route::view('/', 'website/home')->name('/');
 Route::view('/aguapotable', 'website/aguapotable')->name('aguapotable');
 Route::view('/alcantarillado', 'website/alcantarillado')->name('alcantarillado');
+Route::view('/saneamiento', 'website/saneamiento')->name('saneamiento');
+Route::view('/calidadagua', 'website/calidadagua')->name('calidadagua');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
