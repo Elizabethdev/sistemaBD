@@ -13,58 +13,48 @@
                     ></b-form-checkbox-group>
                 </b-form-group>
             </b-dropdown>
-
-            <span>Selected: {{ estadoSelected }}</span>
-        </div>
-
-        <div class="field col-4 col-12-xsmall">
-            <label for="consejo">Consejo de cuenca: </label>
-            <select v-model="consejoSelected" id="consejo" size="4" multiple>
-                <option v-for="option in consejos" v-bind:value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <label for="municipio">Municipio: </label>
-            <select v-model="municipioSelected" id="municipio" size="4" multiple>
-                <option v-for="option in municipios" v-bind:value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
+            <b-dropdown text="Consejo de cuenca " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+                <!-- <b-form-group> -->
+                    <b-form-checkbox-group
+                        v-model="consejoSelected"
+                        :options="consejos"
+                        name="consejosCuenca"
+                        class="ml-3"
+                        stacked
+                    ></b-form-checkbox-group>
+                <!-- </b-form-group> -->
+            </b-dropdown>
         </div>
+        <div class="field col-4 col-12-xsmall">
+            <b-dropdown text="Municipio " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+                <b-form-group>
+                    <b-form-checkbox-group
+                        v-model="municipioSelected"
+                        :options="municipios"
+                        name="municipios"
+                        class="ml-3"
+                        stacked
+                    ></b-form-checkbox-group>
+                </b-form-group>
+            </b-dropdown>
+        </div>
+
         <div class="field col-3 col-12-xsmall">
-            <label for="subcuenca">Subcuenca: </label>
-            <select v-model="municipioSelected" id="subcuenca" :size="6" multiple>
-                <option v-for="(option, index) in subcuencas" :key="index"  v-bind:value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
+            <b-dropdown text="Subcuenca " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+                <b-form-group>
+                    <b-form-checkbox-group
+                        v-model="municipioSelected"
+                        :options="municipios"
+                        name="Subcuenca"
+                        class="ml-3"
+                        stacked
+                    ></b-form-checkbox-group>
+                </b-form-group>
+            </b-dropdown>
         </div>
-        <div class="field col-3 col-12-xsmall">
-            <label for="subcuenca">Región Económica: </label>
-            <select v-model="municipioSelected" id="subcuenca" size="4" multiple>
-                <option v-for="option in subcuencas" v-bind:value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
-        </div>
-        <div class="field col-3 col-12-xsmall">
-            <label for="subcuenca">Localidad: </label>
-            <select v-model="municipioSelected" id="subcuenca" size="4" multiple>
-                <option v-for="option in subcuencas" v-bind:value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
-        </div>
-        <div class="field col-3 col-12-xsmall">
-            <label for="subcuenca">Tipo: </label>
-            <select v-model="municipioSelected" id="subcuenca" size="4" multiple>
-                <option v-for="option in tipos" v-bind:value="option.value">
-                    {{ option.text }}
-                </option>
-            </select>
-        </div>
+    <!-- , Región Económica, Localidad Tipo -->
         
     </div>
 </template>
@@ -94,20 +84,6 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 estados: [
                     { value: 'a', text: 'Chiapas' },
                     { value: 'b', text: 'Tabasco' },
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
                 ],
                 consejos: [
                     { value: 'a', text: 'Ríos Grijalva y Usumacinta' },
@@ -117,6 +93,8 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                     { value: 'a', text: 'La Trinitaria' },
                     { value: 'b', text: 'Tapachula' },
                     { value: 'c', text: 'Chamula' },
+                    { value: 'd', text: 'San Cristóbal de Las Casas' },
+                    { value: 'd', text: 'San Cristóbal de Las Casas' },
                     { value: 'd', text: 'San Cristóbal de Las Casas' }
                 ],
                 subcuencas: [
@@ -136,7 +114,8 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
 
 <style >
     .drop-overflow{
-        height: 200px;
+        max-height: 200px;
+        min-height: 100px;
         overflow-x: auto;
     }
 </style>
