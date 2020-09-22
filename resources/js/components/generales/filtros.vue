@@ -2,7 +2,7 @@
     <div class="row gtr-uniform">
 
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="Estados " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="estadoSelected"
@@ -15,7 +15,7 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="Consejo de cuenca " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="CONSEJO DE CUENCA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <!-- <b-form-group> -->
                     <b-form-checkbox-group
                         v-model="consejoSelected"
@@ -28,7 +28,7 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="Municipio " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="MUNICIPIO " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="municipioSelected"
@@ -42,7 +42,7 @@
         </div>
 
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="Subcuenca " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="SUBCUENCA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="subcuencaSelected"
@@ -55,7 +55,7 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="Región Económica " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="REGIÓN ECONÓMICA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="regionSelected"
@@ -68,7 +68,7 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="Localidad " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="LOCALIDAD " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="localidadSelected"
@@ -81,7 +81,7 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="Tipo " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="TIPO " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="tipoSelected"
