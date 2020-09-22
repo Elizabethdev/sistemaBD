@@ -123,7 +123,7 @@ input, select, textarea {
 /* Type */
 
 	body, input, select, textarea {
-		color: #ffffff;
+		color: #ffffff!important;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16.5pt;
 		font-weight: 300;
@@ -176,7 +176,7 @@ input, select, textarea {
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
-		color: #ffffff;
+		color: #ffffff!important;
 		text-decoration: none;
 	}
 
@@ -251,12 +251,12 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #ffffff;
-		font-family: Raleway, Helvetica, sans-serif;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		margin: 0 0 1em 0;
-		text-transform: uppercase;
+		color: #ffffff!important;
+		font-family: Raleway, Helvetica, sans-serif!important;
+		font-weight: 700!important;
+		letter-spacing: 0.1em!important;
+		margin: 0 0 1em 0!important;
+		text-transform: uppercase!important;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -275,33 +275,33 @@ input, select, textarea {
 		}
 
 	h2 {
-		font-size: 1.2em;
+		font-size: 1.2em!important;
 	}
 
 	h3 {
-		font-size: 0.9em;
+		font-size: 0.9em!important;
 	}
 
 	h4 {
-		font-size: 0.7em;
+		font-size: 0.7em!important;
 	}
 
 	h5 {
-		font-size: 0.7em;
+		font-size: 0.7em!important;
 	}
 
 	h6 {
-		font-size: 0.7em;
+		font-size: 0.7em!important;
 	}
 
 	@media screen and (max-width: 736px) {
 
 		h2 {
-			font-size: 1em;
+			font-size: 1em!important;
 		}
 
 		h3 {
-			font-size: 0.8em;
+			font-size: 0.8em!important;
 		}
 
 	}
@@ -2165,14 +2165,14 @@ input, select, textarea {
 		}
 
 	label {
-		/* color: #ffffff; */
-		/* display: block;
+		color: #ffffff;
+		display: block;
 		font-family: Raleway, Helvetica, sans-serif;
 		font-size: 0.8em;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		margin: 0 0 0.7em 0;
-		text-transform: uppercase; */
+		/* text-transform: uppercase; */
 	}
 
 	input[type="text"],
@@ -2238,12 +2238,12 @@ input, select, textarea {
 			display: none;
 		}
 
-	/* input[type="text"],
+	input[type="text"],
 	input[type="password"],
 	input[type="email"],
 	select {
 		height: 2.75em;
-	} */
+	}
 
 	textarea {
 		padding: 0.75em 1em;
@@ -2263,7 +2263,7 @@ input, select, textarea {
 		z-index: -1;
 	}
 
-		/* input[type="checkbox"] + label,
+		/* input[type="checkbox"] + label, */
 		input[type="radio"] + label {
 			text-decoration: none;
 			color: #ffffff;
@@ -2277,7 +2277,7 @@ input, select, textarea {
 			padding-left: 2.4em;
 			padding-right: 0.75em;
 			position: relative;
-		} */
+		}
 
 			input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
@@ -2293,7 +2293,7 @@ input, select, textarea {
 				font-weight: 900;
 			}
 
-			/* input[type="checkbox"] + label:before,
+			/* input[type="checkbox"] + label:before, */
 			input[type="radio"] + label:before {
 				background: rgba(255, 255, 255, 0.025);
 				border-radius: 5px;
@@ -2308,9 +2308,9 @@ input, select, textarea {
 				text-align: center;
 				top: 0;
 				width: 2.0625em;
-			} */
+			}
 
-		/* input[type="checkbox"]:checked + label:before,
+		/* input[type="checkbox"]:checked + label:before, */
 		input[type="radio"]:checked + label:before {
 			background: #ffffff;
 			border-color: #ffffff;
@@ -2318,10 +2318,10 @@ input, select, textarea {
 			color: #2e3141;
 		}
 
-		input[type="checkbox"]:focus + label:before,
+		/* input[type="checkbox"]:focus + label:before, */
 		input[type="radio"]:focus + label:before {
 			border-color: #4c5c96;
-		} */
+		}
 
 	input[type="checkbox"] + label:before {
 		border-radius: 5px;
@@ -2854,10 +2854,10 @@ input, select, textarea {
 
 /* Button */
 
-	/* input[type="submit"],
+	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
-	button,
+	/* button, */
 	.button {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -2885,7 +2885,7 @@ input, select, textarea {
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
-	} */
+	}
 
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
@@ -3109,7 +3109,7 @@ input, select, textarea {
 
 		#header nav {
 			font-family: Raleway, Helvetica, sans-serif;
-			font-size: 0.8em;
+			font-size: 0.9em;
 			font-weight: 700;
 			height: 3em;
 			letter-spacing: 0.1em;
@@ -3338,10 +3338,12 @@ input, select, textarea {
 					line-height: 1.85em;
 					padding: 0.75em 0;
 					text-transform: uppercase;
+					color: #ffffff!important;
 				}
 
 					#menu .links li a:hover {
-						background: #45558d;
+						background: #45558d!important;
+						text-decoration: none;
 					}
 
 		@media screen and (max-width: 736px) {
@@ -3387,7 +3389,7 @@ input, select, textarea {
 
 		#banner .inner {
 			margin: 0 auto;
-			width: 55em;
+			width: 70em;
 		}
 
 		#banner .logo {
@@ -3434,9 +3436,9 @@ input, select, textarea {
 			filter: blur(0);
 			opacity: 1;
 			border-bottom: solid 2px rgba(255, 255, 255, 0.125);
-			font-size: 2.25em;
-			margin-bottom: 0.8em;
-			padding-bottom: 0.4em;
+			font-size: 2.25em!important;
+			margin-bottom: 0.8em!important;
+			padding-bottom: 0.4em!important;
 		}
 
 		#banner p {
@@ -3558,14 +3560,15 @@ input, select, textarea {
 
 		#wrapper > header .inner {
 			margin: 0 auto;
-			width: 55em;
+			/* width: 55em; */
+			width: 70em;
 		}
 
 		#wrapper > header h2 {
 			border-bottom: solid 2px rgba(255, 255, 255, 0.125);
-			font-size: 2em;
-			margin-bottom: 0.8em;
-			padding-bottom: 0.4em;
+			font-size: 2em!important;
+			margin-bottom: 0.8em!important;
+			padding-bottom: 0.4em!important;
 		}
 
 		#wrapper > header p {
@@ -3687,7 +3690,7 @@ input, select, textarea {
 		.wrapper .inner {
 			padding: 3em 0 1em 0 ;
 			margin: 0 auto;
-			width: 55em;
+			width: 70em;
 		}
 
 		.wrapper.style2 {
@@ -4026,7 +4029,7 @@ input, select, textarea {
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
 		margin: 0 auto;
-		width: 55em;
+		width: 70em;
 	}
 
 		#footer .inner > * {

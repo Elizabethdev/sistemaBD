@@ -15,7 +15,10 @@ Inicio
             <h2>Nombre del Sistema</h2>
             <p>Alguna descripcion del Sistema</a></p>
         </div>
+        <div id="app">
+        </div>
     </section>
+    
     <!-- Wrapper -->
     <section id="wrapper">
         <!-- One -->

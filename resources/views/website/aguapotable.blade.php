@@ -12,12 +12,12 @@ Agua Potable
     <header>
         <div class="inner">
             <h2>AGUA POTABLE</h2>
-            <h3><p>Se denomina agua potable o agua apta para el consumo de los humanos al agua que puede ser consumida sin restricción para beber o preparar alimentos.</p>
+            <p>Se denomina agua potable o agua apta para el consumo de los humanos al agua que puede ser consumida sin restricción para beber o preparar alimentos.</p>
         </div>
     </header>
 
     <!-- Content -->
-    <div class="wrapper">
+    <div class="wrapper" id="app">
         <div class="inner">
             <section>
                 <h3 class="major">Demanda m3 Anuales</h3>

@@ -27,7 +27,7 @@
 	<div id="page-wrapper">
         <!-- Header -->
         <header id="header" class="alt">
-            <h1><a href="index.html">INSTITUTO ESTATAL DEL AGUA</a></h1>
+            <!-- <h1><a href="/">INSTITUTO ESTATAL DEL AGUA</a></h1> -->
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
@@ -41,9 +41,8 @@
                 <a href="#" class="close">Close</a>
             </div>
         </nav>
-        <div id="app">
+            
             @yield('content')
-        </div>
 
         @include('layouts.website.footer')
 
