@@ -13,9 +13,9 @@ class Dato extends Model
      * @var array
      */
     protected $fillable = [
-        'LOC','CVE_U', 'NOM_LOC', 'POBTOT', 'P3YM_HLI', '%POBIND', 'RangoPI', 'PEA', 'POCUPADA', 'TVIVHAB', 'TVIVPAR',
+        'CVE_EDO', 'ESTADO', 'LOC','CVE_U', 'NOM_LOC', 'LONGITUD', 'LATITUD', 'ALTITUD', 'POBTOT', 'P3YM_HLI', '%POBIND', 'RangoPI', 'TVIVHAB', 'TVIVPAR',
         'VIVPAR_HAB', 'PROM_OCUP', 'VPH_AGUADV', 'VPH_DRENAJ', 'CONSEJO_CUENCA', 'CLAVE', 'SUBCUENCA', 'REGION',
-        'CUENCA', 'DOF', 'CVE_MUN', 'MUNICIPIO', 'POBTOT_10',
+        'CUENCA', 'DOF', 'CVE_MUN', 'MUNICIPIO', 'REGION_ECO', 'NUMREG',
     ];
 
 }

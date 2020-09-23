@@ -24,12 +24,12 @@ class DatosController extends Controller
         // dd($request->all());
         $file = $request->file('file');
 
-        DB::transaction(function () use ($file) {
+        // DB::transaction(function () use ($file) {
             
             DB::table('datos')->truncate();
 
             Excel::import(new DatosImport, $file);
-        });
+        // });
         
         return response()->json([
             'message' => 'Importación de datos completada',
