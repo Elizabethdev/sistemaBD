@@ -18,16 +18,23 @@ Auth::routes();
 
 Route::view('/inicio', 'website/home')->name('inicio');
 Route::view('/', 'website/home')->name('/');
-Route::view('/aguapotable', 'website/aguapotable')->name('aguapotable');
+// Route::view('/aguapotable', 'website/aguapotable')->name('aguapotable');
 Route::view('/alcantarillado', 'website/alcantarillado')->name('alcantarillado');
 Route::view('/saneamiento', 'website/saneamiento')->name('saneamiento');
 Route::view('/calidadagua', 'website/calidadagua')->name('calidadagua');
 
+// Route::prefix('/')->group(function () {
+    Route::get('aguapotable', 'AguaPotableController@index')->name('aguapotable');
+
+// });
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/subirarchivo', 'DatosController@cargarArchivo')->name('uploadfile');
-Route::post('/importarExcel', 'DatosController@importExcel')->name('importarExcel');
-Route::get('/verdatos', 'DatosController@verDatos')->name('verdatos');
-Route::get('/resumendemandas', 'DatosController@filtrarDatosdemanda')->name('resumendemanda');
-Route::get('/resumenservicios', 'DatosController@filtrarDatosServicio')->name('resumenservicios');
-Route::get('/resumenrango', 'DatosController@filtrarDatosRango')->name('resumenrango');
+Route::prefix('admin')->group(function () {
+    Route::get('/subirarchivo', 'DatosController@cargarArchivo')->name('uploadfile');
+    Route::post('/importarExcel', 'DatosController@importExcel')->name('importarExcel');
+    Route::get('/verdatos', 'DatosController@verDatos')->name('verdatos');
+    Route::get('/resumendemandas', 'DatosController@filtrarDatosdemanda')->name('resumendemanda');
+    Route::get('/resumenservicios', 'DatosController@filtrarDatosServicio')->name('resumenservicios');
+    Route::get('/resumenrango', 'DatosController@filtrarDatosRango')->name('resumenrango');
+});

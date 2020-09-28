@@ -6,11 +6,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Sistema') }} | @yield('title')</title>
-
-    <!-- Scripts para vue-->
-    <script src="{{ asset('js/page.js') }}" defer></script> 
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     
     <!-- Custom fonts for this template-->
 	<link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" type="text/css">
@@ -18,7 +15,8 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
 	<noscript><link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" /></noscript>
-
+    <!-- Scripts para vue-->
+    <script src="{{ asset('js/page.js') }}" defer></script> 
 	@yield('css')
 
 </head>

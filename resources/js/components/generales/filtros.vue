@@ -15,8 +15,8 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="CONSEJO DE CUENCA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <!-- <b-form-group> -->
+            <b-dropdown text="CONSEJOS DE CUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+                <b-form-group>
                     <b-form-checkbox-group
                         v-model="consejoSelected"
                         :options="consejos"
@@ -24,11 +24,11 @@
                         class="ml-3"
                         stacked
                     ></b-form-checkbox-group>
-                <!-- </b-form-group> -->
+                </b-form-group>
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="MUNICIPIO " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="municipioSelected"
@@ -42,7 +42,7 @@
         </div>
 
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="SUBCUENCA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="subcuencaSelected"
@@ -55,7 +55,7 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="REGIÓN ECONÓMICA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <b-dropdown text="REGIONES ECONÓMICAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox-group
                         v-model="regionSelected"
@@ -68,8 +68,8 @@
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="LOCALIDAD " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <b-form-group>
+            <b-dropdown text="LOCALIDADES " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+                <!-- <b-form-group> -->
                     <b-form-checkbox-group
                         v-model="localidadSelected"
                         :options="localidades"
@@ -77,12 +77,12 @@
                         class="ml-3"
                         stacked
                     ></b-form-checkbox-group>
-                </b-form-group>
+                <!-- </b-form-group> -->
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="TIPO " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <b-form-group>
+            <b-dropdown text="TIPOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+                <!-- <b-form-group> -->
                     <b-form-checkbox-group
                         v-model="tipoSelected"
                         :options="tipos"
@@ -90,7 +90,7 @@
                         class="ml-3"
                         stacked
                     ></b-form-checkbox-group>
-                </b-form-group>
+                <!-- </b-form-group> -->
             </b-dropdown>
         </div>
 
@@ -107,12 +107,39 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
     export default {
         name:"filtros",
         props:{
-            titulo: ''
+            titulo: '',
+            destados: {
+                type: Array,
+                default: []
+            },
+            dconsejos: {
+                type: Array,
+                default: []
+            },
+            dmunicipios: {
+                type: Array,
+                default: []
+            },
+            dsubcuencas: {
+                type: Array,
+                default: []
+            },
+            dregiones: {
+                type: Array,
+                default: []
+            },
+            dlocalidades: {
+                type: Array,
+                default: []
+            },
         },
         components: {
             BFormCheckboxGroup,
             BDropdown,
             BFormGroup
+        },
+        created(){
+
         },
         mounted() {
             console.log('Component filtros mounted.')
@@ -126,39 +153,12 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 regionSelected: [],
                 localidadSelected: [],
                 tipoSelected: [],
-                estados: [
-                    { value: 'a', text: 'Chiapas' },
-                    { value: 'b', text: 'Tabasco' },
-                ],
-                consejos: [
-                    { value: 'a', text: 'Ríos Grijalva y Usumacinta' },
-                    { value: 'b', text: 'COSTA DE CHIAPAS' },
-                ],
-                municipios: [
-                    { value: 'a', text: 'La Trinitaria' },
-                    { value: 'b', text: 'Tapachula' },
-                    { value: 'c', text: 'Chamula' },
-                    { value: 'd', text: 'San Cristóbal de Las Casas' },
-                    { value: 'd', text: 'San Cristóbal de Las Casas' },
-                    { value: 'd', text: 'San Cristóbal de Las Casas' },
-                    { value: 'b', text: 'Tapachula' },
-                    { value: 'c', text: 'Chamula' },
-                ],
-                subcuencas: [
-                    { value: 'a', text: 'Lagartero' },
-                    { value: 'b', text: 'Puerto Madero' },
-                    { value: 'c', text: 'Hondo' },
-                ],
-                regiones: [
-                    { value: 'a', text: 'Río Grijalva' },
-                    { value: 'b', text: 'Lagartero' },
-                    { value: 'c', text: 'Costa de Chiapas' },
-                ],
-                localidades: [
-                    { value: 'a', text: 'LAS DELICIAS' },
-                    { value: 'b', text: 'JALISCO' },
-                    { value: 'c', text: 'JOSÉ MARÍA MORELOS' },
-                ],
+                estados: this.destados,
+                consejos: this.dconsejos,
+                municipios: this.dmunicipios,
+                subcuencas: this.dsubcuencas,
+                regiones: this.dregiones,
+                localidades: [],
                 tipos: [
                     { value: 'urbana', text: 'Urbana' },
                     { value: 'rural', text: 'Rural' },

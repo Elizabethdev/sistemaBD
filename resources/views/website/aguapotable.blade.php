@@ -23,10 +23,17 @@ Agua Potable
                 <h3 class="major">Demanda m3 Anuales</h3>
             </section>
             <section >
-                <h4>Filtrar por:</h4>
-
+                <h4>Filtrar por:</h4> 
                 <div class="" style="border: solid 2px rgba(255, 255, 255, 0.125); padding: 2rem; border-radius: 5px;">
-                    <filtros-component>  </filtros-component>
+                    <filtros-component 
+                        :destados= "{{$estados}}"
+                        :dconsejos= "{{$consejos}}"
+                        :dmunicipios= "{{$municipios}}"
+                        :dsubcuencas= "{{$subcuencas}}"
+                        :dregiones= "{{$regionesEco}}"
+                        :dlocalidades= "{{$localidades}}"
+                    >  
+                    </filtros-component>
                 </div>
             </section>
             <section>										
