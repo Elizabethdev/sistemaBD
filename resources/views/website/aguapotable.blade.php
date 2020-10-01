@@ -38,7 +38,7 @@ Agua Potable
             </section>
             <section>										
                 <div class="table-wrapper my-4">
-                   <table-component :dtotales="{{$datos_total}}"></table-component>
+                   <table-component :dtotales="{{$datos_total}}" :headers-table="headersTable"></table-component>
                 </div>
             </section>
             <section>										

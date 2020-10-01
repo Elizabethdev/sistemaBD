@@ -10,5 +10,18 @@ const app = new Vue({
     components: {
         filtrosComponent,
         tableComponent
+    },
+    data: {
+        headersTable: ['Estado',
+        'Consejo de Cuenca',
+        'Municipio',
+        'Subcuenca',
+        'Región Económica',
+        'Localidad',
+        'Tipo de Población 2020',
+        'Demanda de Agua 2010',
+        'Demanda de Agua 2015',
+        'Demanda de Agua 2020',
+        'Demanda de Agua 2030']
     }
 });

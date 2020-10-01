@@ -2,17 +2,7 @@
     <table class="alt">
         <thead>
             <tr>
-                <th>Estado</th>
-                <th>Consejo de Cuenca</th>
-                <th>Municipio</th>
-                <th>Subcuenca</th>
-                <th>Región Económica</th>
-                <th>Localidad</th>
-                <th>Tipo de Población 2020</th>
-                <th>Demanda de Agua 2010</th>
-                <th>Demanda de Agua 2015</th>
-                <th>Demanda de Agua 2020</th>
-                <th>Demanda de Agua 2030</th>
+                <th v-for="(header, key) in headers" :key="key">{{header}}</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +47,13 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 type: Object,
                 default: {}
             },
-            
+            headersTable:{
+                type: Array,
+                default: function () {
+                    return []
+                }
+            },
+
         },
         components: {
            
@@ -70,7 +66,7 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         },
         data() {
             return {
-                headers: [],
+                headers: this.headersTable,
                 datosTotales: this.dtotales
                 
             }
