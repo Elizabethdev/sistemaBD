@@ -24,13 +24,16 @@ class AguaPotableController extends Controller
         $subcuencas = $this->vistaDatos->getSubcuencas();
         $regionesEco = $this->vistaDatos->getRegionesEco();
         $localidades = $this->vistaDatos->getLocalidades();
+        $datos_total = $this->vistaDatos->getDatosTotales();
+        $grouped = $datos_total->groupBy('cve_mun');
         
         return view('website.aguapotable', ['estados' => $estados, 
                                             'consejos' => $consejos, 
                                             'municipios' => $municipios, 
                                             'subcuencas' => $subcuencas, 
                                             'regionesEco' => $regionesEco,
-                                            'localidades' => $localidades]);
+                                            'localidades' => $localidades,
+                                            'datos_total' => $grouped]);
     }
 
     /**

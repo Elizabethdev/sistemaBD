@@ -51,4 +51,11 @@ class VistasDatos extends Model
                             ->get();
     }
 
+    public function getDatosTotales()
+    {
+        return $consejo_bd = DB::table('vwDemanda_AP_GROUP_MUN')->get();
+    }
+
+    
+
 }

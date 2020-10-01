@@ -2785,6 +2785,8 @@ input, select, textarea {
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
+		overflow-y: auto;
+		max-height: 500px;
 	}
 
 	table {
@@ -3389,7 +3391,7 @@ input, select, textarea {
 
 		#banner .inner {
 			margin: 0 auto;
-			width: 70em;
+			width: 65em;
 		}
 
 		#banner .logo {
@@ -3561,7 +3563,7 @@ input, select, textarea {
 		#wrapper > header .inner {
 			margin: 0 auto;
 			/* width: 55em; */
-			width: 70em;
+			width: 65em;
 		}
 
 		#wrapper > header h2 {
@@ -3690,7 +3692,7 @@ input, select, textarea {
 		.wrapper .inner {
 			padding: 3em 0 1em 0 ;
 			margin: 0 auto;
-			width: 70em;
+			width: 65em;
 		}
 
 		.wrapper.style2 {
@@ -4029,7 +4031,7 @@ input, select, textarea {
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
 		margin: 0 auto;
-		width: 70em;
+		width: 65em;
 	}
 
 		#footer .inner > * {
