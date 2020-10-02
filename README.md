@@ -10,4 +10,8 @@
 ### `npm install`
 ### `npm run dev`
 
-**Note: Es necesario tener instalado: (`wamp`, `xampp`), `node.js (LTS)` y `composer`**
+**Nota: Probablemente tenga que ejecutar: **
+
+### `php artisan key:generate`
+
+**Nota: Es necesario tener instalado: (`wamp`, `xampp`), `node.js (LTS)` y `composer`**
