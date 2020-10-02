@@ -1,6 +1,5 @@
 <template>
     <div class="row gtr-uniform">
-
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
@@ -40,7 +39,6 @@
                 </b-form-group>
             </b-dropdown>
         </div>
-
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
@@ -69,34 +67,26 @@
         </div>
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="LOCALIDADES " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <!-- <b-form-group> -->
-                    <b-form-checkbox-group
-                        v-model="localidadSelected"
-                        :options="localidades"
-                        name="localidad"
-                        class="ml-3"
-                        stacked
-                    ></b-form-checkbox-group>
-                <!-- </b-form-group> -->
+                <b-form-checkbox-group
+                    v-model="localidadSelected"
+                    :options="localidades"
+                    name="localidad"
+                    class="ml-3"
+                    stacked
+                ></b-form-checkbox-group>
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="TIPOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <!-- <b-form-group> -->
-                    <b-form-checkbox-group
-                        v-model="tipoSelected"
-                        :options="tipos"
-                        name="tipo"
-                        class="ml-3"
-                        stacked
-                    ></b-form-checkbox-group>
-                <!-- </b-form-group> -->
+                <b-form-checkbox-group
+                    v-model="tipoSelected"
+                    :options="tipos"
+                    name="tipo"
+                    class="ml-3"
+                    stacked
+                ></b-form-checkbox-group>
             </b-dropdown>
         </div>
-
-        <!-- <div class="mt-3">Seleccionado: <strong>{{ estadoSelected }}, {{consejoSelected}}, {{municipioSelected}} </strong></div>
-        <div class="mt-3">Seleccionado: <strong>{{ subcuencaSelected }}, {{regionSelected}}, {{localidadSelected}}, {{tipoSelected}} </strong></div> -->
-        
     </div>
 </template>
 
@@ -160,9 +150,14 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 regiones: this.dregiones,
                 localidades: [],
                 tipos: [
-                    { value: 'urbana', text: 'Urbana' },
-                    { value: 'rural', text: 'Rural' },
+                    { value: 'URBANA', text: 'Urbana' },
+                    { value: 'RURAL', text: 'Rural' },
                 ],
+            }
+        },
+        watch: {
+            municipioSelected: function(newValue) {
+                this.$emit('filterchange', newValue );
             }
         }
     }

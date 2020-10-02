@@ -32,13 +32,14 @@ Agua Potable
                         :dsubcuencas= "{{$subcuencas}}"
                         :dregiones= "{{$regionesEco}}"
                         :dlocalidades= "{{$localidades}}"
+                        v-on:filterchange="consultarByMun"
                     >  
                     </filtros-component>
                 </div>
             </section>
             <section>										
                 <div class="table-wrapper my-4">
-                   <table-component :dtotales="{{$datos_total}}" :headers-table="headersTable"></table-component>
+                   <table-component :dtotales="{{$datos_total}}" :newdtotales="newdtotales" :headers-table="headersTable"></table-component>
                 </div>
             </section>
             <section>										

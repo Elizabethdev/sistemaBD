@@ -45,21 +45,25 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         props:{
             dtotales: {
                 type: Object,
-                default: {}
+                default: function () {
+                    return {}
+                }
             },
-            headersTable:{
+            newdtotales: {
+                type: Object,
+                default: function () {
+                    return {}
+                }
+            },
+            headersTable: {
                 type: Array,
                 default: function () {
                     return []
                 }
             },
-
         },
         components: {
            
-        },
-        created(){
-
         },
         mounted() {
             console.log('Component tabla mounted.')
@@ -71,7 +75,12 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 
             }
         },
-}
+        watch: {
+            newdtotales: function(newValue) {
+                this.datosTotales = newValue
+            }
+        }
+    }
 </script>
 
 

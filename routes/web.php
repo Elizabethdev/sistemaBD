@@ -23,10 +23,10 @@ Route::view('/alcantarillado', 'website/alcantarillado')->name('alcantarillado')
 Route::view('/saneamiento', 'website/saneamiento')->name('saneamiento');
 Route::view('/calidadagua', 'website/calidadagua')->name('calidadagua');
 
-// Route::prefix('/')->group(function () {
+Route::prefix('/')->group(function () {
     Route::get('aguapotable', 'AguaPotableController@index')->name('aguapotable');
 
-// });
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -38,3 +38,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/resumenservicios', 'DatosController@filtrarDatosServicio')->name('resumenservicios');
     Route::get('/resumenrango', 'DatosController@filtrarDatosRango')->name('resumenrango');
 });
+
+Route::prefix('api')->group(function () {
+    Route::post('/consultaapmun', 'AguaPotableController@consultarByMun')->name('consultarByMun');
+
+});
+
