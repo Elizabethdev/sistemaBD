@@ -2,7 +2,8 @@ import filtrosComponent from './components/generales/filtros.vue';
 import tableComponent from './components/generales/table.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import axios from 'axios'
+// import axios from 'axios'
+import axios from './client/client.js';
 
 window.Vue = require('vue');
 
@@ -31,7 +32,7 @@ const app = new Vue({
     methods: {
         consultarByMun(datamun){
             console.log('emitiendo el evento')
-            axios.post('/api/consultaapmun',{municipios: datamun})
+            axios.post('/consultaapmun',{municipios: datamun})
             .then((response)=>{
                 this.newdtotales = response.data.municipios
                 // console.log(response.data)
