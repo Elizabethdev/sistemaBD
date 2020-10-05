@@ -32,7 +32,7 @@ Agua Potable
                         :dsubcuencas= "{{$subcuencas}}"
                         :dregiones= "{{$regionesEco}}"
                         :dlocalidades= "{{$localidades}}"
-                        v-on:filterchange="consultarByMun"
+                        v-on:filterchange="filterchange"
                     >  
                     </filtros-component>
                 </div>

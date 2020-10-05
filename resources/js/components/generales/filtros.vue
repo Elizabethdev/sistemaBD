@@ -156,8 +156,17 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
             }
         },
         watch: {
+            consejoSelected: function(newValue) {
+                this.$emit('filterchange', 'consejo', newValue );
+            },
             municipioSelected: function(newValue) {
-                this.$emit('filterchange', newValue );
+                this.$emit('filterchange', 'municipio', newValue );
+            },
+            subcuencaSelected: function(newValue) {
+                this.$emit('filterchange', 'subcuenca', newValue );
+            },
+            regionSelected: function(newValue) {
+                this.$emit('filterchange', 'region', newValue );
             }
         }
     }

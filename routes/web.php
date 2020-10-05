@@ -41,6 +41,9 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('api')->group(function () {
     Route::post('/consultaapmun', 'AguaPotableController@consultarByMun')->name('consultarByMun');
+    Route::post('/consultaapconsejo', 'AguaPotableController@consultarByconsejo')->name('consultarByconsejo');
+    Route::post('/consultaapsubcuenca', 'AguaPotableController@consultarBysubcuenca')->name('consultarBysubcuenca');
+    Route::post('/consultaapregion', 'AguaPotableController@consultarByregion')->name('consultarByregion');
 
 });
 

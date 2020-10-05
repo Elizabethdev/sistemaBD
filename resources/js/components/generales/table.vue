@@ -1,5 +1,5 @@
 <template>
-    <table class="alt">
+    <table class="alt" id="header-fixed">
         <thead>
             <tr>
                 <th v-for="(header, key) in headers" :key="key">{{header}}</th>
@@ -16,19 +16,20 @@
                         <td>{{value.reg_economica}}</td>
                         <td>{{value.localidad}}</td>
                         <td>{{value.TIPO_20}}</td>
-                        <td>{{value.totaldemap_10}}</td>
-                        <td>{{value.totaldemap_15}}</td>
-                        <td>{{value.totaldemap_20}}</td>
-                        <td>{{value.totaldemap_30}}</td>
+                        <!-- <td>{{value.totaldemap_10}}</td> -->
+                        <td>{{formatNumber(value.totaldemap_10)}}</td>
+                        <td>{{formatNumber(value.totaldemap_15)}}</td>
+                        <td>{{formatNumber(value.totaldemap_20)}}</td>
+                        <td>{{formatNumber(value.totaldemap_30)}}</td>
                     </tr>
                 </template>
                 <template v-for="(value, index) in data">
                     <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_mun+index">
                         <td colspan="7">TOTAL {{value.municipio}}</td>
-                        <td>{{value.totaldemap_10}}</td>
-                        <td>{{value.totaldemap_15}}</td>
-                        <td>{{value.totaldemap_20}}</td>
-                        <td>{{value.totaldemap_30}}</td>
+                        <td>{{formatNumber(value.totaldemap_10)}}</td>
+                        <td>{{formatNumber(value.totaldemap_15)}}</td>
+                        <td>{{formatNumber(value.totaldemap_20)}}</td>
+                        <td>{{formatNumber(value.totaldemap_30)}}</td>
                     </tr>
                 </template>
             </template>
@@ -79,11 +80,23 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
             newdtotales: function(newValue) {
                 this.datosTotales = newValue
             }
+        },
+        methods: {
+            formatNumber(number){
+                // return Number(number).toLocaleString()
+                return new Intl.NumberFormat("es-MX").format(number)
+            }
         }
     }
 </script>
 
 
 <style >
-    
+    table th {
+        position: -webkit-sticky!important; 
+        position: sticky!important;
+        top: 0!important;
+        z-index: 5!important;
+        background: #2e3141!important;
+    }
 </style>

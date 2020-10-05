@@ -53,15 +53,14 @@ class VistasDatos extends Model
 
     public function getDatosTotales()
     {
-        return $consejo_bd = DB::table('vwDemanda_AP_GROUP_MUN')->get();
+        return $consejo_bd = DB::table('vwDemanda_AP_by_mun')->get();
     }
 
-    public function getDatosTotalesBy($where)
+    public function getDatosTotalesBy($vista, $where)
     {
         // return $consejo_bd = DB::table('vwDemanda_AP_GROUP_MUN')->where($where)->orWhere($where)->get();
-        return $consejo_bd = DB::select('select * from vwDemanda_AP_GROUP_MUN ' .$where);
+        return $consejo_bd = DB::select('select * from '.$vista .$where);
     }
 
-    
 
 }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const client = axios.create({
-  baseURL: 'http://localhost/sistemaBD/public/api',
+  baseURL: 'http://sistemabd.local/api',
 });
 
 export default client;
