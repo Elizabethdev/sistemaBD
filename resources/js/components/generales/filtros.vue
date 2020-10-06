@@ -2,20 +2,26 @@
     <div class="row gtr-uniform">
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <b-form-group>
-                    <b-form-checkbox-group
-                        v-model="estadoSelected"
-                        :options="estados"
-                        name="estados"
-                        class="ml-3"
-                        stacked
-                    ></b-form-checkbox-group>
-                </b-form-group>
+                <b-form-checkbox-group
+                    v-model="estadoSelected"
+                    :options="estados"
+                    name="estados"
+                    class="ml-3"
+                    stacked
+                ></b-form-checkbox-group>
             </b-dropdown>
         </div>
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="CONSEJOS DE CUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
+                    <b-form-checkbox class="ml-3"
+                        v-model="allSelectedC"
+                        name="consejos"
+                        @change="toggleAllConsejos"
+                        >
+                        {{ 'Buscar todos' }}
+                    </b-form-checkbox>
+                    <b-dropdown-divider></b-dropdown-divider>
                     <b-form-checkbox-group
                         v-model="consejoSelected"
                         :options="consejos"
@@ -29,6 +35,16 @@
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
+                    <b-form-checkbox class="ml-3"
+                        v-model="allSelectedM"
+                        name="municipios"
+                        aria-describedby="municipios"
+                        aria-controls="municipios"
+                        @change="toggleAllMun"
+                        >
+                        {{ 'Buscar todos' }}
+                    </b-form-checkbox>
+                    <b-dropdown-divider></b-dropdown-divider>
                     <b-form-checkbox-group
                         v-model="municipioSelected"
                         :options="municipios"
@@ -42,6 +58,14 @@
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
+                    <b-form-checkbox class="ml-3"
+                        v-model="allSelectedS"
+                        name="subcuencas"
+                        @change="toggleAllSubcuencas"
+                        >
+                        {{ 'Buscar todos' }}
+                    </b-form-checkbox>
+                    <b-dropdown-divider></b-dropdown-divider>
                     <b-form-checkbox-group
                         v-model="subcuencaSelected"
                         :options="subcuencas"
@@ -55,6 +79,14 @@
         <div class="field col-3 col-12-xsmall">
             <b-dropdown text="REGIONES ECONÓMICAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
+                    <b-form-checkbox class="ml-3"
+                        v-model="allSelectedR"
+                        name="regiones"
+                        @change="toggleAllRegiones"
+                        >
+                        {{ 'Buscar todos' }}
+                    </b-form-checkbox>
+                    <b-dropdown-divider></b-dropdown-divider>
                     <b-form-checkbox-group
                         v-model="regionSelected"
                         :options="regiones"
@@ -92,7 +124,7 @@
 
 <script>
 
-import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
+import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivider } from 'bootstrap-vue'
 
     export default {
         name:"filtros",
@@ -126,16 +158,20 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         components: {
             BFormCheckboxGroup,
             BDropdown,
-            BFormGroup
-        },
-        created(){
-
+            BFormGroup,
+            BFormCheckbox,
+            BDropdownDivider
         },
         mounted() {
             console.log('Component filtros mounted.')
         },
         data() {
             return {
+                allSelectedC: false,
+                allSelectedM: false,
+                allSelectedS: false,
+                allSelectedR: false,
+                indeterminate: false,
                 estadoSelected: [],
                 consejoSelected: [],
                 municipioSelected: [],
@@ -155,23 +191,60 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 ],
             }
         },
+        methods: {
+            toggleAllMun(checked) {
+                if(checked)
+                    this.municipioSelected = []    
+                this.allSelectedC = false;
+                this.allSelectedS = false;
+                this.allSelectedR = false;
+            },
+            toggleAllConsejos(checked) {
+                if(checked)
+                    this.consejoSelected = []
+                this.allSelectedM = false;
+                this.allSelectedS = false;
+                this.allSelectedR = false;
+            },
+            toggleAllSubcuencas(checked) {
+                if(checked)
+                    this.subcuencaSelected = []
+                this.allSelectedM = false;
+                this.allSelectedC = false;
+                this.allSelectedR = false;
+            },
+            toggleAllRegiones(checked) {
+                if(checked)
+                    this.regionSelected = []
+                this.allSelectedM = false;
+                this.allSelectedC = false;
+                this.allSelectedS = false;
+            }
+        },
         watch: {
             consejoSelected: function(newValue) {
+                if(newValue != [])
+                    this.allSelectedC = false;
                 this.$emit('filterchange', 'consejo', newValue );
             },
             municipioSelected: function(newValue) {
+                if(newValue != [])
+                    this.allSelectedM = false;
                 this.$emit('filterchange', 'municipio', newValue );
             },
             subcuencaSelected: function(newValue) {
+                if(newValue != [])
+                    this.allSelectedS = false;
                 this.$emit('filterchange', 'subcuenca', newValue );
             },
             regionSelected: function(newValue) {
+                if(newValue != [])
+                    this.allSelectedR = false;
                 this.$emit('filterchange', 'region', newValue );
             }
         }
     }
 </script>
-
 
 <style >
     .drop-overflow{

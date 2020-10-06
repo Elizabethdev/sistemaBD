@@ -56,19 +56,6 @@ const app = new Vue({
             })
         },
         consultarByMun(value){
-            // console.log('emitiendo el evento')
-            this.headersTable= ['Estado',
-                'Consejo de Cuenca',
-                'Municipio',
-                'Subcuenca',
-                'Región Económica',
-                'Localidad',
-                'Tipo de Población 2020',
-                'Demanda de Agua 2010',
-                'Demanda de Agua 2015',
-                'Demanda de Agua 2020',
-                'Demanda de Agua 2030'
-            ],
             axios.post('/consultaapmun',{municipios: value})
             .then((response)=>{
                 this.newdtotales = response.data.municipios
@@ -77,13 +64,13 @@ const app = new Vue({
         consultarBysubcuenca(value){
             axios.post('/consultaapsubcuenca',{subcuencas: value})
             .then((response)=>{
-                this.newdtotales = response.data.municipios
+                this.newdtotales = response.data.subcuencas
             })
         },
         consultarByregionEco(value){
             axios.post('/consultaapregion',{regiones: value})
             .then((response)=>{
-                this.newdtotales = response.data.municipios
+                this.newdtotales = response.data.regiones
             })
         },
     }

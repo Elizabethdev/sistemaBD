@@ -25,7 +25,7 @@
                 </template>
                 <template v-for="(value, index) in data">
                     <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_mun+index">
-                        <td colspan="7">TOTAL {{value.municipio}}</td>
+                        <td colspan="7">TOTAL </td>
                         <td>{{formatNumber(value.totaldemap_10)}}</td>
                         <td>{{formatNumber(value.totaldemap_15)}}</td>
                         <td>{{formatNumber(value.totaldemap_20)}}</td>
@@ -98,5 +98,15 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         top: 0!important;
         z-index: 5!important;
         background: #2e3141!important;
+    }
+    table thead tr th{
+        border: solid 1px rgba(255, 255, 255, 0.125)!important;
+    }
+    table th {
+        border-left: 1px solid rgba(0,0,0,0.2);
+        border-right: 1px solid rgba(0,0,0,0.2);
+    }
+    table th{ /* Added padding for better layout after collapsing */
+        padding: 0.75em 0.75em;
     }
 </style>

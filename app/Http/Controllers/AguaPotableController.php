@@ -46,10 +46,14 @@ class AguaPotableController extends Controller
         $where = '';
 
         foreach ($municipios as $key => $value) {
-            if($key==0)
-                $where.=  'WHERE cve_mun = ' .$value;
+            if($key == 0 && array_key_last($municipios) == $key)
+                $where.=  "WHERE cve_mun IN ('".$value ."')";
+            elseif($key==0 && array_key_last($municipios) != $key)
+                $where.=  "WHERE cve_mun IN ('".$value ."',";
+            elseif(array_key_last($municipios) == $key && $key != 0)
+                $where.=  "'".$value ."')";
             else
-                $where.=  ' OR cve_mun = ' .$value;
+                $where.=  "'".$value."',";
         }
         $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
 
@@ -65,12 +69,15 @@ class AguaPotableController extends Controller
         $where = '';
 
         foreach ($consejos as $key => $value) {
-            if($key==0)
-                $where.=  "WHERE consejo_cuenca LIKE '%" .$value ."%'";
+            if($key == 0 && array_key_last($consejos) == $key)
+                $where.=  "WHERE consejo_cuenca IN ('".$value ."')";
+            elseif($key==0 && array_key_last($consejos) != $key)
+                $where.=  "WHERE consejo_cuenca IN ('".$value ."',";
+            elseif(array_key_last($consejos) == $key && $key != 0)
+                $where.=  "'".$value ."')";
             else
-                $where.=  " OR consejo_cuenca LIKE '%" .$value."%'";
+                $where.=  "'".$value."',";
         }
-        dd($where);
         $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
 
         return response()->json([
@@ -85,10 +92,14 @@ class AguaPotableController extends Controller
         $where = '';
 
         foreach ($subcuencas as $key => $value) {
-            if($key==0)
-                $where.=  'WHERE cve_subcuenca = ' .$value;
+            if($key == 0 && array_key_last($subcuencas) == $key)
+                $where.=  "WHERE cve_subcuenca IN ('".$value ."')";
+            elseif($key==0 && array_key_last($subcuencas) != $key)
+                $where.=  "WHERE cve_subcuenca IN ('".$value ."',";
+            elseif(array_key_last($subcuencas) == $key && $key != 0)
+                $where.=  "'".$value ."')";
             else
-                $where.=  ' OR cve_subcuenca = ' .$value;
+                $where.=  "'".$value."',";
         }
         $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
 
@@ -100,15 +111,19 @@ class AguaPotableController extends Controller
     {
         $regiones = $request->regiones;
         $vista = 'vwDemanda_AP_BY_region_eco ';
-        $where = '';
+        $where = ''; 
 
         foreach ($regiones as $key => $value) {
-            if($key==0)
-                $where.=  'WHERE num_region = ' .$value;
+            if($key == 0 && array_key_last($regiones) == $key)
+                $where.=  "WHERE num_region IN ('".$value ."')";
+            elseif($key==0 && array_key_last($regiones) != $key)
+                $where.=  "WHERE num_region IN ('".$value ."',";
+            elseif(array_key_last($regiones) == $key && $key != 0)
+                $where.=  "'".$value ."')";
             else
-                $where.=  ' OR num_region = ' .$value;
+                $where.=  "'".$value."',";
         }
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($where));
+        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
 
         return response()->json([
             'regiones' => $consulta->groupBy('num_region')

@@ -25,41 +25,45 @@ class VistasDatos extends Model
 
     public function getMunicipios()
     {
-        return $consejo_bd = DB::table('municipios')
+        return $municipios = DB::table('municipios')
                             ->select(DB::raw('clave_m as value, municipio as text'))
                             ->get();
     }
 
     public function getSubcuencas()
     {
-        return $consejo_bd = DB::table('subcuencas')
+        return $subcuencas = DB::table('subcuencas')
                             ->select(DB::raw('cve_subcuenca as value, subcuenca as text'))
                             ->get();
     }
 
     public function getRegionesEco()
     {
-        return $consejo_bd = DB::table('regiones_economicas')
+        return $regiones_eco = DB::table('regiones_economicas')
                             ->select(DB::raw('num_region as value, region_economica as text'))
                             ->get();
     }
 
     public function getLocalidades()
     {
-        return $consejo_bd = DB::table('localidades')
+        return $localidades = DB::table('localidades')
                             ->select(DB::raw('localidad as value, localidad as text'))
                             ->get();
     }
 
     public function getDatosTotales()
     {
-        return $consejo_bd = DB::table('vwDemanda_AP_by_mun')->get();
+        return $datos = DB::table('vwDemanda_AP_by_mun')->get();
     }
 
     public function getDatosTotalesBy($vista, $where)
     {
-        // return $consejo_bd = DB::table('vwDemanda_AP_GROUP_MUN')->where($where)->orWhere($where)->get();
         return $consejo_bd = DB::select('select * from '.$vista .$where);
+
+        // return $consejo_bd = DB::table('vwDemanda_AP_GROUP_MUN')->where($where)->orWhere($where)->get();
+        // return $datos = DB::table($vista)
+        //                         ->whereIn($campo, $where)->get();
+        
     }
 
 
