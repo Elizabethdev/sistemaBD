@@ -25,6 +25,7 @@ Route::view('/calidadagua', 'website/calidadagua')->name('calidadagua');
 
 Route::prefix('/')->group(function () {
     Route::get('aguapotable', 'AguaPotableController@index')->name('aguapotable');
+    Route::get('alcantarillado', 'AlcantarilladoController@index')->name('alcantarillado');
 
 });
 
@@ -45,5 +46,9 @@ Route::prefix('api')->group(function () {
     Route::post('/consultaapsubcuenca', 'AguaPotableController@consultarBysubcuenca')->name('consultarBysubcuenca');
     Route::post('/consultaapregion', 'AguaPotableController@consultarByregion')->name('consultarByregion');
 
+    Route::post('/consultaporvista', 'AlcantarilladoController@consultarByvista')->name('consultarByvista');
+    Route::post('/consultarMunByConsejo', 'AlcantarilladoController@consultarMunByConsejo')->name('consultarMunByConsejo');
+
+    
 });
 

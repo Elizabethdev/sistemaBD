@@ -51,6 +51,14 @@ class VistasDatos extends Model
                             ->get();
     }
 
+    public function getMunByConsejo($where, $campo)
+    {
+        return $municipios = DB::table('datos')->distinct()
+                            ->select('CVE_MUN as cve_mun', 'MUNICIPIO as municipio', 'CONSEJO_CUENCA')
+                            ->whereIn($campo, $where)->get();
+        
+    }
+
     public function getDatosTotales()
     {
         return $datos = DB::table('vwDemanda_AP_by_mun')->get();

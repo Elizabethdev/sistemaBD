@@ -97,17 +97,6 @@
                 </b-form-group>
             </b-dropdown>
         </div>
-        <!-- <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="LOCALIDADES " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <b-form-checkbox-group
-                    v-model="localidadSelected"
-                    :options="localidades"
-                    name="localidad"
-                    class="ml-3"
-                    stacked
-                ></b-form-checkbox-group>
-            </b-dropdown>
-        </div> -->
         <div class="field col-4 col-12-xsmall">
             <b-dropdown text="TIPOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
@@ -200,11 +189,10 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 this.allSelectedR = false;
             },
             toggleAllConsejos(checked) {
-                if(checked)
-                    this.consejoSelected = []
-                this.allSelectedM = false;
-                this.allSelectedS = false;
-                this.allSelectedR = false;
+                this.consejoSelected = checked ? this.consejos.map( (ele,x) => { return ele.value}) : []
+                // this.allSelectedM = false;
+                // this.allSelectedS = false;
+                // this.allSelectedR = false;
             },
             toggleAllSubcuencas(checked) {
                 if(checked)
@@ -225,7 +213,7 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
             consejoSelected: function(newValue) {
                 if(newValue != [])
                     this.allSelectedC = false;
-                this.$emit('filterchange', 'consejo', newValue );
+                this.$emit('filterchange2', 'consejo', newValue );
             },
             municipioSelected: function(newValue) {
                 if(newValue != [])

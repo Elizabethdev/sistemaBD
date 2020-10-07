@@ -10,13 +10,12 @@
                 <template v-for="(value, index) in data">
                     <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_mun+index">
                         <td>{{value.estado}}</td>
-                        <td>{{value.consejo_cuenca}}</td>
-                        <td>{{value.municipio}}</td>
-                        <td>{{value.subcuenca}}</td>
-                        <td>{{value.reg_economica}}</td>
-                        <td>{{value.localidad}}</td>
+                        <td v-if="mostrarCol == 'consejo'">{{value.consejo_cuenca}}</td>
+                        <td v-if="mostrarCol == 'municipio'">{{value.municipio}}</td>
+                        <td v-if="mostrarCol == 'subcuenca'">{{value.subcuenca}}</td>
+                        <td v-if="mostrarCol == 'region'">{{value.reg_economica}}</td>
+                        <!-- <td>{{value.localidad}}</td> -->
                         <td>{{value.TIPO_20}}</td>
-                        <!-- <td>{{value.totaldemap_10}}</td> -->
                         <td>{{formatNumber(value.totaldemap_10)}}</td>
                         <td>{{formatNumber(value.totaldemap_15)}}</td>
                         <td>{{formatNumber(value.totaldemap_20)}}</td>
@@ -25,7 +24,7 @@
                 </template>
                 <template v-for="(value, index) in data">
                     <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_mun+index">
-                        <td colspan="7">TOTAL </td>
+                        <td colspan="3">TOTAL </td>
                         <td>{{formatNumber(value.totaldemap_10)}}</td>
                         <td>{{formatNumber(value.totaldemap_15)}}</td>
                         <td>{{formatNumber(value.totaldemap_20)}}</td>
@@ -62,6 +61,10 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                     return []
                 }
             },
+            mostrarCol: {
+                type: String,
+                default: 'municipio'
+            }
         },
         components: {
            

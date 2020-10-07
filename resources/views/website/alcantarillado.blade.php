@@ -18,116 +18,30 @@ Alcantarillado
     </header>
 
     <!-- Content -->
-    <div class="wrapper">
+    <div class="wrapper" id="app">
         <div class="inner">
             <section>
-                <h3 class="major">Volumen de descarga m3 Anuales</h3>
-                
+                <h3 class="major">Demanda m3 Anuales</h3>
             </section>
-            <section>
-                <h4>Filtrar por:</h4>
-                <pre><code><h5><p>Estados										Consejo de Cuenca			   						Municipio										Subcuenca</p>
-                <p>Región Económica					 		Localidad											    Urbana o Rural</p></h5></code></pre>
+            <section >
+                <h4>Filtrar por:</h4> 
+                <div class="" style="border: solid 2px rgba(255, 255, 255, 0.125); padding: 2rem; border-radius: 5px;">
+                    <vista-component v-on:tipovistachange="vistaChange"></vista-component>
+                    <filtros-component2 
+                        :destados= "{{$estados}}"
+                        :dconsejos= "{{$consejos}}"
+                        :dmunicipios= "{{$municipios}}"
+                        :dsubcuencas= "{{$subcuencas}}"
+                        :dregiones= "{{$regionesEco}}"
+                        :dlocalidades= "{{$localidades}}"
+                        v-on:filterchange2="filterchange2"
+                    >  
+                    </filtros-component2>
+                </div>
             </section>
             <section>										
-                <div class="table-wrapper">
-                    <table class="alt">
-                        <thead>
-                            <tr>
-                                <th>Estado</th>
-                                <th>Consejo de Cuenca</th>
-                                <th>Municipio</th>
-                                <th>Subcuenca</th>
-                                <th>Región Económica</th>
-                                <th>Localidad</th>
-                                <th>Tipo de Población 2020</th>
-                                <th>Demanda de Agua 2010</th>
-                                <th>Demanda de Agua 2015</th>
-                                <th>Demanda de Agua 2020</th>
-                                <th>Demanda de Agua 2030</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Chiapas</td>
-                                <td>Ríos Grijalva y Usumacinta</td>
-                                <td>Salto de agua</td>
-                                <td>Basca</td>
-                                <td>Tulijá Tseltal Chol</td>
-                                <td>Ignacio Zaragoza</td>
-                                <td>Urbana</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                            </tr>
-                            <tr>
-                                <td>Chiapas</td>
-                                <td>Ríos Grijalva y Usumacinta</td>
-                                <td>Salto de agua</td>
-                                <td>Basca</td>
-                                <td>Tulijá Tseltal Chol</td>
-                                <td>Ignacio Zaragoza</td>
-                                <td>Rural</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>249,345.60</td>
-                                <td>249,345.60</td>
-                                <td>249,345.60</td>
-                                <td>249,345.60</td>
-                            </tr>
-                            <tr>
-                                <td>Chiapas</td>
-                                <td>Ríos Grijalva y Usumacinta</td>
-                                <td>Salto de agua</td>
-                                <td>Basca</td>
-                                <td>Tulijá Tseltal Chol</td>
-                                <td>Ignacio Zaragoza</td>
-                                <td>Urbana</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                            </tr>
-                            <tr>
-                                <td>Chiapas</td>
-                                <td>Ríos Grijalva y Usumacinta</td>
-                                <td>Salto de agua</td>
-                                <td>Basca</td>
-                                <td>Tulijá Tseltal Chol</td>
-                                <td>Ignacio Zaragoza</td>
-                                <td>Rural</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                                <td>123,345.60</td>
-                            </tr>
-                            <tr>
-                                <td>TOTAL</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>249,345.60</td>
-                                <td>249,345.60</td>
-                                <td>249,345.60</td>
-                                <td>249,345.60</td>
-                            </tr>
-                        </tbody>												
-                    </table>
+                <div class="table-wrapper my-4">
+                   <table-component :newdtotales="newdtotales" :headers-table="headersTable" :mostrar-col="mostrarCol"></table-component>
                 </div>
             </section>
             <section>										
