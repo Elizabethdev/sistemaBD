@@ -51,9 +51,27 @@ class AguaPotableController extends Controller
     {
         $filtros = $request->filtros;
         $addQuery = '';
+        $addQuery2 = '';
         $campo = 'CONSEJO_CUENCA';
-        dd($filtros);
-        $consulta = collect($this->vistaDatos->getDatosMunByFiltroCuenca($addQuery));
+        if ($filtros['consejo'] != []) {
+            $addQuery .= "AND consejo_cuenca IN(";
+            $addQuery2 .= "WHERE consejo_cuenca IN(";
+
+            foreach ($filtros['consejo'] as $key => $consejo) {
+                if($key == 0){
+                    $addQuery.=  "'".$consejo."'";
+                    $addQuery2 .= "'".$consejo."'";
+                }
+                else{
+                    $addQuery .= ",'".$consejo."'";
+                    $addQuery2 .= ",'".$consejo."'";
+                }
+            }
+            $addQuery.= ")";
+            $addQuery2.= ")";
+        }
+        // dd($addQuery);
+        $consulta = collect($this->vistaDatos->getDatosMunByFiltroCuenca($addQuery, $addQuery2));
 
         return response()->json([
             'municipios' => $consulta->groupBy('cve_mun')

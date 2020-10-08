@@ -92,7 +92,7 @@ const app = new Vue({
                     if(this.tipoVista == tipo){
                         this.filterDatos(value)
                     } else{
-                        getDatosByFiltros()
+                        this.getDatosByFiltros()
                     }
                     break;
                 case 'municipio':

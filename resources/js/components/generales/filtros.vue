@@ -17,6 +17,7 @@
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedC"
                         name="consejos"
+                        :indeterminate="indeterminate"
                         @change="toggleAllConsejos"
                         >
                         {{ 'Buscar todos' }}
@@ -206,7 +207,16 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
         },
         watch: {
             consejoSelected: function(newValue) {
-               
+                if (newValue.length === 0) {
+                    this.indeterminate = false
+                    this.allSelectedC = false
+                } else if (newValue.length === this.consejos.length) {
+                    this.indeterminate = false
+                    this.allSelectedC = true
+                } else {
+                    this.indeterminate = true
+                    this.allSelectedC = false
+                }
                 this.$emit('filterchange2', 'consejo', newValue );
             },
             municipioSelected: function(newValue) {
