@@ -182,30 +182,16 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
         },
         methods: {
             toggleAllMun(checked) {
-                if(checked)
-                    this.municipioSelected = []    
-                this.allSelectedC = false;
-                this.allSelectedS = false;
-                this.allSelectedR = false;
+                this.municipioSelected = checked ? this.municipios.map( (ele,x) => { return ele.value}) : []
             },
             toggleAllConsejos(checked) {
                 this.consejoSelected = checked ? this.consejos.map( (ele,x) => { return ele.value}) : []
-                // this.allSelectedM = false;
-                // this.allSelectedS = false;
-                // this.allSelectedR = false;
             },
             toggleAllSubcuencas(checked) {
                 this.subcuencaSelected = checked ? this.subcuencas.map( (ele,x) => { return ele.value}) : []
-                // this.allSelectedM = false;
-                // this.allSelectedC = false;
-                // this.allSelectedR = false;
             },
             toggleAllRegiones(checked) {
-                if(checked)
-                    this.regionSelected = []
-                this.allSelectedM = false;
-                this.allSelectedC = false;
-                this.allSelectedS = false;
+                this.regionSelected = checked ? this.regiones.map( (ele,x) => { return ele.value}) : []
             }
         },
         watch: {
@@ -223,17 +209,42 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 this.$emit('filterchange2', 'consejo', newValue );
             },
             municipioSelected: function(newValue) {
-                if(newValue != [])
-                    this.allSelectedM = false;
+                if (newValue.length === 0) {
+                    this.indeterminateM = false
+                    this.allSelectedM = false
+                } else if (newValue.length === this.municipios.length) {
+                    this.indeterminateM = false
+                    this.allSelectedM = true
+                } else {
+                    this.indeterminateM = true
+                    this.allSelectedM = false
+                }
                 this.$emit('filterchange2', 'municipio', newValue );
             },
             subcuencaSelected: function(newValue) {
-                // if(newValue != [])
-                //     this.allSelectedS = false;
+                if (newValue.length === 0) {
+                    this.indeterminateS = false
+                    this.allSelectedS = false
+                } else if (newValue.length === this.subcuencas.length) {
+                    this.indeterminateS = false
+                    this.allSelectedS = true
+                } else {
+                    this.indeterminateS = true
+                    this.allSelectedS = false
+                }
                 this.$emit('filterchange2', 'subcuenca', newValue );
             },
             regionSelected: function(newValue) {
-                
+                if (newValue.length === 0) {
+                    this.indeterminateR = false
+                    this.allSelectedR = false
+                } else if (newValue.length === this.regiones.length) {
+                    this.indeterminateR = false
+                    this.allSelectedR = true
+                } else {
+                    this.indeterminateR = true
+                    this.allSelectedR = false
+                }
                 this.$emit('filterchange2', 'region', newValue );
             }
         }

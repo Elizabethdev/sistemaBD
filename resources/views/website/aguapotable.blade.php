@@ -42,10 +42,13 @@ Agua Potable
                     </filtros-component>
                 </div>
             </section>
-            <section>										
+            <section>		
+            <b-overlay :show="show" rounded="sm" spinner-variant="primary">								
                 <div class="table-wrapper my-4">
                    <table-component :newdtotales="newdtotales" :headers-table="headersTable" :mostrar-col="tipoVista"></table-component>
                 </div>
+            </b-overlay>
+
             </section>
             <section>										
                 <ul class="actions">

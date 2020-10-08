@@ -69,7 +69,7 @@ class VistasDatos extends Model
         return $datos = DB::select('select * from '.$vista .$where);
     }
 
-    public function getDatosMunByFiltroCuenca($filtro, $subfiltro)
+    public function getDatosMunicipiosByFiltros($filtro, $subfiltro)
     {
         $query = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, SUM(DEM_AP_20) as totaldemap_20, 
                     (SELECT SUM(DEM_AP_10) FROM vwdemanda_ap
@@ -119,8 +119,8 @@ class VistasDatos extends Model
                 '.$subfiltro.'
                 GROUP BY cve_mun
                 ORDER BY municipio ASC';
-        // dd($query);
-            return $datos = DB::select($query);
+
+        return $datos = DB::select($query);
     }
 
 

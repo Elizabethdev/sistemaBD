@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 // import axios from 'axios'
 import axios from './client/client.js';
+import { BOverlay} from 'bootstrap-vue'
 
 window.Vue = require('vue');
 
@@ -14,8 +15,10 @@ const app = new Vue({
         filtrosComponent,
         tableComponent,
         vistaComponent,
+        BOverlay
     },
     data: {
+        show:false,
         headersTable: ['Estado',
             'Municipio',
             'Tipo de Población 2020',
@@ -35,13 +38,11 @@ const app = new Vue({
             subcuenca: [],
             region: []
         }
-        
-
     },
     methods: {
         vistaChange(value){
             this.tipoVista = value
-            this.visible = true
+            this.show = true
             switch (value) {
                 case 'consejo':
                     this.headersTable.splice(1, 1, 'Consejo de Cuenca');
@@ -63,29 +64,8 @@ const app = new Vue({
                     break;
             }
         },
-        filterchange(tipo, value){
-            switch (tipo) {
-                case 'consejo':
-                    this.mostrarCol = tipo
-                    this.consultarByconsejo(value)
-                    break;
-                case 'municipio':
-                    this.mostrarCol = tipo
-                    this.consultarByMun(value)
-                    break;
-                case 'subcuenca':
-                    this.mostrarCol = tipo
-                    this.consultarBysubcuenca(value)
-                    break;
-                case 'region':
-                    this.mostrarCol = tipo
-                    this.consultarByregionEco(value)
-                    break;
-                default:
-                    break;
-            }
-        },
         filterchange2(tipo, value){
+            this.show = !this.show
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
@@ -100,7 +80,7 @@ const app = new Vue({
                     if(this.tipoVista == tipo){
                         this.filterDatos(this.filtros.municipio)
                     } else{
-                        // this.getDatosByFiltros()
+                        this.getDatosByFiltros()
                     }
                     break;
                 case 'subcuenca':
@@ -108,7 +88,7 @@ const app = new Vue({
                     if(this.tipoVista == tipo){
                         this.filterDatos(this.filtros.subcuenca)
                     } else{
-                        // this.getDatosByFiltros()
+                        this.getDatosByFiltros()
                     }
                     break;
                 case 'region':
@@ -116,64 +96,49 @@ const app = new Vue({
                     if(this.tipoVista == tipo){
                         this.filterDatos(this.filtros.region)
                     } else{
-                        // this.getDatosByFiltros()
+                        this.getDatosByFiltros()
                     }
                     break;
                 default:
                     break;
             }
         },
-        consultarByconsejo(value){
-            this.headersTable.splice(1, 1, 'Consejo de Cuenca');
-            axios.post('/consultaapconsejo',{consejos: value})
-            .then((response)=>{
-                this.newdtotales = response.data.consejos
-            })
-        },
-        consultarByMun(value){
-            this.headersTable.splice(1, 1, 'Municipio');
-            axios.post('/consultaapmun',{municipios: value})
-            .then((response)=>{
-                this.newdtotales = response.data.municipios
-            })
-        },
-        consultarBysubcuenca(value){
-            this.headersTable.splice(1, 1, 'Subcuenca');
-            axios.post('/consultaapsubcuenca',{subcuencas: value})
-            .then((response)=>{
-                this.newdtotales = response.data.subcuencas
-            })
-        },
-        consultarByregionEco(value){
-            this.headersTable.splice(1, 1, 'Región Económica');
-            axios.post('/consultaapregion',{regiones: value})
-            .then((response)=>{
-                this.newdtotales = response.data.regiones
-            })
-        },
         getDatosVista(vista, groupby){
             axios.post('/ap/consultabyvista',{vista: vista, tipo: groupby})
             .then((response)=>{
                 this.newdtotales = response.data.datos
                 this.newdtotalesStatic = response.data.datos
+                this.visible = true
+                this.show = !this.show
+            })
+            .catch(error => {
+                console.log(error)
+                this.show = !this.show
             })
         },
         filterDatos(filtros){
-            // const filtros = Object.keys(filtro)
-            console.log(filtros)
             const totales = this.newdtotalesStatic
             const result = {}
-            filtros.forEach(function(elem, index){
-                if (totales.hasOwnProperty(elem)){
-                    result[elem] = totales[elem];
-                }
-            });
-            this.newdtotales = result
+            if(filtros.length > 0){
+                filtros.forEach(function(elem, index){
+                    if (totales.hasOwnProperty(elem)){
+                        result[elem] = totales[elem];
+                    }
+                });
+                this.newdtotales = result
+            } else{ this.newdtotales = totales}
+            this.show = !this.show
         },
         getDatosByFiltros(){
-            axios.post('/ap/consultarmunbyfiltros',{filtros: this.filtros})
+            axios.post('/ap/consultarmunbyfiltros',{filtros: this.filtros, tipoVista: this.tipoVista})
             .then((response)=>{
-                this.newdtotales = response.data.municipios
+                this.newdtotales = response.data.datos
+                this.newdtotalesStatic = response.data.datos
+                this.show = !this.show
+            })
+            .catch(error => {
+                console.log(error)
+                this.show = !this.show
             })
         }
     }

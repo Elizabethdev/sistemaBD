@@ -51,32 +51,74 @@ class AguaPotableController extends Controller
     public function consultarMunByFiltros(Request $request)
     {
         $filtros = $request->filtros;
+        $tipoVista= $request->tipoVista;
         $addQuery = '';
         $addQuery2 = '';
-        $campo = 'CONSEJO_CUENCA';
-        if ($filtros['consejo'] != []) {
-            $addQuery .= "AND consejo_cuenca IN(";
-            $addQuery2 .= "WHERE consejo_cuenca IN(";
+        $consulta = collect([]);
 
-            foreach ($filtros['consejo'] as $key => $consejo) {
-                if($key == 0){
-                    $addQuery.=  "'".$consejo."'";
-                    $addQuery2 .= "'".$consejo."'";
+        switch ($tipoVista) {
+            case 'municipio':
+                if ($filtros['consejo'] != []) {
+                    $getQuery = $this->getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
+                    $addQuery= $getQuery[0];
+                    $addQuery2= $getQuery[1];
                 }
-                else{
-                    $addQuery .= ",'".$consejo."'";
-                    $addQuery2 .= ",'".$consejo."'";
+                if ($filtros['subcuenca'] != []) {
+                    $getQuery = $this->getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
+                    $addQuery= $getQuery[0];
+                    $addQuery2= $getQuery[1];
                 }
-            }
-            $addQuery.= ")";
-            $addQuery2.= ")";
+                if ($filtros['region'] != []) {
+                    $getQuery = $this->getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
+                    $addQuery= $getQuery[0];
+                    $addQuery2= $getQuery[1];
+                }
+                $consulta = collect($this->vistaDatos->getDatosMunicipiosByFiltros($addQuery, $addQuery2));
+                $consulta->groupBy('cve_mun');
+                break;
+            case 'consejo':
+                # code...
+                break;
+            case 'subcuenca':
+                # code...
+                break;
+            case 'region':
+                # code...
+                break;
+            default:
+                break;
         }
-        // dd($addQuery);
-        $consulta = collect($this->vistaDatos->getDatosMunByFiltroCuenca($addQuery, $addQuery2));
 
         return response()->json([
-            'municipios' => $consulta->groupBy('cve_mun')
+            'datos' => $consulta
         ]);
+    }
+
+    public function getQueryFiltro($filtros, $field, $query, $query2)
+    {
+        $addQuery = $query;
+        $addQuery2 = $query2;
+
+        $addQuery .= "AND ".$field." IN(";
+        if($addQuery2 == '')
+            $addQuery2 .= "WHERE ".$field." IN(";
+        else 
+            $addQuery2 .= "AND ".$field." IN(";
+
+        foreach ($filtros as $key => $filtro) {
+            if($key == 0){
+                $addQuery.=  "'".$filtro."'";
+                $addQuery2 .= "'".$filtro."'";
+            }
+            else{
+                $addQuery .= ",'".$filtro."'";
+                $addQuery2 .= ",'".$filtro."'";
+            }
+        }
+        $addQuery.= ") ";
+        $addQuery2.= ") ";
+
+        return [$addQuery, $addQuery2];
     }
 
     //depurando metodos
