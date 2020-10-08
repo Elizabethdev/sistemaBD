@@ -37,13 +37,14 @@ class AguaPotableController extends Controller
 
     public function consultarByvista(Request $request)
     {
-        $vistaConsulta = $request->vista;
-        $where = '';
+        $vistaConsulta= $request->vista;
+        $tipo= $request->tipo;
+        $where= '';
 
         $consulta = collect($this->vistaDatos->getDatosTotalesBy($vistaConsulta, $where));
 
         return response()->json([
-            'datos' => $consulta->groupBy('cve_mun')
+            'datos' => $consulta->groupBy($tipo)
         ]);
     }
 

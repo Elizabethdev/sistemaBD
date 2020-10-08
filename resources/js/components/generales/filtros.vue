@@ -39,8 +39,7 @@
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedM"
                         name="municipios"
-                        aria-describedby="municipios"
-                        aria-controls="municipios"
+                        :indeterminate="indeterminateM"
                         @change="toggleAllMun"
                         >
                         {{ 'Buscar todos' }}
@@ -62,6 +61,7 @@
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedS"
                         name="subcuencas"
+                        :indeterminate="indeterminateS"
                         @change="toggleAllSubcuencas"
                         >
                         {{ 'Buscar todos' }}
@@ -83,6 +83,7 @@
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedR"
                         name="regiones"
+                        :indeterminate="indeterminateR"
                         @change="toggleAllRegiones"
                         >
                         {{ 'Buscar todos' }}
@@ -158,6 +159,9 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 allSelectedS: false,
                 allSelectedR: false,
                 indeterminate: false,
+                indeterminateM: false,
+                indeterminateS: false,
+                indeterminateR: false,
                 estadoSelected: [],
                 consejoSelected: [],
                 municipioSelected: [],
@@ -191,11 +195,10 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 // this.allSelectedR = false;
             },
             toggleAllSubcuencas(checked) {
-                if(checked)
-                    this.subcuencaSelected = []
-                this.allSelectedM = false;
-                this.allSelectedC = false;
-                this.allSelectedR = false;
+                this.subcuencaSelected = checked ? this.subcuencas.map( (ele,x) => { return ele.value}) : []
+                // this.allSelectedM = false;
+                // this.allSelectedC = false;
+                // this.allSelectedR = false;
             },
             toggleAllRegiones(checked) {
                 if(checked)
@@ -222,17 +225,16 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
             municipioSelected: function(newValue) {
                 if(newValue != [])
                     this.allSelectedM = false;
-                this.$emit('filterchange', 'municipio', newValue );
+                this.$emit('filterchange2', 'municipio', newValue );
             },
             subcuencaSelected: function(newValue) {
-                if(newValue != [])
-                    this.allSelectedS = false;
-                this.$emit('filterchange', 'subcuenca', newValue );
+                // if(newValue != [])
+                //     this.allSelectedS = false;
+                this.$emit('filterchange2', 'subcuenca', newValue );
             },
             regionSelected: function(newValue) {
-                if(newValue != [])
-                    this.allSelectedR = false;
-                this.$emit('filterchange', 'region', newValue );
+                
+                this.$emit('filterchange2', 'region', newValue );
             }
         }
     }

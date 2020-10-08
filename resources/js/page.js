@@ -45,19 +45,19 @@ const app = new Vue({
             switch (value) {
                 case 'consejo':
                     this.headersTable.splice(1, 1, 'Consejo de Cuenca');
-                    this.getDatosVista('vwDemanda_AP_BY_CONSEJO')
+                    this.getDatosVista('vwDemanda_AP_BY_CONSEJO', 'consejo_cuenca')
                     break;
                 case 'municipio':
                     this.headersTable.splice(1, 1, 'Municipio');    
-                    this.getDatosVista('vwDemanda_AP_by_mun')
+                    this.getDatosVista('vwDemanda_AP_by_mun','cve_mun')
                     break;
                 case 'subcuenca':
                     this.headersTable.splice(1, 1, 'Subcuenca');
-                    this.getDatosVista('vwDemanda_AP_BY_subcuenca')
+                    this.getDatosVista('vwDemanda_AP_BY_subcuenca','cve_subcuenca')
                     break;
                 case 'region':
                 this.headersTable.splice(1, 1, 'Región Económica');
-                this.getDatosVista('vwDemanda_AP_BY_region_eco')
+                this.getDatosVista('vwDemanda_AP_BY_region_eco', 'num_region')
                     break;
                 default:
                     break;
@@ -90,17 +90,34 @@ const app = new Vue({
                 case 'consejo':
                     this.filtros.consejo = value
                     if(this.tipoVista == tipo){
-                        this.filterDatos(value)
+                        this.filterDatos(this.filtros.consejo)
                     } else{
                         this.getDatosByFiltros()
                     }
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
+                    if(this.tipoVista == tipo){
+                        this.filterDatos(this.filtros.municipio)
+                    } else{
+                        // this.getDatosByFiltros()
+                    }
                     break;
                 case 'subcuenca':
+                    this.filtros.subcuenca = value
+                    if(this.tipoVista == tipo){
+                        this.filterDatos(this.filtros.subcuenca)
+                    } else{
+                        // this.getDatosByFiltros()
+                    }
                     break;
                 case 'region':
+                    this.filtros.region = value
+                    if(this.tipoVista == tipo){
+                        this.filterDatos(this.filtros.region)
+                    } else{
+                        // this.getDatosByFiltros()
+                    }
                     break;
                 default:
                     break;
@@ -134,15 +151,16 @@ const app = new Vue({
                 this.newdtotales = response.data.regiones
             })
         },
-        getDatosVista(vista){
-            axios.post('/ap/consultabyvista',{vista: vista})
+        getDatosVista(vista, groupby){
+            axios.post('/ap/consultabyvista',{vista: vista, tipo: groupby})
             .then((response)=>{
                 this.newdtotales = response.data.datos
                 this.newdtotalesStatic = response.data.datos
             })
         },
-        filterDatos(filtro){
-            const filtros = Object.keys(filtro)
+        filterDatos(filtros){
+            // const filtros = Object.keys(filtro)
+            console.log(filtros)
             const totales = this.newdtotalesStatic
             const result = {}
             filtros.forEach(function(elem, index){

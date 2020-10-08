@@ -7,8 +7,8 @@
         </thead>
         <tbody>
             <template v-for="data in datosTotales">
-                <template v-for="(value, index) in data">
-                    <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_mun+index">
+                <template v-for="value in data">
+                    <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u">
                         <td>{{value.estado}}</td>
                         <td v-if="mostrarCol == 'consejo'">{{value.consejo_cuenca}}</td>
                         <td v-if="mostrarCol == 'municipio'">{{value.municipio}}</td>
@@ -23,7 +23,7 @@
                     </tr>
                 </template>
                 <template v-for="(value, index) in data">
-                    <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_mun+index">
+                    <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
                         <td colspan="3">TOTAL </td>
                         <td>{{formatNumber(value.totaldemap_10)}}</td>
                         <td>{{formatNumber(value.totaldemap_15)}}</td>
