@@ -64,18 +64,6 @@ class AlcantarilladoController extends Controller
         ]);
     }
 
-    public function consultarMunByConsejo(Request $request)
-    {
-        $consejos = $request->consejos;
-        $campo = 'CONSEJO_CUENCA';
-
-        $consulta = collect($this->vistaDatos->getMunByConsejo($consejos, $campo));
-
-        return response()->json([
-            'municipios' => $consulta->groupBy('cve_mun')
-        ]);
-    }
-    
     public function consultarBysubcuenca(Request $request)
     {
         $subcuencas = $request->subcuencas;

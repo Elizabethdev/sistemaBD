@@ -3,6 +3,11 @@
 Alcantarillado
 @stop
 
+@section('css')
+<!-- Scripts para vue-->
+<script src="{{ asset('js/page.js') }}" defer></script>
+@stop
+
 @section('menu')
     @include('layouts.website.menualc')
 @stop
@@ -21,22 +26,21 @@ Alcantarillado
     <div class="wrapper" id="app">
         <div class="inner">
             <section>
-                <h3 class="major">Demanda m3 Anuales</h3>
+                <h3 class="major">Volumen de descarga m3 Anuales</h3>
             </section>
             <section >
                 <h4>Filtrar por:</h4> 
                 <div class="" style="border: solid 2px rgba(255, 255, 255, 0.125); padding: 2rem; border-radius: 5px;">
                     <vista-component v-on:tipovistachange="vistaChange"></vista-component>
-                    <filtros-component2 
+                    <filtros-component
                         :destados= "{{$estados}}"
                         :dconsejos= "{{$consejos}}"
                         :dmunicipios= "{{$municipios}}"
                         :dsubcuencas= "{{$subcuencas}}"
                         :dregiones= "{{$regionesEco}}"
-                        :dlocalidades= "{{$localidades}}"
                         v-on:filterchange2="filterchange2"
                     >  
-                    </filtros-component2>
+                    </filtros-component>
                 </div>
             </section>
             <section>										

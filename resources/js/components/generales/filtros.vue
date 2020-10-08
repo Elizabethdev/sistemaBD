@@ -1,7 +1,7 @@
 <template>
     <div class="row gtr-uniform">
         <div class="field col-4 col-12-xsmall">
-            <b-dropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="estadoSelected"
                     :options="estados"
@@ -9,10 +9,10 @@
                     class="ml-3"
                     stacked
                 ></b-form-checkbox-group>
-            </b-dropdown>
+            </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <b-dropdown text="CONSEJOS DE CUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="CONSEJOS DE CUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedC"
@@ -30,10 +30,10 @@
                         stacked
                     ></b-form-checkbox-group>
                 </b-form-group>
-            </b-dropdown>
+            </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <b-dropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedM"
@@ -53,10 +53,10 @@
                         stacked
                     ></b-form-checkbox-group>
                 </b-form-group>
-            </b-dropdown>
+            </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <b-dropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedS"
@@ -74,10 +74,10 @@
                         stacked
                     ></b-form-checkbox-group>
                 </b-form-group>
-            </b-dropdown>
+            </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <b-dropdown text="REGIONES ECONÓMICAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="REGIONES ECONÓMICAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedR"
@@ -95,21 +95,10 @@
                         stacked
                     ></b-form-checkbox-group>
                 </b-form-group>
-            </b-dropdown>
+            </BDropdown>
         </div>
-        <!-- <div class="field col-3 col-12-xsmall">
-            <b-dropdown text="LOCALIDADES " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <b-form-checkbox-group
-                    v-model="localidadSelected"
-                    :options="localidades"
-                    name="localidad"
-                    class="ml-3"
-                    stacked
-                ></b-form-checkbox-group>
-            </b-dropdown>
-        </div> -->
         <div class="field col-4 col-12-xsmall">
-            <b-dropdown text="TIPOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="TIPOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="tipoSelected"
                     :options="tipos"
@@ -117,7 +106,7 @@
                     class="ml-3"
                     stacked
                 ></b-form-checkbox-group>
-            </b-dropdown>
+            </BDropdown>
         </div>
     </div>
 </template>
@@ -147,10 +136,6 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 default: []
             },
             dregiones: {
-                type: Array,
-                default: []
-            },
-            dlocalidades: {
                 type: Array,
                 default: []
             },
@@ -184,7 +169,6 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 municipios: this.dmunicipios,
                 subcuencas: this.dsubcuencas,
                 regiones: this.dregiones,
-                localidades: [],
                 tipos: [
                     { value: 'URBANA', text: 'Urbana' },
                     { value: 'RURAL', text: 'Rural' },
@@ -200,11 +184,10 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 this.allSelectedR = false;
             },
             toggleAllConsejos(checked) {
-                if(checked)
-                    this.consejoSelected = []
-                this.allSelectedM = false;
-                this.allSelectedS = false;
-                this.allSelectedR = false;
+                this.consejoSelected = checked ? this.consejos.map( (ele,x) => { return ele.value}) : []
+                // this.allSelectedM = false;
+                // this.allSelectedS = false;
+                // this.allSelectedR = false;
             },
             toggleAllSubcuencas(checked) {
                 if(checked)
@@ -223,9 +206,8 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
         },
         watch: {
             consejoSelected: function(newValue) {
-                if(newValue != [])
-                    this.allSelectedC = false;
-                this.$emit('filterchange', 'consejo', newValue );
+               
+                this.$emit('filterchange2', 'consejo', newValue );
             },
             municipioSelected: function(newValue) {
                 if(newValue != [])

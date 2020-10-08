@@ -86,13 +86,11 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         },
         methods: {
             formatNumber(number){
-                // return Number(number).toLocaleString()
                 return new Intl.NumberFormat("es-MX").format(number)
             }
         }
     }
 </script>
-
 
 <style >
     table th {

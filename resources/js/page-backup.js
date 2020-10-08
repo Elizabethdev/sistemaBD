@@ -1,5 +1,6 @@
 import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
+import filtrosComponent2 from './components/generales/filtrosv2.vue';
 import tableComponent from './components/generales/table.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,6 +15,7 @@ const app = new Vue({
         filtrosComponent,
         tableComponent,
         vistaComponent,
+        filtrosComponent2
     },
     data: {
         headersTable: ['Estado',
@@ -27,37 +29,39 @@ const app = new Vue({
         newdtotalesStatic: {},
         newdtotales: {},
         newdmunicipios: {},
-        tipoVista: 'municipio',
-        visible: false,
-        filtros: {   
-            municipio: [],
-            consejo: [],
-            subcuenca: [],
-            region: []
-        }
-        
+        mostrarCol: 'municipio',
+        tipoVista: 'municipio'
 
     },
     methods: {
         vistaChange(value){
             this.tipoVista = value
-            this.visible = true
             switch (value) {
                 case 'consejo':
                     this.headersTable.splice(1, 1, 'Consejo de Cuenca');
-                    this.getDatosVista('vwDemanda_AP_BY_CONSEJO')
+                    this.mostrarCol = value
+                    axios.post('/consultaporvista',{vista: value})
+                    .then((response)=>{
+                        this.newdtotales = response.data.datos
+                        this.newdtotalesStatic = response.data.datos
+                    })
                     break;
                 case 'municipio':
                     this.headersTable.splice(1, 1, 'Municipio');    
-                    this.getDatosVista('vwDemanda_AP_by_mun')
+                    this.mostrarCol = value
+                    axios.post('/consultaporvista',{vista: value})
+                    .then((response)=>{
+                        this.newdtotales = response.data.datos
+                        this.newdtotalesStatic = response.data.datos
+                    })
                     break;
                 case 'subcuenca':
                     this.headersTable.splice(1, 1, 'Subcuenca');
-                    this.getDatosVista('vwDemanda_AP_BY_subcuenca')
+                    this.mostrarCol = value
                     break;
                 case 'region':
                 this.headersTable.splice(1, 1, 'Región Económica');
-                this.getDatosVista('vwDemanda_AP_BY_region_eco')
+                    this.mostrarCol = value
                     break;
                 default:
                     break;
@@ -88,19 +92,23 @@ const app = new Vue({
         filterchange2(tipo, value){
             switch (tipo) {
                 case 'consejo':
-                    this.filtros.consejo = value
-                    if(this.tipoVista == tipo){
-                        this.filterDatos(value)
-                    } else{
-                        getDatosByFiltros()
-                    }
+                    axios.post('/consultarMunByConsejo',{consejos: value})
+                    .then((response)=>{
+                        this.newdmunicipios = response.data.municipios
+                        this.filterDatos()
+                    })
                     break;
                 case 'municipio':
-                    this.filtros.municipio = value
+                    this.mostrarCol = tipo
+                    this.consultarByMun(value)
                     break;
                 case 'subcuenca':
+                    this.mostrarCol = tipo
+                    this.consultarBysubcuenca(value)
                     break;
                 case 'region':
+                    this.mostrarCol = tipo
+                    this.consultarByregionEco(value)
                     break;
                 default:
                     break;
@@ -134,29 +142,16 @@ const app = new Vue({
                 this.newdtotales = response.data.regiones
             })
         },
-        getDatosVista(vista){
-            axios.post('/ap/consultabyvista',{vista: vista})
-            .then((response)=>{
-                this.newdtotales = response.data.datos
-                this.newdtotalesStatic = response.data.datos
-            })
-        },
-        filterDatos(filtro){
-            const filtros = Object.keys(filtro)
+        filterDatos(){
+            const muns = Object.keys(this.newdmunicipios)
             const totales = this.newdtotalesStatic
             const result = {}
-            filtros.forEach(function(elem, index){
+            muns.forEach(function(elem, index){
                 if (totales.hasOwnProperty(elem)){
                     result[elem] = totales[elem];
                 }
             });
             this.newdtotales = result
-        },
-        getDatosByFiltros(){
-            axios.post('/ap/consultarmunbyfiltros',{filtros: this.filtros})
-            .then((response)=>{
-                this.newdtotales = response.data.municipios
-            })
         }
     }
 });

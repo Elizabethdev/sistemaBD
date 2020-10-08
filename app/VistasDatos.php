@@ -66,12 +66,62 @@ class VistasDatos extends Model
 
     public function getDatosTotalesBy($vista, $where)
     {
-        return $consejo_bd = DB::select('select * from '.$vista .$where);
+        return $datos = DB::select('select * from '.$vista .$where);
+    }
 
-        // return $consejo_bd = DB::table('vwDemanda_AP_GROUP_MUN')->where($where)->orWhere($where)->get();
-        // return $datos = DB::table($vista)
-        //                         ->whereIn($campo, $where)->get();
-        
+    public function getDatosMunByFiltroCuenca($filtro)
+    {
+        $query = "SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, SUM(DEM_AP_20) as totaldemap_20, 
+                    (SELECT SUM(DEM_AP_10) FROM vwdemanda_ap
+                        WHERE TIPO_10 = 'RURAL' 
+                        AND cve_mun = a.cve_mun
+                        AND consejo_cuenca IN(".$filtro.")
+                        GROUP BY cve_mun) as totaldemap_10,
+                    (SELECT SUM(DEM_AP_15) FROM vwdemanda_ap
+                        WHERE TIPO_15 = 'RURAL' 
+                        AND cve_mun = a.cve_mun
+                        AND consejo_cuenca IN(".$filtro.")
+                        GROUP BY cve_mun) as totaldemap_15,
+                    (SELECT SUM(DEM_AP_30) FROM vwdemanda_ap
+                        WHERE TIPO_30 = 'RURAL' 
+                        AND cve_mun = a.cve_mun
+                    AND consejo_cuenca IN(".$filtro.")
+                        GROUP BY cve_mun) as totaldemap_30
+                FROM vwdemanda_ap a
+                WHERE TIPO_20 = 'RURAL' 
+                and a.cve_mun = 17
+                AND consejo_cuenca IN(".$filtro.")
+                GROUP BY cve_mun 
+                UNION ALL
+                SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, SUM(DEM_AP_20) as totaldemap_20, 
+                    (SELECT SUM(DEM_AP_10) FROM vwdemanda_ap
+                        WHERE TIPO_10 = 'URBANA' AND cve_mun = a.cve_mun
+                        AND consejo_cuenca IN(".$filtro.")
+                        GROUP BY cve_mun) as totaldemap_10,
+                    (SELECT SUM(DEM_AP_15) FROM vwdemanda_ap
+                        WHERE TIPO_15 = 'URBANA' 
+                        AND cve_mun = a.cve_mun
+                    AND consejo_cuenca IN(".$filtro.")
+                        GROUP BY cve_mun) as totaldemap_15,
+                    (SELECT SUM(DEM_AP_30) FROM vwdemanda_ap
+                        WHERE TIPO_30 = 'URBANA' 
+                        AND cve_mun = a.cve_mun
+                    AND consejo_cuenca IN(".$filtro.")
+                        GROUP BY cve_mun) as totaldemap_30
+                FROM vwdemanda_ap a
+                WHERE TIPO_20 = 'URBANA' 
+                AND consejo_cuenca IN(".$filtro.")
+                GROUP BY cve_mun 
+                UNION ALL
+                SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region,
+                    localidad, POBTOT, UPPER('TOTAL') as TIPO_20,
+                    SUM(DEM_AP_20) as totaldemap_20, SUM(DEM_AP_10) as totaldemap_10, SUM(DEM_AP_15) as totaldemap_15, SUM(DEM_AP_30) as totaldemap_30
+                FROM vwdemanda_ap 
+                WHERE consejo_cuenca IN(".$filtro.")
+                GROUP BY cve_mun
+                ORDER BY municipio ASC";
+
+            return $datos = DB::select($query);
     }
 
 

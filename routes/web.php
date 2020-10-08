@@ -46,9 +46,9 @@ Route::prefix('api')->group(function () {
     Route::post('/consultaapsubcuenca', 'AguaPotableController@consultarBysubcuenca')->name('consultarBysubcuenca');
     Route::post('/consultaapregion', 'AguaPotableController@consultarByregion')->name('consultarByregion');
 
+    Route::post('/ap/consultabyvista', 'AguaPotableController@consultarByvista')->name('consultarapByvista');
+    Route::post('/ap/consultarmunbyfiltros', 'AguaPotableController@consultarMunByFiltros')->name('consultarMunByFiltros');
+
     Route::post('/consultaporvista', 'AlcantarilladoController@consultarByvista')->name('consultarByvista');
-    Route::post('/consultarMunByConsejo', 'AlcantarilladoController@consultarMunByConsejo')->name('consultarMunByConsejo');
 
-    
 });
-

@@ -23,22 +23,45 @@ class AguaPotableController extends Controller
         $municipios = $this->vistaDatos->getMunicipios();
         $subcuencas = $this->vistaDatos->getSubcuencas();
         $regionesEco = $this->vistaDatos->getRegionesEco();
-        // $localidades = $this->vistaDatos->getLocalidades();
-        $localidades = collect([]);
 
-        $datos_total = $this->vistaDatos->getDatosTotales();
-        $grouped = $datos_total->groupBy('cve_mun');
+        // $datos_total = $this->vistaDatos->getDatosTotales();
+        // $grouped = $datos_total->groupBy('cve_mun');
         
         return view('website.aguapotable', ['estados' => $estados, 
                                             'consejos' => $consejos, 
                                             'municipios' => $municipios, 
                                             'subcuencas' => $subcuencas, 
                                             'regionesEco' => $regionesEco,
-                                            'localidades' => $localidades,
-                                            'datos_total' => $grouped]);
+                                        ]);
     }
 
-   
+    public function consultarByvista(Request $request)
+    {
+        $vistaConsulta = $request->vista;
+        $where = '';
+
+        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vistaConsulta, $where));
+
+        return response()->json([
+            'datos' => $consulta->groupBy('cve_mun')
+        ]);
+    }
+
+    public function consultarMunByFiltros(Request $request)
+    {
+        $filtros = $request->filtros;
+        $addQuery = '';
+        $campo = 'CONSEJO_CUENCA';
+        dd($filtros);
+        $consulta = collect($this->vistaDatos->getDatosMunByFiltroCuenca($addQuery));
+
+        return response()->json([
+            'municipios' => $consulta->groupBy('cve_mun')
+        ]);
+    }
+
+    //depurando metodos
+
     public function consultarByMun(Request $request)
     {
         $municipios = $request->municipios;

@@ -26,7 +26,7 @@ class DatosController extends Controller
 
         // DB::transaction(function () use ($file) {
             
-            DB::table('datos')->truncate();
+            // DB::table('datos')->truncate();
 
             Excel::import(new DatosImport, $file);
         // });

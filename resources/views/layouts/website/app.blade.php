@@ -15,8 +15,7 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
 	<noscript><link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" /></noscript>
-    <!-- Scripts para vue-->
-    <script src="{{ asset('js/page.js') }}" defer></script> 
+     
 	@yield('css')
 
 </head>

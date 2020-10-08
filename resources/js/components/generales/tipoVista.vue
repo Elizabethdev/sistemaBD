@@ -15,7 +15,6 @@ import { BFormRadioGroup, BFormInvalidFeedback, BFormValidFeedback } from 'boots
         name:"tipoVista",
         props:{
             titulo: '',
-           
         },
         components: {
             BFormRadioGroup,
@@ -44,7 +43,6 @@ import { BFormRadioGroup, BFormInvalidFeedback, BFormValidFeedback } from 'boots
         },
         watch: {
             tipoSelected: function(newValue) {
-                
                 this.$emit('tipovistachange', newValue );
             }
         }
