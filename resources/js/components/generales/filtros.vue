@@ -34,28 +34,6 @@
             </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <BDropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <b-form-group>
-                    <b-form-checkbox class="ml-3"
-                        v-model="allSelectedM"
-                        name="municipios"
-                        :indeterminate="indeterminateM"
-                        @change="toggleAllMun"
-                        >
-                        {{ 'Buscar todos' }}
-                    </b-form-checkbox>
-                    <b-dropdown-divider></b-dropdown-divider>
-                    <b-form-checkbox-group
-                        v-model="municipioSelected"
-                        :options="municipios"
-                        name="municipios"
-                        class="ml-3"
-                        stacked
-                    ></b-form-checkbox-group>
-                </b-form-group>
-            </BDropdown>
-        </div>
-        <div class="field col-4 col-12-xsmall">
             <BDropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
@@ -93,6 +71,28 @@
                         v-model="regionSelected"
                         :options="regiones"
                         name="region"
+                        class="ml-3"
+                        stacked
+                    ></b-form-checkbox-group>
+                </b-form-group>
+            </BDropdown>
+        </div>
+        <div class="field col-4 col-12-xsmall">
+            <BDropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+                <b-form-group>
+                    <b-form-checkbox class="ml-3"
+                        v-model="allSelectedM"
+                        name="municipios"
+                        :indeterminate="indeterminateM"
+                        @change="toggleAllMun"
+                        >
+                        {{ 'Buscar todos' }}
+                    </b-form-checkbox>
+                    <b-dropdown-divider></b-dropdown-divider>
+                    <b-form-checkbox-group
+                        v-model="municipioSelected"
+                        :options="municipios"
+                        name="municipios"
                         class="ml-3"
                         stacked
                     ></b-form-checkbox-group>

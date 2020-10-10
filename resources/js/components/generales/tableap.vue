@@ -8,30 +8,31 @@
             </tr>
         </thead>
         <tbody>
-            <template v-for="value in datosTotales">
-                    <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u">
-                        <td>{{value.estado}}</td>
-                        <td v-if="visible.consejo">{{value.consejo_cuenca}}</td>
-                        <td v-if="visible.municipio">{{value.municipio}}</td>
-                        <td v-if="visible.subcuenca">{{value.subcuenca}}</td>
-                        <td v-if="visible.region">{{value.reg_economica}}</td>
-                        <td>{{value.localidad}}</td>
-                        <td>{{value.TIPO_20}}</td>
-                        <td>{{formatNumber(value.DEM_AP_10)}}</td>
-                        <td>{{formatNumber(value.DEM_AP_15)}}</td>
-                        <td>{{formatNumber(value.DEM_AP_20)}}</td>
-                        <td>{{formatNumber(value.DEM_AP_30)}}</td>
-                    </tr>
-                <!-- <template v-for="(value, index) in data">
-                    <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
-                        <td colspan="4">TOTAL </td>
-                        <td>{{formatNumber(value.totaldemap_10)}}</td>
-                        <td>{{formatNumber(value.totaldemap_15)}}</td>
-                        <td>{{formatNumber(value.totaldemap_20)}}</td>
-                        <td>{{formatNumber(value.totaldemap_30)}}</td>
-                    </tr>
-                </template> -->
+            <template v-for="(value, index) in datosTotales">
+                <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u">
+                    <td>{{value.estado}}</td>
+                    <td v-if="visible.consejo">{{value.consejo_cuenca}}</td>
+                    <td v-if="visible.subcuenca">{{value.subcuenca}}</td>
+                    <td v-if="visible.region">{{value.reg_economica}}</td>
+                    <td v-if="visible.municipio">{{value.municipio}}</td>
+                    <td>{{value.localidad}}</td>
+                    <td>{{value.TIPO_20}}</td>
+                    <td>{{formatNumber(value.DEM_AP_10)}}</td>
+                    <td>{{formatNumber(value.DEM_AP_15)}}</td>
+                    <td>{{formatNumber(value.DEM_AP_20)}}</td>
+                    <td>{{formatNumber(value.DEM_AP_30)}}</td>
+                </tr>
+                <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
+                    <td colspan="4">TOTAL </td>
+                    <td>{{formatNumber(value.DEM_AP_10)}}</td>
+                    <td>{{formatNumber(value.DEM_AP_15)}}</td>
+                    <td>{{formatNumber(value.DEM_AP_20)}}</td>
+                    <td>{{formatNumber(value.DEM_AP_30)}}</td>
+                </tr>
             </template>
+            <!-- <template v-for="(value, index) in data">
+                
+            </template> -->
         </tbody>												
     </table>
 </template>
@@ -100,7 +101,7 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         position: sticky!important;
         top: 0!important;
         z-index: 5!important;
-        background: #2e3141!important;
+        background: #4c5c96!important;
     }
     table thead tr th{
         border: solid 1px rgba(255, 255, 255, 0.125)!important;

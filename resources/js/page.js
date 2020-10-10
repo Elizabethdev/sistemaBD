@@ -22,9 +22,9 @@ const app = new Vue({
         headersTable: [
             {name:'Estado', visible: true},
             {name:'Consejo de Cuenca', visible: false},
-            {name:'Municipio', visible: false},
             {name:'Subcuenca', visible: false},
             {name:'Región Económica', visible: false},
+            {name:'Municipio', visible: false},
             {name:'Localidad', visible: true},
             {name:'Tipo de Población 2020', visible: true},
             {name:'Demanda de Agua 2010', visible: true},
@@ -51,7 +51,7 @@ const app = new Vue({
     },
     methods: {
         filterchange2(tipo, value){
-            this.show = !this.show
+            this.show = true
             this.tipoVista = tipo
             switch (tipo) {
                 case 'consejo':
@@ -60,21 +60,21 @@ const app = new Vue({
                     this.headersTable[1].visible = value.length > 0 ? true : false
                     this.getDatosByFiltros()
                     break;
-                case 'municipio':
-                    this.filtros.municipio = value
-                    this.visible.municipio = value.length > 0 ? true : false
-                    this.headersTable[2].visible = value.length > 0 ? true : false
-                    this.getDatosByFiltros()
-                    break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
                     this.visible.subcuenca = value.length > 0 ? true : false
-                    this.headersTable[3].visible = value.length > 0 ? true : false
+                    this.headersTable[2].visible = value.length > 0 ? true : false
                     this.getDatosByFiltros()
                     break;
                 case 'region':
                     this.filtros.region = value
                     this.visible.region = value.length > 0 ? true : false
+                    this.headersTable[3].visible = value.length > 0 ? true : false
+                    this.getDatosByFiltros()
+                    break;
+                case 'municipio':
+                    this.filtros.municipio = value
+                    this.visible.municipio = value.length > 0 ? true : false
                     this.headersTable[4].visible = value.length > 0 ? true : false
                     this.getDatosByFiltros()
                     break;
@@ -93,18 +93,17 @@ const app = new Vue({
                 });
                 this.newdtotales = result
             } else{ this.newdtotales = totales}
-            this.show = !this.show
+            this.show = false
         },
         getDatosByFiltros(){
             axios.post('/ap/consultarbyfiltros',{filtros: this.filtros})
             .then((response)=>{
+                this.show = false
                 this.newdtotales = response.data.datos
-                this.newdtotalesStatic = response.data.datos
-                this.show = !this.show
             })
             .catch(error => {
                 console.log(error)
-                this.show = !this.show
+                this.show = false
             })
         }
     }
