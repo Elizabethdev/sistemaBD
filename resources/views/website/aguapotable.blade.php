@@ -30,8 +30,8 @@ Agua Potable
             <section >
                 <h4>Filtrar por:</h4> 
                 <div class="" style="border: solid 2px rgba(255, 255, 255, 0.125); padding: 2rem; border-radius: 5px;">
-                    <vista-component v-on:tipovistachange="vistaChange"></vista-component>
-                    <filtros-component v-if="visible"
+                    <!-- <vista-component v-on:tipovistachange="vistaChange"></vista-component> -->
+                    <filtros-component
                         :destados= "{{$estados}}"
                         :dconsejos= "{{$consejos}}"
                         :dmunicipios= "{{$municipios}}"
@@ -45,7 +45,7 @@ Agua Potable
             <section>		
             <b-overlay :show="show" rounded="sm" spinner-variant="primary">								
                 <div class="table-wrapper my-4">
-                   <table-component :newdtotales="newdtotales" :headers-table="headersTable" :mostrar-col="tipoVista"></table-component>
+                   <table-component :newdtotales="newdtotales" :headers-table="headersTable" :visible="visible"></table-component>
                 </div>
             </b-overlay>
 

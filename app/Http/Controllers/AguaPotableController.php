@@ -26,7 +26,6 @@ class AguaPotableController extends Controller
 
         // $datos_total = $this->vistaDatos->getDatosTotales();
         // $grouped = $datos_total->groupBy('cve_mun');
-        
         return view('website.aguapotable', ['estados' => $estados, 
                                             'consejos' => $consejos, 
                                             'municipios' => $municipios, 
@@ -119,6 +118,42 @@ class AguaPotableController extends Controller
         $addQuery2.= ") ";
 
         return [$addQuery, $addQuery2];
+    }
+
+    public function consultarByFiltros(Request $request)
+    {
+        $filtros = $request->filtros;
+        $tipoVista= $request->tipoVista;
+        $addQuery = '';
+        $addQuery2 = '';
+        $consulta = collect([]);
+
+        if ($filtros['consejo'] != []) {
+            $getQuery = $this->getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['municipio'] != []) {
+            $getQuery = $this->getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['subcuenca'] != []) {
+            $getQuery = $this->getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['region'] != []) {
+            $getQuery = $this->getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+
+        $consulta = collect($this->vistaDatos->getDatosTotalesBy('vwdemanda_ap',$addQuery2));
+
+        return response()->json([
+            'datos' => $consulta
+        ]);
     }
 
     //depurando metodos

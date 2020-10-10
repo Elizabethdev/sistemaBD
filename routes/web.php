@@ -48,6 +48,7 @@ Route::prefix('api')->group(function () {
 
     Route::post('/ap/consultabyvista', 'AguaPotableController@consultarByvista')->name('consultarapByvista');
     Route::post('/ap/consultarmunbyfiltros', 'AguaPotableController@consultarMunByFiltros')->name('consultarMunByFiltros');
+    Route::post('/ap/consultarbyfiltros', 'AguaPotableController@consultarByFiltros')->name('consultarByFiltros');
 
     Route::post('/consultaporvista', 'AlcantarilladoController@consultarByvista')->name('consultarByvista');
 

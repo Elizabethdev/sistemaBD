@@ -66,7 +66,7 @@ class VistasDatos extends Model
 
     public function getDatosTotalesBy($vista, $where)
     {
-        return $datos = DB::select('select * from '.$vista .$where);
+        return $datos = DB::select('select * from '.$vista.' '.$where);
     }
 
     public function getDatosMunicipiosByFiltros($filtro, $subfiltro)
