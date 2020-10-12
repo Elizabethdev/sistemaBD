@@ -148,6 +148,16 @@ class AguaPotableController extends Controller
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
+        if ($filtros['estado'] != []) {
+            $getQuery = $this->getQueryFiltro($filtros['estado'], 'cve_edo', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['tipo'] != []) {
+            $getQuery = $this->getQueryFiltro($filtros['tipo'], 'TIPO_20', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
 
         $consulta = collect($this->vistaDatos->getDatosTotalesBy('vwdemanda_ap',$addQuery2));
 

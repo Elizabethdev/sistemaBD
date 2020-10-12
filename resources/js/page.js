@@ -46,7 +46,9 @@ const app = new Vue({
             municipio: [],
             consejo: [],
             subcuenca: [],
-            region: []
+            region: [],
+            estado: [],
+            tipo: []
         }
     },
     methods: {
@@ -76,6 +78,14 @@ const app = new Vue({
                     this.filtros.municipio = value
                     this.visible.municipio = value.length > 0 ? true : false
                     this.headersTable[4].visible = value.length > 0 ? true : false
+                    this.getDatosByFiltros()
+                    break;
+                case 'estado':
+                    this.filtros.estado = value
+                    this.getDatosByFiltros()
+                    break;
+                case 'tipo':
+                    this.filtros.tipo = value
                     this.getDatosByFiltros()
                     break;
                 default:

@@ -2,13 +2,24 @@
     <div class="row gtr-uniform">
         <div class="field col-4 col-12-xsmall">
             <BDropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
-                <b-form-checkbox-group
-                    v-model="estadoSelected"
-                    :options="estados"
-                    name="estados"
-                    class="ml-3"
-                    stacked
-                ></b-form-checkbox-group>
+                <b-form-group>
+                    <b-form-checkbox class="ml-3"
+                        v-model="allSelectedE"
+                        name="estados"
+                        :indeterminate="indeterminateE"
+                        @change="toggleAllEstados"
+                        >
+                        {{ 'Buscar todos' }}
+                    </b-form-checkbox>
+                    <b-dropdown-divider></b-dropdown-divider>
+                    <b-form-checkbox-group
+                        v-model="estadoSelected"
+                        :options="estados"
+                        name="estado"
+                        class="ml-3"
+                        stacked
+                    ></b-form-checkbox-group>
+                </b-form-group>
             </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
@@ -154,6 +165,7 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
         },
         data() {
             return {
+                allSelectedE: false,
                 allSelectedC: false,
                 allSelectedM: false,
                 allSelectedS: false,
@@ -162,6 +174,7 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 indeterminateM: false,
                 indeterminateS: false,
                 indeterminateR: false,
+                indeterminateE: false,
                 estadoSelected: [],
                 consejoSelected: [],
                 municipioSelected: [],
@@ -192,6 +205,9 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
             },
             toggleAllRegiones(checked) {
                 this.regionSelected = checked ? this.regiones.map( (ele,x) => { return ele.value}) : []
+            },
+            toggleAllEstados(checked) {
+                this.estadoSelected = checked ? this.estados.map( (ele,x) => { return ele.value}) : []
             }
         },
         watch: {
@@ -246,6 +262,22 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                     this.allSelectedR = false
                 }
                 this.$emit('filterchange2', 'region', newValue );
+            },
+            estadoSelected: function(newValue) {
+                if (newValue.length === 0) {
+                    this.indeterminateE = false
+                    this.allSelectedE = false
+                } else if (newValue.length === this.estados.length) {
+                    this.indeterminateE = false
+                    this.allSelectedE = true
+                } else {
+                    this.indeterminateE = true
+                    this.allSelectedE = false
+                }
+                this.$emit('filterchange2', 'estado', newValue );
+            },
+            tipoSelected: function(newValue){
+                this.$emit('filterchange2', 'tipo', newValue );
             }
         }
     }
