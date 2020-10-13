@@ -26,10 +26,10 @@ const app = new Vue({
             {name:'Municipio', visible: false},
             {name:'Localidad', visible: true},
             {name:'Tipo de Población 2020', visible: true},
-            {name:'Demanda de ALC 2010', visible: true},
-            {name:'Demanda de ALC 2015', visible: true},
-            {name:'Demanda de ALC 2020', visible: true},
-            {name:'Demanda de ALC 2030', visible: true}
+            {name:'Volúmen de descarga 2010', visible: true},
+            {name:'Volúmen de descarga 2015', visible: true},
+            {name:'Volúmen de descarga 2020', visible: true},
+            {name:'Volúmen de descarga 2030', visible: true}
         ],
         newdtotalesStatic: {},
         newdtotales: [],
