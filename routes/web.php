@@ -18,14 +18,16 @@ Auth::routes();
 
 Route::view('/inicio', 'website/home')->name('inicio');
 Route::view('/', 'website/home')->name('/');
-// Route::view('/aguapotable', 'website/aguapotable')->name('aguapotable');
-Route::view('/alcantarillado', 'website/alcantarillado')->name('alcantarillado');
-Route::view('/saneamiento', 'website/saneamiento')->name('saneamiento');
-Route::view('/calidadagua', 'website/calidadagua')->name('calidadagua');
+Route::view('/saneamiento', 'website/saneamiento/saneamiento')->name('saneamiento');
+Route::view('/calidadagua', 'website/calidad/calidadagua')->name('calidadagua');
 
-Route::prefix('/')->group(function () {
-    Route::get('aguapotable', 'AguaPotableController@index')->name('aguapotable');
-    Route::get('alcantarillado', 'AlcantarilladoController@index')->name('alcantarillado');
+Route::prefix('/aguapotable')->group(function () {
+    Route::get('/demanda', 'AguaPotableController@index')->name('aguapotable');
+    Route::get('/cobertura', 'AguaPotableController@cobertura')->name('ap.cobertura');
+
+});
+Route::prefix('/alcantarillado')->group(function () {
+    Route::get('/demanda', 'AlcantarilladoController@index')->name('alcantarillado');
 
 });
 

@@ -27,7 +27,23 @@ class AguaPotableController extends Controller
 
         // $datos_total = $this->vistaDatos->getDatosTotales();
         // $grouped = $datos_total->groupBy('cve_mun');
-        return view('website.aguapotable', ['estados' => $estados, 
+        return view('website.aguapotable.aguapotable', ['estados' => $estados, 
+                                            'consejos' => $consejos, 
+                                            'municipios' => $municipios, 
+                                            'subcuencas' => $subcuencas, 
+                                            'regionesEco' => $regionesEco,
+                                        ]);
+    }
+
+    public function cobertura()
+    {
+        $estados = $this->vistaDatos->getEstados();
+        $consejos = $this->vistaDatos->getConsejosC();
+        $municipios = $this->vistaDatos->getMunicipios();
+        $subcuencas = $this->vistaDatos->getSubcuencas();
+        $regionesEco = $this->vistaDatos->getRegionesEco();
+
+        return view('website.aguapotable.cobertura', ['estados' => $estados, 
                                             'consejos' => $consejos, 
                                             'municipios' => $municipios, 
                                             'subcuencas' => $subcuencas, 

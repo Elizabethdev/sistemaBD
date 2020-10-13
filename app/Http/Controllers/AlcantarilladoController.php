@@ -24,7 +24,7 @@ class AlcantarilladoController extends Controller
         $subcuencas = $this->vistaDatos->getSubcuencas();
         $regionesEco = $this->vistaDatos->getRegionesEco();
         
-        return view('website.alcantarillado', ['estados' => $estados, 
+        return view('website.alcantarillado.alcantarillado', ['estados' => $estados, 
                                             'consejos' => $consejos, 
                                             'municipios' => $municipios, 
                                             'subcuencas' => $subcuencas, 
