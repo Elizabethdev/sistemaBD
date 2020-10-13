@@ -11,7 +11,7 @@ class VistasDatos extends Model
     public function getEstados()
     {
         return $estados = DB::table('estados')
-                            ->select('clave as value',' estado as text')
+                            ->select('clave as value', 'estado as text')
                             ->orderBy('estado', 'ASC')
                             ->get();
     }
@@ -63,21 +63,28 @@ class VistasDatos extends Model
         
     }
 
-    public function getDatosTotales()
-    {
-        return $datos = DB::table('vwDemanda_AP_by_mun')->get();
-    }
-
-    public function getDatosTotalesBy($vista, $where)
+    public function getDatosTotalesAPBy($where)
     {
         $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
         SUM(DEM_AP_10) as DEM_AP_10, SUM(DEM_AP_15) as DEM_AP_15, SUM(DEM_AP_20) as DEM_AP_20, 
-        SUM(DEM_AP_30) as DEM_AP_30 FROM '.$vista.' '.$where;
+        SUM(DEM_AP_30) as DEM_AP_30 FROM vwdemanda_ap '.$where;
 
         return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_AP_10, DEM_AP_15, 
-        DEM_AP_20, DEM_AP_30 FROM '.$vista.' '.$where. ' UNION ALL '. $first);
+        DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' UNION ALL '. $first);
+    }
+
+    public function getDatosTotalesALCBy($where)
+    {
+        $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
+        SUM(DEM_ALC_10) as DEM_ALC_10, SUM(DEM_ALC_15) as DEM_ALC_15, SUM(DEM_ALC_20) as DEM_ALC_20, 
+        SUM(DEM_ALC_30) as DEM_ALC_30 FROM vwdemanda_alc '.$where;
+
+        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_ALC_10, DEM_ALC_15, 
+        DEM_ALC_20, DEM_ALC_30 FROM vwdemanda_alc '.$where. ' UNION ALL '. $first);
     }
 
     public function getDatosTotalesByVista($vista, $where)

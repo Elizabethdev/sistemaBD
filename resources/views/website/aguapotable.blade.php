@@ -48,7 +48,6 @@ Agua Potable
                    <table-component :newdtotales="newdtotales" :headers-table="headersTable" :visible="visible"></table-component>
                 </div>
             </b-overlay>
-
             </section>
             <section>										
                 <ul class="actions">

@@ -17,17 +17,17 @@
                     <td v-if="visible.municipio">{{value.municipio}}</td>
                     <td>{{value.localidad}}</td>
                     <td>{{value.TIPO_20}}</td>
-                    <td>{{formatNumber(value.DEM_AP_10)}}</td>
-                    <td>{{formatNumber(value.DEM_AP_15)}}</td>
-                    <td>{{formatNumber(value.DEM_AP_20)}}</td>
-                    <td>{{formatNumber(value.DEM_AP_30)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_10)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_15)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_20)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_30)}}</td>
                 </tr>
                 <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
                     <td colspan="4">TOTAL </td>
-                    <td>{{formatNumber(value.DEM_AP_10)}}</td>
-                    <td>{{formatNumber(value.DEM_AP_15)}}</td>
-                    <td>{{formatNumber(value.DEM_AP_20)}}</td>
-                    <td>{{formatNumber(value.DEM_AP_30)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_10)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_15)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_20)}}</td>
+                    <td>{{formatNumber(value.DEM_ALC_30)}}</td>
                 </tr>
             </template>
         </tbody>												
@@ -39,7 +39,7 @@
 import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
 
     export default {
-        name:"tbdemandasAP",
+        name:"tbdemandasALC",
         props:{
             dtotales: {
                 type: Array,
@@ -66,17 +66,10 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 }
             }
         },
-        components: {
-           
-        },
-        mounted() {
-            console.log('Component tabla mounted.')
-        },
         data() {
             return {
                 headers: this.headersTable,
                 datosTotales: this.dtotales
-                
             }
         },
         watch: {

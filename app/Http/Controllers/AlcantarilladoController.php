@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\VistasDatos;
+use App\Http\Helpers\Helpers;
 
 class AlcantarilladoController extends Controller
 {
@@ -12,7 +13,6 @@ class AlcantarilladoController extends Controller
     public function __construct(VistasDatos $vistaDatos)
     {
         $this->vistaDatos = $vistaDatos;
-        
         // $this->middleware('auth');
     }
 
@@ -23,90 +23,64 @@ class AlcantarilladoController extends Controller
         $municipios = $this->vistaDatos->getMunicipios();
         $subcuencas = $this->vistaDatos->getSubcuencas();
         $regionesEco = $this->vistaDatos->getRegionesEco();
-        $localidades = collect([]);
-
-        // $datos_total = $this->vistaDatos->getDatosTotales();
-        // $grouped = $datos_total->groupBy('cve_mun');
         
         return view('website.alcantarillado', ['estados' => $estados, 
                                             'consejos' => $consejos, 
                                             'municipios' => $municipios, 
                                             'subcuencas' => $subcuencas, 
                                             'regionesEco' => $regionesEco,
-                                            'localidades' => $localidades,
                                             'datos_total' => collect([])]);
     }
 
+    public function consultarByFiltros(Request $request)
+    {
+        $filtros = $request->filtros;
+        $tipoVista= $request->tipoVista;
+        $addQuery = '';
+        $addQuery2 = '';
+        $consulta = collect([]);
+
+        if ($filtros['consejo'] != []) {
+            $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['municipio'] != []) {
+            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['subcuenca'] != []) {
+            $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['region'] != []) {
+            $getQuery = Helpers::getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['estado'] != []) {
+            $getQuery = Helpers::getQueryFiltro($filtros['estado'], 'cve_edo', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['tipo'] != []) {
+            $getQuery = Helpers::getQueryFiltro($filtros['tipo'], 'TIPO_20', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+
+        $consulta = collect($this->vistaDatos->getDatosTotalesALCBy($addQuery2));
+
+        return response()->json([
+            'datos' => $consulta
+        ]);
+    }
+
    
-    public function consultarByvista(Request $request)
-    {
-        $vista = $request->vista;
-        $vistaConsulta = 'vwDemanda_AP_by_mun';
-        $where = '';
+   
 
-        switch ($vista) {
-            case 'municipio':
-                $vistaConsulta = 'vwDemanda_AP_by_mun';
-                break;
-            case 'consejo':
-                    $vistaConsulta = 'vwDemanda_AP_BY_CONSEJO';
-                    break;
-            
-            default:
-                # code...
-                break;
-        }
-        
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vistaConsulta, $where));
-
-        return response()->json([
-            'datos' => $consulta->groupBy('cve_mun')
-        ]);
-    }
-
-    public function consultarBysubcuenca(Request $request)
-    {
-        $subcuencas = $request->subcuencas;
-        $vista = 'vwDemanda_AP_BY_subcuenca ';
-        $where = '';
-
-        foreach ($subcuencas as $key => $value) {
-            if($key == 0 && array_key_last($subcuencas) == $key)
-                $where.=  "WHERE cve_subcuenca IN ('".$value ."')";
-            elseif($key==0 && array_key_last($subcuencas) != $key)
-                $where.=  "WHERE cve_subcuenca IN ('".$value ."',";
-            elseif(array_key_last($subcuencas) == $key && $key != 0)
-                $where.=  "'".$value ."')";
-            else
-                $where.=  "'".$value."',";
-        }
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
-
-        return response()->json([
-            'subcuencas' => $consulta->groupBy('cve_subcuenca')
-        ]);
-    }
-    public function consultarByregion(Request $request)
-    {
-        $regiones = $request->regiones;
-        $vista = 'vwDemanda_AP_BY_region_eco ';
-        $where = ''; 
-
-        foreach ($regiones as $key => $value) {
-            if($key == 0 && array_key_last($regiones) == $key)
-                $where.=  "WHERE num_region IN ('".$value ."')";
-            elseif($key==0 && array_key_last($regiones) != $key)
-                $where.=  "WHERE num_region IN ('".$value ."',";
-            elseif(array_key_last($regiones) == $key && $key != 0)
-                $where.=  "'".$value ."')";
-            else
-                $where.=  "'".$value."',";
-        }
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
-
-        return response()->json([
-            'regiones' => $consulta->groupBy('num_region')
-        ]);
-    }
+    
 
 }

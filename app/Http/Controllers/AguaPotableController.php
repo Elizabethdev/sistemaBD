@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\VistasDatos;
+use App\Http\Helpers\Helpers;
 
 class AguaPotableController extends Controller
 {
@@ -40,7 +41,7 @@ class AguaPotableController extends Controller
         $tipo= $request->tipo;
         $where= '';
 
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vistaConsulta, $where));
+        $consulta = collect($this->vistaDatos->getDatosTotalesByVista($vistaConsulta, $where));
 
         return response()->json([
             'datos' => $consulta->groupBy($tipo)
@@ -58,17 +59,17 @@ class AguaPotableController extends Controller
         switch ($tipoVista) {
             case 'municipio':
                 if ($filtros['consejo'] != []) {
-                    $getQuery = $this->getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
+                    $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
                     $addQuery= $getQuery[0];
                     $addQuery2= $getQuery[1];
                 }
                 if ($filtros['subcuenca'] != []) {
-                    $getQuery = $this->getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
+                    $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
                     $addQuery= $getQuery[0];
                     $addQuery2= $getQuery[1];
                 }
                 if ($filtros['region'] != []) {
-                    $getQuery = $this->getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
+                    $getQuery = Helpers::getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
                     $addQuery= $getQuery[0];
                     $addQuery2= $getQuery[1];
                 }
@@ -93,33 +94,6 @@ class AguaPotableController extends Controller
         ]);
     }
 
-    public function getQueryFiltro($filtros, $field, $query, $query2)
-    {
-        $addQuery = $query;
-        $addQuery2 = $query2;
-
-        $addQuery .= "AND ".$field." IN(";
-        if($addQuery2 == '')
-            $addQuery2 .= "WHERE ".$field." IN(";
-        else 
-            $addQuery2 .= "AND ".$field." IN(";
-
-        foreach ($filtros as $key => $filtro) {
-            if($key == 0){
-                $addQuery.=  "'".$filtro."'";
-                $addQuery2 .= "'".$filtro."'";
-            }
-            else{
-                $addQuery .= ",'".$filtro."'";
-                $addQuery2 .= ",'".$filtro."'";
-            }
-        }
-        $addQuery.= ") ";
-        $addQuery2.= ") ";
-
-        return [$addQuery, $addQuery2];
-    }
-
     public function consultarByFiltros(Request $request)
     {
         $filtros = $request->filtros;
@@ -129,37 +103,37 @@ class AguaPotableController extends Controller
         $consulta = collect([]);
 
         if ($filtros['consejo'] != []) {
-            $getQuery = $this->getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
+            $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['municipio'] != []) {
-            $getQuery = $this->getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
+            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['subcuenca'] != []) {
-            $getQuery = $this->getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
+            $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['region'] != []) {
-            $getQuery = $this->getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
+            $getQuery = Helpers::getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['estado'] != []) {
-            $getQuery = $this->getQueryFiltro($filtros['estado'], 'cve_edo', $addQuery, $addQuery2);
+            $getQuery = Helpers::getQueryFiltro($filtros['estado'], 'cve_edo', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['tipo'] != []) {
-            $getQuery = $this->getQueryFiltro($filtros['tipo'], 'TIPO_20', $addQuery, $addQuery2);
+            $getQuery = Helpers::getQueryFiltro($filtros['tipo'], 'TIPO_20', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
 
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy('vwdemanda_ap',$addQuery2));
+        $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2));
 
         return response()->json([
             'datos' => $consulta
