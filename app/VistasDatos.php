@@ -62,7 +62,7 @@ class VistasDatos extends Model
                             ->whereIn($campo, $where)->get();
         
     }
-
+    //Agua Potable
     public function getDatosTotalesAPBy($where)
     {
         $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
@@ -74,7 +74,19 @@ class VistasDatos extends Model
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_AP_10, DEM_AP_15, 
         DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' UNION ALL '. $first);
     }
+    public function getDatosTotalesAP_COB($where)
+    {
+        $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
+        SUM(COB_AP_10) as COB_AP_10, SUM(COB_AP_15) as COB_AP_15, SUM(COB_AP_20) as COB_AP_20, 
+        SUM(COB_AP_30) as COB_AP_30 FROM vw_cobertura_AP '.$where;
 
+        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, COB_AP_10, COB_AP_15, 
+        COB_AP_20, COB_AP_30 FROM vw_cobertura_AP '.$where. ' UNION ALL '. $first);
+    }
+
+    //Alcantarillado
     public function getDatosTotalesALCBy($where)
     {
         $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 

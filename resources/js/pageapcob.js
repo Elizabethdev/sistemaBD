@@ -1,9 +1,8 @@
 import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
-import tableComponent from './components/generales/tableap.vue'
+import tableComponent from './components/generales/tableapcob.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-// import axios from 'axios'
 import axios from './client/client.js';
 import { BOverlay} from 'bootstrap-vue'
 
@@ -27,10 +26,10 @@ const app = new Vue({
             {name:'Municipio', visible: false},
             {name:'Localidad', visible: true},
             {name:'Tipo de Población 2020', visible: true},
-            {name:'Demanda de Agua 2010', visible: true},
-            {name:'Demanda de Agua 2015', visible: true},
-            {name:'Demanda de Agua 2020', visible: true},
-            {name:'Demanda de Agua 2030', visible: true}
+            {name:'Cobertura de Agua 2010', visible: true},
+            {name:'Cobertura de Agua 2015', visible: true},
+            {name:'Cobertura de Agua 2020', visible: true},
+            {name:'Cobertura de Agua 2030', visible: true}
         ],
         newdtotalesStatic: {},
         newdtotales: [],
@@ -106,7 +105,7 @@ const app = new Vue({
             this.show = false
         },
         getDatosByFiltros(){
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, page: 'demanda'})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, page: 'cobertura'})
             .then((response)=>{
                 this.show = false
                 this.newdtotales = response.data.datos
