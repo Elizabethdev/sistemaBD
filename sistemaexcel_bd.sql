@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2020 a las 06:42:50
+-- Tiempo de generación: 14-10-2020 a las 20:35:06
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -10569,6 +10569,160 @@ CREATE TABLE `vwdemanda_ap_by_subcuenca` (
 -- --------------------------------------------------------
 
 --
+-- Estructura Stand-in para la vista `vwpob_con_sin_alc`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vwpob_con_sin_alc` (
+`cve_u` varchar(15)
+,`cve_edo` int(11)
+,`estado` varchar(100)
+,`consejo_cuenca` varchar(150)
+,`cve_mun` varchar(35)
+,`municipio` varchar(150)
+,`cve_subcuenca` int(11)
+,`subcuenca` varchar(150)
+,`reg_economica` varchar(150)
+,`num_region` int(11)
+,`localidad` varchar(150)
+,`POBTOT` int(11)
+,`POBTOT_10` int(11)
+,`TIPO_20` varchar(50)
+,`VPH_AGUADV` int(11)
+,`VPH_DRENAJ` int(11)
+,`VIVPAR_HAB` int(11)
+,`PROM_OCUP` double
+,`POBTOT_15` double(17,0)
+,`POBTOT_20` double(17,0)
+,`POBTOT_30` double(17,0)
+,`COB_ALC_2010` decimal(13,2)
+,`PO_CON_ALC_10` double(17,0)
+,`PO_SIN_ALC_10` double(17,0)
+,`PO_CON_ALC_15` double(17,0)
+,`PO_SIN_ALC_15` double(17,0)
+,`PO_CON_ALC_20` double(17,0)
+,`PO_SIN_ALC_20` double(17,0)
+,`PO_CON_ALC_30` double(17,0)
+,`PO_SIN_ALC_30` double(17,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vwpob_con_sin_ap`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vwpob_con_sin_ap` (
+`cve_u` varchar(15)
+,`cve_edo` int(11)
+,`estado` varchar(100)
+,`consejo_cuenca` varchar(150)
+,`cve_mun` varchar(35)
+,`municipio` varchar(150)
+,`cve_subcuenca` int(11)
+,`subcuenca` varchar(150)
+,`reg_economica` varchar(150)
+,`num_region` int(11)
+,`localidad` varchar(150)
+,`POBTOT` int(11)
+,`POBTOT_10` int(11)
+,`TIPO_20` varchar(50)
+,`VPH_AGUADV` int(11)
+,`VPH_DRENAJ` int(11)
+,`VIVPAR_HAB` int(11)
+,`PROM_OCUP` double
+,`POBTOT_15` double(17,0)
+,`POBTOT_20` double(17,0)
+,`POBTOT_30` double(17,0)
+,`COB_AP_2010` decimal(13,2)
+,`PO_CON_AP_10` double(17,0)
+,`PO_SIN_AP_10` double(17,0)
+,`PO_CON_AP_15` double(17,0)
+,`PO_SIN_AP_15` double(17,0)
+,`PO_CON_AP_20` double(17,0)
+,`PO_SIN_AP_20` double(17,0)
+,`PO_CON_AP_30` double(17,0)
+,`PO_SIN_AP_30` double(17,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vw_cobertura_alc`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vw_cobertura_alc` (
+`cve_u` varchar(15)
+,`cve_edo` int(11)
+,`estado` varchar(100)
+,`consejo_cuenca` varchar(150)
+,`cve_mun` varchar(35)
+,`municipio` varchar(150)
+,`cve_subcuenca` int(11)
+,`subcuenca` varchar(150)
+,`reg_economica` varchar(150)
+,`num_region` int(11)
+,`localidad` varchar(150)
+,`POBTOT` int(11)
+,`TIPO_20` varchar(50)
+,`POBTOT_10` int(11)
+,`VPH_AGUADV` int(11)
+,`VPH_DRENAJ` int(11)
+,`VIVPAR_HAB` int(11)
+,`PROM_OCUP` double
+,`POBTOT_15` double(17,0)
+,`POBTOT_20` double(17,0)
+,`POBTOT_30` double(17,0)
+,`PO_CON_ALC_10` double(17,0)
+,`PO_CON_ALC_15` double(17,0)
+,`PO_CON_ALC_20` double(17,0)
+,`PO_CON_ALC_30` double(17,0)
+,`COB_ALC_10` decimal(35,2)
+,`COB_ALC_15` double(23,6)
+,`COB_ALC_20` double(23,6)
+,`COB_ALC_30` double(23,6)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vw_cobertura_ap`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vw_cobertura_ap` (
+`cve_u` varchar(15)
+,`cve_edo` int(11)
+,`estado` varchar(100)
+,`consejo_cuenca` varchar(150)
+,`cve_mun` varchar(35)
+,`municipio` varchar(150)
+,`cve_subcuenca` int(11)
+,`subcuenca` varchar(150)
+,`reg_economica` varchar(150)
+,`num_region` int(11)
+,`localidad` varchar(150)
+,`POBTOT` int(11)
+,`TIPO_20` varchar(50)
+,`POBTOT_10` int(11)
+,`VPH_AGUADV` int(11)
+,`VPH_DRENAJ` int(11)
+,`VIVPAR_HAB` int(11)
+,`PROM_OCUP` double
+,`POBTOT_15` double(17,0)
+,`POBTOT_20` double(17,0)
+,`POBTOT_30` double(17,0)
+,`PO_CON_AP_10` double(17,0)
+,`PO_CON_AP_15` double(17,0)
+,`PO_CON_AP_20` double(17,0)
+,`PO_CON_AP_30` double(17,0)
+,`COB_AP_10` decimal(35,2)
+,`COB_AP_15` double(23,6)
+,`COB_AP_20` double(23,6)
+,`COB_AP_30` double(23,6)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura Stand-in para la vista `vw_pobtot10_30`
 -- (Véase abajo para la vista actual)
 --
@@ -10702,6 +10856,42 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vwdemanda_ap_by_subcuenca`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwdemanda_ap_by_subcuenca`  AS  select `a`.`cve_u` AS `cve_u`,`a`.`cve_edo` AS `cve_edo`,`a`.`estado` AS `estado`,`a`.`consejo_cuenca` AS `consejo_cuenca`,`a`.`cve_mun` AS `cve_mun`,`a`.`municipio` AS `municipio`,`a`.`cve_subcuenca` AS `cve_subcuenca`,`a`.`subcuenca` AS `subcuenca`,`a`.`reg_economica` AS `reg_economica`,`a`.`num_region` AS `num_region`,`a`.`localidad` AS `localidad`,`a`.`POBTOT` AS `POBTOT`,`a`.`TIPO_20` AS `TIPO_20`,sum(`a`.`DEM_AP_20`) AS `totaldemap_20`,(select sum(`vwdemanda_ap`.`DEM_AP_10`) from `vwdemanda_ap` where ((`vwdemanda_ap`.`TIPO_10` = 'RURAL') and (`vwdemanda_ap`.`cve_subcuenca` = `a`.`cve_subcuenca`)) group by `vwdemanda_ap`.`cve_subcuenca`) AS `totaldemap_10`,(select sum(`vwdemanda_ap`.`DEM_AP_15`) from `vwdemanda_ap` where ((`vwdemanda_ap`.`TIPO_15` = 'RURAL') and (`vwdemanda_ap`.`cve_subcuenca` = `a`.`cve_subcuenca`)) group by `vwdemanda_ap`.`cve_subcuenca`) AS `totaldemap_15`,(select sum(`vwdemanda_ap`.`DEM_AP_30`) from `vwdemanda_ap` where ((`vwdemanda_ap`.`TIPO_30` = 'RURAL') and (`vwdemanda_ap`.`cve_subcuenca` = `a`.`cve_subcuenca`)) group by `vwdemanda_ap`.`cve_subcuenca`) AS `totaldemap_30` from `vwdemanda_ap` `a` where (`a`.`TIPO_20` = 'RURAL') group by `a`.`cve_subcuenca` union all select `a`.`cve_u` AS `cve_u`,`a`.`cve_edo` AS `cve_edo`,`a`.`estado` AS `estado`,`a`.`consejo_cuenca` AS `consejo_cuenca`,`a`.`cve_mun` AS `cve_mun`,`a`.`municipio` AS `municipio`,`a`.`cve_subcuenca` AS `cve_subcuenca`,`a`.`subcuenca` AS `subcuenca`,`a`.`reg_economica` AS `reg_economica`,`a`.`num_region` AS `num_region`,`a`.`localidad` AS `localidad`,`a`.`POBTOT` AS `POBTOT`,`a`.`TIPO_20` AS `TIPO_20`,sum(`a`.`DEM_AP_20`) AS `totaldemap_20`,(select sum(`vwdemanda_ap`.`DEM_AP_10`) from `vwdemanda_ap` where ((`vwdemanda_ap`.`TIPO_10` = 'URBANA') and (`vwdemanda_ap`.`cve_subcuenca` = `a`.`cve_subcuenca`)) group by `vwdemanda_ap`.`cve_subcuenca`) AS `totaldemap_10`,(select sum(`vwdemanda_ap`.`DEM_AP_15`) from `vwdemanda_ap` where ((`vwdemanda_ap`.`TIPO_15` = 'URBANA') and (`vwdemanda_ap`.`cve_subcuenca` = `a`.`cve_subcuenca`)) group by `vwdemanda_ap`.`cve_subcuenca`) AS `totaldemap_15`,(select sum(`vwdemanda_ap`.`DEM_AP_30`) from `vwdemanda_ap` where ((`vwdemanda_ap`.`TIPO_30` = 'URBANA') and (`vwdemanda_ap`.`cve_subcuenca` = `a`.`cve_subcuenca`)) group by `vwdemanda_ap`.`cve_subcuenca`) AS `totaldemap_30` from `vwdemanda_ap` `a` where (`a`.`TIPO_20` = 'URBANA') group by `a`.`cve_subcuenca` union all select `vwdemanda_ap`.`cve_u` AS `cve_u`,`vwdemanda_ap`.`cve_edo` AS `cve_edo`,`vwdemanda_ap`.`estado` AS `estado`,`vwdemanda_ap`.`consejo_cuenca` AS `consejo_cuenca`,`vwdemanda_ap`.`cve_mun` AS `cve_mun`,`vwdemanda_ap`.`municipio` AS `municipio`,`vwdemanda_ap`.`cve_subcuenca` AS `cve_subcuenca`,`vwdemanda_ap`.`subcuenca` AS `subcuenca`,`vwdemanda_ap`.`reg_economica` AS `reg_economica`,`vwdemanda_ap`.`num_region` AS `num_region`,`vwdemanda_ap`.`localidad` AS `localidad`,`vwdemanda_ap`.`POBTOT` AS `POBTOT`,ucase('TOTAL') AS `TIPO_20`,sum(`vwdemanda_ap`.`DEM_AP_20`) AS `totaldemap_20`,sum(`vwdemanda_ap`.`DEM_AP_10`) AS `totaldemap_10`,sum(`vwdemanda_ap`.`DEM_AP_15`) AS `totaldemap_15`,sum(`vwdemanda_ap`.`DEM_AP_30`) AS `totaldemap_30` from `vwdemanda_ap` group by `vwdemanda_ap`.`cve_subcuenca` order by `subcuenca` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vwpob_con_sin_alc`
+--
+DROP TABLE IF EXISTS `vwpob_con_sin_alc`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwpob_con_sin_alc`  AS  select `datos`.`CVE_U` AS `cve_u`,`datos`.`CVE_EDO` AS `cve_edo`,`datos`.`ESTADO` AS `estado`,`datos`.`CONSEJO_CUENCA` AS `consejo_cuenca`,`datos`.`CVE_MUN` AS `cve_mun`,`datos`.`MUNICIPIO` AS `municipio`,`datos`.`CLAVE` AS `cve_subcuenca`,`datos`.`SUBCUENCA` AS `subcuenca`,`datos`.`REGION_ECO` AS `reg_economica`,`datos`.`NUMREG` AS `num_region`,`datos`.`NOM_LOC` AS `localidad`,`datos`.`POBTOT` AS `POBTOT`,`datos`.`POBTOT_10` AS `POBTOT_10`,`pob`.`TIPO_20` AS `TIPO_20`,`datos`.`VPH_AGUADV` AS `VPH_AGUADV`,`datos`.`VPH_DRENAJ` AS `VPH_DRENAJ`,`datos`.`VIVPAR_HAB` AS `VIVPAR_HAB`,`datos`.`PROM_OCUP` AS `PROM_OCUP`,`pob`.`POBTOT_15` AS `POBTOT_15`,`pob`.`POBTOT_20` AS `POBTOT_20`,`pob`.`POBTOT_30` AS `POBTOT_30`,ifnull(round((`datos`.`VPH_DRENAJ` / `datos`.`VIVPAR_HAB`),2),0) AS `COB_ALC_2010`,ifnull(round((`datos`.`VPH_DRENAJ` * `datos`.`PROM_OCUP`),0),0) AS `PO_CON_ALC_10`,ifnull((`datos`.`POBTOT` - round((`datos`.`VPH_DRENAJ` * `datos`.`PROM_OCUP`),0)),0) AS `PO_SIN_ALC_10`,ifnull(round((round((`datos`.`VPH_DRENAJ` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_15`),0),0) AS `PO_CON_ALC_15`,ifnull((`pob`.`POBTOT_15` - round((round((`datos`.`VPH_DRENAJ` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_15`),0)),0) AS `PO_SIN_ALC_15`,ifnull(round((round((`datos`.`VPH_DRENAJ` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_20`),0),0) AS `PO_CON_ALC_20`,ifnull((`pob`.`POBTOT_20` - round((round((`datos`.`VPH_DRENAJ` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_20`),0)),0) AS `PO_SIN_ALC_20`,ifnull(round((round((`datos`.`VPH_DRENAJ` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_30`),0),0) AS `PO_CON_ALC_30`,ifnull((`pob`.`POBTOT_30` - round((round((`datos`.`VPH_DRENAJ` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_30`),0)),0) AS `PO_SIN_ALC_30` from (`datos` left join `vw_pobtot10_30` `pob` on((`datos`.`CVE_U` = `pob`.`cve_u`))) group by `datos`.`CVE_U` order by `datos`.`MUNICIPIO` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vwpob_con_sin_ap`
+--
+DROP TABLE IF EXISTS `vwpob_con_sin_ap`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwpob_con_sin_ap`  AS  select `datos`.`CVE_U` AS `cve_u`,`datos`.`CVE_EDO` AS `cve_edo`,`datos`.`ESTADO` AS `estado`,`datos`.`CONSEJO_CUENCA` AS `consejo_cuenca`,`datos`.`CVE_MUN` AS `cve_mun`,`datos`.`MUNICIPIO` AS `municipio`,`datos`.`CLAVE` AS `cve_subcuenca`,`datos`.`SUBCUENCA` AS `subcuenca`,`datos`.`REGION_ECO` AS `reg_economica`,`datos`.`NUMREG` AS `num_region`,`datos`.`NOM_LOC` AS `localidad`,`datos`.`POBTOT` AS `POBTOT`,`datos`.`POBTOT_10` AS `POBTOT_10`,`pob`.`TIPO_20` AS `TIPO_20`,`datos`.`VPH_AGUADV` AS `VPH_AGUADV`,`datos`.`VPH_DRENAJ` AS `VPH_DRENAJ`,`datos`.`VIVPAR_HAB` AS `VIVPAR_HAB`,`datos`.`PROM_OCUP` AS `PROM_OCUP`,`pob`.`POBTOT_15` AS `POBTOT_15`,`pob`.`POBTOT_20` AS `POBTOT_20`,`pob`.`POBTOT_30` AS `POBTOT_30`,ifnull(round((`datos`.`VPH_AGUADV` / `datos`.`VIVPAR_HAB`),2),0) AS `COB_AP_2010`,ifnull(round((`datos`.`VPH_AGUADV` * `datos`.`PROM_OCUP`),0),0) AS `PO_CON_AP_10`,ifnull((`datos`.`POBTOT` - round((`datos`.`VPH_AGUADV` * `datos`.`PROM_OCUP`),0)),0) AS `PO_SIN_AP_10`,ifnull(round((round((`datos`.`VPH_AGUADV` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_15`),0),0) AS `PO_CON_AP_15`,ifnull((`pob`.`POBTOT_15` - round((round((`datos`.`VPH_AGUADV` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_15`),0)),0) AS `PO_SIN_AP_15`,ifnull(round((round((`datos`.`VPH_AGUADV` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_20`),0),0) AS `PO_CON_AP_20`,ifnull((`pob`.`POBTOT_20` - round((round((`datos`.`VPH_AGUADV` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_20`),0)),0) AS `PO_SIN_AP_20`,ifnull(round((round((`datos`.`VPH_AGUADV` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_30`),0),0) AS `PO_CON_AP_30`,ifnull((`pob`.`POBTOT_30` - round((round((`datos`.`VPH_AGUADV` / `datos`.`VIVPAR_HAB`),2) * `pob`.`POBTOT_30`),0)),0) AS `PO_SIN_AP_30` from (`datos` left join `vw_pobtot10_30` `pob` on((`datos`.`CVE_U` = `pob`.`cve_u`))) group by `datos`.`CVE_U` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vw_cobertura_alc`
+--
+DROP TABLE IF EXISTS `vw_cobertura_alc`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_cobertura_alc`  AS  select `vwpob_con_sin_alc`.`cve_u` AS `cve_u`,`vwpob_con_sin_alc`.`cve_edo` AS `cve_edo`,`vwpob_con_sin_alc`.`estado` AS `estado`,`vwpob_con_sin_alc`.`consejo_cuenca` AS `consejo_cuenca`,`vwpob_con_sin_alc`.`cve_mun` AS `cve_mun`,`vwpob_con_sin_alc`.`municipio` AS `municipio`,`vwpob_con_sin_alc`.`cve_subcuenca` AS `cve_subcuenca`,`vwpob_con_sin_alc`.`subcuenca` AS `subcuenca`,`vwpob_con_sin_alc`.`reg_economica` AS `reg_economica`,`vwpob_con_sin_alc`.`num_region` AS `num_region`,`vwpob_con_sin_alc`.`localidad` AS `localidad`,`vwpob_con_sin_alc`.`POBTOT` AS `POBTOT`,`vwpob_con_sin_alc`.`TIPO_20` AS `TIPO_20`,`vwpob_con_sin_alc`.`POBTOT_10` AS `POBTOT_10`,`vwpob_con_sin_alc`.`VPH_AGUADV` AS `VPH_AGUADV`,`vwpob_con_sin_alc`.`VPH_DRENAJ` AS `VPH_DRENAJ`,`vwpob_con_sin_alc`.`VIVPAR_HAB` AS `VIVPAR_HAB`,`vwpob_con_sin_alc`.`PROM_OCUP` AS `PROM_OCUP`,`vwpob_con_sin_alc`.`POBTOT_15` AS `POBTOT_15`,`vwpob_con_sin_alc`.`POBTOT_20` AS `POBTOT_20`,`vwpob_con_sin_alc`.`POBTOT_30` AS `POBTOT_30`,`vwpob_con_sin_alc`.`PO_CON_ALC_10` AS `PO_CON_ALC_10`,`vwpob_con_sin_alc`.`PO_CON_ALC_15` AS `PO_CON_ALC_15`,`vwpob_con_sin_alc`.`PO_CON_ALC_20` AS `PO_CON_ALC_20`,`vwpob_con_sin_alc`.`PO_CON_ALC_30` AS `PO_CON_ALC_30`,sum(`vwpob_con_sin_alc`.`COB_ALC_2010`) AS `COB_ALC_10`,truncate((`vwpob_con_sin_alc`.`PO_CON_ALC_15` / `vwpob_con_sin_alc`.`POBTOT_15`),6) AS `COB_ALC_15`,truncate((`vwpob_con_sin_alc`.`PO_CON_ALC_20` / `vwpob_con_sin_alc`.`POBTOT_20`),6) AS `COB_ALC_20`,truncate((`vwpob_con_sin_alc`.`PO_CON_ALC_30` / `vwpob_con_sin_alc`.`POBTOT_30`),6) AS `COB_ALC_30` from `vwpob_con_sin_alc` group by `vwpob_con_sin_alc`.`cve_u` ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vw_cobertura_ap`
+--
+DROP TABLE IF EXISTS `vw_cobertura_ap`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_cobertura_ap`  AS  select `vwpob_con_sin_ap`.`cve_u` AS `cve_u`,`vwpob_con_sin_ap`.`cve_edo` AS `cve_edo`,`vwpob_con_sin_ap`.`estado` AS `estado`,`vwpob_con_sin_ap`.`consejo_cuenca` AS `consejo_cuenca`,`vwpob_con_sin_ap`.`cve_mun` AS `cve_mun`,`vwpob_con_sin_ap`.`municipio` AS `municipio`,`vwpob_con_sin_ap`.`cve_subcuenca` AS `cve_subcuenca`,`vwpob_con_sin_ap`.`subcuenca` AS `subcuenca`,`vwpob_con_sin_ap`.`reg_economica` AS `reg_economica`,`vwpob_con_sin_ap`.`num_region` AS `num_region`,`vwpob_con_sin_ap`.`localidad` AS `localidad`,`vwpob_con_sin_ap`.`POBTOT` AS `POBTOT`,`vwpob_con_sin_ap`.`TIPO_20` AS `TIPO_20`,`vwpob_con_sin_ap`.`POBTOT_10` AS `POBTOT_10`,`vwpob_con_sin_ap`.`VPH_AGUADV` AS `VPH_AGUADV`,`vwpob_con_sin_ap`.`VPH_DRENAJ` AS `VPH_DRENAJ`,`vwpob_con_sin_ap`.`VIVPAR_HAB` AS `VIVPAR_HAB`,`vwpob_con_sin_ap`.`PROM_OCUP` AS `PROM_OCUP`,`vwpob_con_sin_ap`.`POBTOT_15` AS `POBTOT_15`,`vwpob_con_sin_ap`.`POBTOT_20` AS `POBTOT_20`,`vwpob_con_sin_ap`.`POBTOT_30` AS `POBTOT_30`,`vwpob_con_sin_ap`.`PO_CON_AP_10` AS `PO_CON_AP_10`,`vwpob_con_sin_ap`.`PO_CON_AP_15` AS `PO_CON_AP_15`,`vwpob_con_sin_ap`.`PO_CON_AP_20` AS `PO_CON_AP_20`,`vwpob_con_sin_ap`.`PO_CON_AP_30` AS `PO_CON_AP_30`,sum(`vwpob_con_sin_ap`.`COB_AP_2010`) AS `COB_AP_10`,truncate((`vwpob_con_sin_ap`.`PO_CON_AP_15` / `vwpob_con_sin_ap`.`POBTOT_15`),6) AS `COB_AP_15`,truncate((`vwpob_con_sin_ap`.`PO_CON_AP_20` / `vwpob_con_sin_ap`.`POBTOT_20`),6) AS `COB_AP_20`,truncate((`vwpob_con_sin_ap`.`PO_CON_AP_30` / `vwpob_con_sin_ap`.`POBTOT_30`),6) AS `COB_AP_30` from `vwpob_con_sin_ap` group by `vwpob_con_sin_ap`.`cve_u` ;
 
 -- --------------------------------------------------------
 
