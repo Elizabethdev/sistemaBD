@@ -9,7 +9,7 @@
             <span> Volumen de descarga m3 Anuales</span>
         </a>
     </li>
-    <li><a href="{{ route('alcantarillado')}}">
+    <li><a href="{{ route('alc.cobertura')}}">
             <i class="fas fa-fw fa-water"></i>
             <span> Cobertura (%)</span>
         </a>

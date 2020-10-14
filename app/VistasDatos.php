@@ -98,6 +98,17 @@ class VistasDatos extends Model
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_ALC_10, DEM_ALC_15, 
         DEM_ALC_20, DEM_ALC_30 FROM vwdemanda_alc '.$where. ' UNION ALL '. $first);
     }
+    public function getDatosTotalesALC_COB($where)
+    {
+        $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
+        SUM(COB_ALC_10) as COB_ALC_10, SUM(COB_ALC_15) as COB_ALC_15, SUM(COB_ALC_20) as COB_ALC_20, 
+        SUM(COB_ALC_30) as COB_ALC_30 FROM vw_cobertura_ALC '.$where;
+
+        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, COB_ALC_10, COB_ALC_15, 
+        COB_ALC_20, COB_ALC_30 FROM vw_cobertura_ALC '.$where. ' UNION ALL '. $first);
+    }
 
     public function getDatosTotalesByVista($vista, $where)
     {

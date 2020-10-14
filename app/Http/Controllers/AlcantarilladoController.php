@@ -32,10 +32,26 @@ class AlcantarilladoController extends Controller
                                             'datos_total' => collect([])]);
     }
 
+    public function cobertura()
+    {
+        $estados = $this->vistaDatos->getEstados();
+        $consejos = $this->vistaDatos->getConsejosC();
+        $municipios = $this->vistaDatos->getMunicipios();
+        $subcuencas = $this->vistaDatos->getSubcuencas();
+        $regionesEco = $this->vistaDatos->getRegionesEco();
+        
+        return view('website.alcantarillado.cobertura', ['estados' => $estados, 
+                                            'consejos' => $consejos, 
+                                            'municipios' => $municipios, 
+                                            'subcuencas' => $subcuencas, 
+                                            'regionesEco' => $regionesEco,
+                                            'datos_total' => collect([])]);
+    }
+
     public function consultarByFiltros(Request $request)
     {
         $filtros = $request->filtros;
-        $tipoVista= $request->tipoVista;
+        $page= $request->page;
         $addQuery = '';
         $addQuery2 = '';
         $consulta = collect([]);
@@ -71,7 +87,17 @@ class AlcantarilladoController extends Controller
             $addQuery2= $getQuery[1];
         }
 
-        $consulta = collect($this->vistaDatos->getDatosTotalesALCBy($addQuery2));
+        switch ($page) {
+            case 'demanda':
+                $consulta = collect($this->vistaDatos->getDatosTotalesALCBy($addQuery2));
+                break;
+            case 'cobertura':
+                $consulta = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2));
+                break;
+            default:
+                # code...
+                break;
+        }
 
         return response()->json([
             'datos' => $consulta
