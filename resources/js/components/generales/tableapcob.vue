@@ -23,7 +23,7 @@
                     <td>{{value.COB_AP_30}}</td>
                 </tr>
                 <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
-                    <td colspan="4">TOTAL </td>
+                    <td :colspan="colspan">TOTAL </td>
                     <td>{{value.COB_AP_10}}</td>
                     <td>{{value.COB_AP_15}}</td>
                     <td>{{value.COB_AP_20}}</td>
@@ -39,7 +39,7 @@
 import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
 
     export default {
-        name:"tbdemandasAP",
+        name:"tbcoberturaAP",
         props:{
             dtotales: {
                 type: Array,
@@ -66,17 +66,10 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 }
             }
         },
-        components: {
-           
-        },
-        mounted() {
-            console.log('Component tabla mounted.')
-        },
         data() {
             return {
                 headers: this.headersTable,
                 datosTotales: this.dtotales
-                
             }
         },
         watch: {
@@ -88,6 +81,15 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
             formatNumber(number){
                 return new Intl.NumberFormat("es-MX").format(number)
             }
+        },
+        computed: {
+            colspan: function () {
+                const obj = Object.values(this.visible)
+                const result = obj.filter( (ele) => { 
+                        return ele == true
+                    })
+                return result.length + 3
+            },
         }
     }
 </script>
