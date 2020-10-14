@@ -18,8 +18,9 @@ Auth::routes();
 
 Route::view('/inicio', 'website/home')->name('inicio');
 Route::view('/', 'website/home')->name('/');
-Route::view('/saneamiento', 'website/saneamiento/saneamiento')->name('saneamiento');
 Route::view('/calidadagua', 'website/calidad/calidadagua')->name('calidadagua');
+
+Route::get('/saneamiento', 'SaneamientoController@index')->name('saneamiento');
 
 Route::prefix('/aguapotable')->group(function () {
     Route::get('/demanda', 'AguaPotableController@index')->name('aguapotable');

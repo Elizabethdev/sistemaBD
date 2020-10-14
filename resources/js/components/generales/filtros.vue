@@ -111,7 +111,7 @@
             </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <BDropdown text="TIPOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown :text="titulo " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="tipoSelected"
                     :options="tipos"
@@ -131,7 +131,10 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
     export default {
         name:"filtros",
         props:{
-            titulo: '',
+            titulof: {
+                type: String,
+                default: 'TIPOS'
+            },
             destados: {
                 type: Array,
                 default: []
@@ -152,6 +155,15 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 type: Array,
                 default: []
             },
+            tiposf: {
+                type: Array,
+                default: function(){
+                    return [
+                        { value: 'URBANA', text: 'Urbana' },
+                        { value: 'RURAL', text: 'Rural' },
+                    ]
+                }
+            }
         },
         components: {
             BFormCheckboxGroup,
@@ -187,10 +199,8 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                 municipios: this.dmunicipios,
                 subcuencas: this.dsubcuencas,
                 regiones: this.dregiones,
-                tipos: [
-                    { value: 'URBANA', text: 'Urbana' },
-                    { value: 'RURAL', text: 'Rural' },
-                ],
+                tipos: this.tiposf,
+                titulo: this.titulof
             }
         },
         methods: {
