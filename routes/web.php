@@ -24,6 +24,7 @@ Route::view('/calidadagua', 'website/calidad/calidadagua')->name('calidadagua');
 Route::prefix('/aguapotable')->group(function () {
     Route::get('/demanda', 'AguaPotableController@index')->name('aguapotable');
     Route::get('/cobertura', 'AguaPotableController@cobertura')->name('ap.cobertura');
+    Route::get('/poblacion', 'AguaPotableController@poblacion')->name('ap.poblacion');
 
 });
 Route::prefix('/alcantarillado')->group(function () {

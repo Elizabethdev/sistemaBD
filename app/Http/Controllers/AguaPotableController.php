@@ -46,7 +46,22 @@ class AguaPotableController extends Controller
                                             'subcuencas' => $subcuencas, 
                                             'regionesEco' => $regionesEco,
                                         ]);
-    }
+    } 
+    public function poblacion()
+    {
+        $estados = $this->vistaDatos->getEstados();
+        $consejos = $this->vistaDatos->getConsejosC();
+        $municipios = $this->vistaDatos->getMunicipios();
+        $subcuencas = $this->vistaDatos->getSubcuencas();
+        $regionesEco = $this->vistaDatos->getRegionesEco();
+
+        return view('website.aguapotable.poblacion', ['estados' => $estados, 
+                                            'consejos' => $consejos, 
+                                            'municipios' => $municipios, 
+                                            'subcuencas' => $subcuencas, 
+                                            'regionesEco' => $regionesEco,
+                                        ]);
+    } 
 
     public function consultarByvista(Request $request)
     {
@@ -107,8 +122,10 @@ class AguaPotableController extends Controller
             case 'cobertura':
                 $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2));
                 break;
+            case 'poblacion':
+                $consulta = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2));
+                break;
             default:
-                # code...
                 break;
         }
 

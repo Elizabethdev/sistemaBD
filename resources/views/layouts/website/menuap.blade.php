@@ -14,7 +14,7 @@
             <span> Cobertura (%)</span>
         </a>
     </li>
-    <li><a href="">
+    <li><a href="{{ route('ap.poblacion') }}">
             <i class="fas fa-fw fa-hand-holding-water"></i>
             <span> Población con o sin servicio</span>
         </a>
