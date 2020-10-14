@@ -47,6 +47,21 @@ class AlcantarilladoController extends Controller
                                             'regionesEco' => $regionesEco,
                                             'datos_total' => collect([])]);
     }
+    public function poblacion()
+    {
+        $estados = $this->vistaDatos->getEstados();
+        $consejos = $this->vistaDatos->getConsejosC();
+        $municipios = $this->vistaDatos->getMunicipios();
+        $subcuencas = $this->vistaDatos->getSubcuencas();
+        $regionesEco = $this->vistaDatos->getRegionesEco();
+        
+        return view('website.alcantarillado.poblacion', ['estados' => $estados, 
+                                            'consejos' => $consejos, 
+                                            'municipios' => $municipios, 
+                                            'subcuencas' => $subcuencas, 
+                                            'regionesEco' => $regionesEco,
+                                            'datos_total' => collect([])]);
+    }
 
     public function consultarByFiltros(Request $request)
     {
@@ -93,6 +108,9 @@ class AlcantarilladoController extends Controller
                 break;
             case 'cobertura':
                 $consulta = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2));
+                break;
+            case 'poblacion':
+                $consulta = collect($this->vistaDatos->getDatosTotalesALC_POB($addQuery2));
                 break;
             default:
                 # code...

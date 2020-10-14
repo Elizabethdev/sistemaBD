@@ -30,6 +30,7 @@ Route::prefix('/aguapotable')->group(function () {
 Route::prefix('/alcantarillado')->group(function () {
     Route::get('/demanda', 'AlcantarilladoController@index')->name('alcantarillado');
     Route::get('/cobertura', 'AlcantarilladoController@cobertura')->name('alc.cobertura');
+    Route::get('/poblacion', 'AlcantarilladoController@poblacion')->name('alc.poblacion');
 
 });
 
