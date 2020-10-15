@@ -45,7 +45,7 @@ const app = new Vue({
             { value: 'Activa', text: 'Activa' },
             { value: 'Baja', text: 'Baja' },
             { value: 'En proceso', text: 'En proceso' },
-            { value: 'Fuera de operación', text: 'Fuera de operación' },
+            { value: 'Fuera de operacion', text: 'Fuera de operación' },
             { value: 'No construida', text: 'No construida' },
             { value: 'Operando ineficientemente', text: 'Operando ineficientemente' },
         ],
@@ -66,39 +66,39 @@ const app = new Vue({
     },
     methods: {
         filterchange2(tipo, value){
-            // this.show = true
+            this.show = true
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
                     this.visible.consejo = value.length > 0 ? true : false
                     this.headersTable[1].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    this.getDatosByFiltros()
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
                     this.visible.subcuenca = value.length > 0 ? true : false
                     this.headersTable[2].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    this.getDatosByFiltros()
                     break;
                 case 'region':
                     this.filtros.region = value
                     this.visible.region = value.length > 0 ? true : false
                     this.headersTable[3].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    this.getDatosByFiltros()
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
                     this.visible.municipio = value.length > 0 ? true : false
                     this.headersTable[4].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    this.getDatosByFiltros()
                     break;
                 case 'estado':
                     this.filtros.estado = value
-                    // this.getDatosByFiltros()
+                    this.getDatosByFiltros()
                     break;
                 case 'tipo':
                     this.filtros.tipo = value
-                    // this.getDatosByFiltros()
+                    this.getDatosByFiltros()
                     break;
                 default:
                     break;
@@ -118,7 +118,7 @@ const app = new Vue({
             this.show = false
         },
         getDatosByFiltros(){
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, page: 'cobertura'})
+            axios.post('/san/consultarbyfiltros',{filtros: this.filtros})
             .then((response)=>{
                 this.show = false
                 this.newdtotales = response.data.datos

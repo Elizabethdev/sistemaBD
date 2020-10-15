@@ -35,7 +35,7 @@ class SaneamientoController extends Controller
     public function consultarByFiltros(Request $request)
     {
         $filtros = $request->filtros;
-        $page= $request->page;
+        // $page= $request->page;
         $addQuery = '';
         $addQuery2 = '';
         $consulta = collect([]);
@@ -66,25 +66,12 @@ class SaneamientoController extends Controller
             $addQuery2= $getQuery[1];
         }
         if ($filtros['tipo'] != []) {
-            $getQuery = Helpers::getQueryFiltro($filtros['tipo'], 'TIPO_20', $addQuery, $addQuery2);
+            $getQuery = Helpers::getQueryFiltro($filtros['tipo'], 'ESTATUS', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
 
-        switch ($page) {
-            case 'demanda':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALCBy($addQuery2));
-                break;
-            case 'cobertura':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2));
-                break;
-            case 'poblacion':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALC_POB($addQuery2));
-                break;
-            default:
-                # code...
-                break;
-        }
+        $consulta = collect($this->vistaDatos->getDatos_Saneamiento($addQuery2));
 
         return response()->json([
             'datos' => $consulta

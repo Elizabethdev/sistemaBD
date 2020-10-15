@@ -54,4 +54,6 @@ Route::prefix('api')->group(function () {
 
     Route::post('/alc/consultarbyfiltros', 'AlcantarilladoController@consultarByFiltros')->name('consultaralcByFiltros');
 
+    Route::post('/san/consultarbyfiltros', 'SaneamientoController@consultarByFiltros')->name('consultarsanByFiltros');
+
 });

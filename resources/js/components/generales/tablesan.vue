@@ -8,27 +8,27 @@
             </tr>
         </thead>
         <tbody>
-            <template v-for="(value) in datosTotales">
-                <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u">
+            <template v-for="(value, index) in datosTotales">
+                <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u+index">
                     <td>{{value.estado}}</td>
                     <td v-if="visible.consejo">{{value.consejo_cuenca}}</td>
                     <td v-if="visible.subcuenca">{{value.subcuenca}}</td>
                     <td v-if="visible.region">{{value.reg_economica}}</td>
                     <td v-if="visible.municipio">{{value.municipio}}</td>
                     <td>{{value.localidad}}</td>
-                    <td>{{value.estatus}}</td>
-                    <td>{{value.COB_AP_10}}</td>
-                    <td>{{value.COB_AP_15}}</td>
-                    <td>{{value.COB_AP_20}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
-                    <td>{{value.COB_AP_30}}</td>
+                    <td>{{value.ESTATUS}}</td>
+                    <td>{{value.CVE_INEGI}}</td>
+                    <td>{{value.CAP_INSTALADA}}</td>
+                    <td>{{value.CAUDAL_TRATADO}}</td>
+                    <td>{{value.POBTOT_20}}</td>
+                    <td>{{value.ORG_OPERADOR}}</td>
+                    <td>{{value.PROC_TRATAMIENTO}}</td>
+                    <td>{{value.DESC_PROC_TRATAMIENTO}}</td>
+                    <td>{{value.Observaciones}}</td>
+                    <td>{{value.Inversion_Construccion}}</td>
+                    <td>{{value.Programa_Construyo}}</td>
+                    <td>{{value.Cuerpo_Receptor}}</td>
+                    <td>{{value.Diagnostico }}</td>
                 </tr>
                 <!-- <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
                     <td :colspan="colspan">TOTAL </td>

@@ -131,6 +131,13 @@ class VistasDatos extends Model
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, PO_CON_ALC_10, PO_SIN_ALC_10, PO_CON_ALC_15, PO_SIN_ALC_15, 
         PO_CON_ALC_20, PO_SIN_ALC_20, PO_CON_ALC_30, PO_SIN_ALC_30 FROM vwpob_con_sin_ALC '.$where. ' UNION ALL '. $first);
     }
+    //Saneamiento
+
+    public function getDatos_Saneamiento($where)
+    {
+        // dd($where);
+        return $datos = DB::select('SELECT * FROM vw_datos_saneamiento '.$where);
+    }
 
     public function getDatosTotalesByVista($vista, $where)
     {
