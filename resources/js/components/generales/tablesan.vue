@@ -47,7 +47,7 @@
 import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
 
     export default {
-        name:"tbcoberturaAP",
+        name:"tbsaneamiento",
         props:{
             dtotales: {
                 type: Array,
