@@ -1,4 +1,4 @@
-@extends('layouts.website.app')
+@extends('layouts.website.appsinmenu')
 @section('title')
 Inicio
 @stop
@@ -24,11 +24,11 @@ Inicio
         <!-- One -->
         <section id="one" class="wrapper spotlight style1">
             <div class="inner">
-                <a href="#" class="image"><img src="{{ asset('assets/images/agua_potable.jpg') }}" alt="" /></a>
+                <a href="{{ route('aguapotable')}}" class="image"><img src="{{ asset('assets/images/agua_potable.jpg') }}" alt="" /></a>
                 <div class="content">
                     <h2 class="major">Agua Potable</h2>
                     <p>Se denomina agua potable o agua apta para el consumo de los humanos al agua que puede ser consumida sin restricción para beber o preparar alimentos</p>
-                    <a href="#" class="special">Leer más</a>
+                    <a href="{{ route('aguapotable')}}" class="special">Leer más</a>
                 </div>
             </div>
         </section>
@@ -36,12 +36,12 @@ Inicio
         <!-- Two -->
         <section id="two" class="wrapper alt spotlight style2">
             <div class="inner">
-                <a href="#" class="image"><img src="{{ asset('assets/images/alcantarillado.jpg') }}" alt="" /></a>
+                <a href="{{ route('alcantarillado')}}" class="image"><img src="{{ asset('assets/images/alcantarillado.jpg') }}" alt="" /></a>
                 <div class="content">
                     <h2 class="major">Alcantarillado</h2>
                     <p>Se denomina al sistema de estructuras y tuberías usadas para la evacuación de aguas residuales. Esta agua pueden ser albañales (alcantarillado sanitario).
                     </p>
-                    <a href="#" class="special">Leer más</a>
+                    <a href="{{ route('alcantarillado')}}" class="special">Leer más</a>
                 </div>
             </div>
         </section>
@@ -49,12 +49,12 @@ Inicio
         <!-- Three -->
         <section id="three" class="wrapper spotlight style3">
             <div class="inner">
-                <a href="#" class="image"><img src="{{ asset('assets/images/saneamiento.jpg') }}" alt="Prueba" /></a>
+                <a href="{{ route('saneamiento')}}" class="image"><img src="{{ asset('assets/images/saneamiento.jpg') }}" alt="Prueba" /></a>
                 <div class="content">
                     <h2 class="major">Saneamiento</h2>
                     <p>El saneamiento es imprescindible para prevenir numerosas enfermedades que sufren millones de personas, como las enfermedades diarreicas.
                     </p>
-                    <a href="#" class="special">Leer más</a>
+                    <a href="{{ route('saneamiento')}}" class="special">Leer más</a>
                 </div>
             </div>
         </section>

@@ -4,9 +4,9 @@
             <span> Inicio</span>
         </a>
     </li>
-    <li><a href="{{ route('saneamiento') }}">
+    <!-- <li><a href="{{ route('saneamiento') }}">
             <i class="fas fa-fw fa-faucet"></i>
             <span> Datos</span>
         </a>
-    </li>
+    </li> -->
 </ul>
