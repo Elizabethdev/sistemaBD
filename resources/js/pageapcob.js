@@ -1,5 +1,6 @@
 import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
+import rangosComponent from './components/generales/filtrosrangos.vue';
 import tableComponent from './components/generales/tableapcob.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,6 +15,7 @@ const app = new Vue({
         filtrosComponent,
         tableComponent,
         vistaComponent,
+        rangosComponent,
         BOverlay
     },
     data: {
@@ -47,7 +49,11 @@ const app = new Vue({
             subcuenca: [],
             region: [],
             estado: [],
-            tipo: []
+            tipo: [],
+            rcobertura: [],
+            rpoblacion: [],
+            año: [],
+            pi: [],
         }
     },
     methods: {
@@ -85,6 +91,27 @@ const app = new Vue({
                     break;
                 case 'tipo':
                     this.filtros.tipo = value
+                    this.getDatosByFiltros()
+                    break;
+                default:
+                    break;
+            }
+        },
+        rangochange(tipo, value, año){
+            this.show = true
+            switch (tipo) {
+                case 'cobertura':
+                    this.filtros.rcobertura = value
+                    this.filtros.año = año
+                    this.getDatosByFiltros()
+                    break;
+                case 'poblacion':
+                    this.filtros.rpoblacion = value
+                    this.filtros.año = año
+                    this.getDatosByFiltros()
+                    break;
+                case 'PI':
+                    this.filtros.pi = value
                     this.getDatosByFiltros()
                     break;
                 default:

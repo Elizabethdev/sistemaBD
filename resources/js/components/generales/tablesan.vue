@@ -23,8 +23,8 @@
                     <td>{{value.POBTOT_20}}</td>
                     <td>{{value.ORG_OPERADOR}}</td>
                     <td>{{value.PROC_TRATAMIENTO}}</td>
-                    <td class="headAncho">{{value.DESC_PROC_TRATAMIENTO}}</td>
-                    <td class="headAncho">{{value.Observaciones}}</td>
+                    <td>{{value.DESC_PROC_TRATAMIENTO}}</td>
+                    <td>{{value.Observaciones}}</td>
                     <td>{{value.Inversion_Construccion}}</td>
                     <td>{{value.Programa_Construyo}}</td>
                     <td>{{value.Cuerpo_Receptor}}</td>
@@ -120,8 +120,5 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
     table th{ /* Added padding for better layout after collapsing */
         padding: 0.75em 0.75em;
     }
-
-    .headAncho{
-        width:15%!important;
-    }
+    
 </style>

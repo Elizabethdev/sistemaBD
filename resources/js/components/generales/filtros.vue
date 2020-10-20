@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="row gtr-uniform">
         <div class="field col-4 col-12-xsmall">
             <BDropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
@@ -66,6 +67,9 @@
                 </b-form-group>
             </BDropdown>
         </div>
+    
+    </div>
+    <div class="row gtr-uniform">
         <div class="field col-4 col-12-xsmall">
             <BDropdown text="REGIONES ECONÓMICAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
@@ -122,6 +126,7 @@
             </BDropdown>
         </div>
     </div>
+</div>
 </template>
 
 <script>
