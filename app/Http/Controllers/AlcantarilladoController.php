@@ -101,6 +101,45 @@ class AlcantarilladoController extends Controller
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
+        if ($filtros['rcobertura'] != [] && $filtros['año'] != []) {
+            foreach ($filtros['año'] as $key => $value) {
+                if($value == '2015') {
+                    $getQuery = Helpers::getQueryFiltro($filtros['rcobertura'], 'R_COB_ALC_15', $addQuery, $addQuery2);
+                    $addQuery2= $getQuery[1];
+                }
+                if($value == '2020') {
+                    $getQuery = Helpers::getQueryFiltro($filtros['rcobertura'], 'R_COB_ALC_20', $addQuery, $addQuery2);
+                    $addQuery2= $getQuery[1];
+                }
+                if($value == '2030') {
+                    $getQuery = Helpers::getQueryFiltro($filtros['rcobertura'], 'R_COB_ALC_30', $addQuery, $addQuery2);
+                    $addQuery2= $getQuery[1];
+                }
+            }
+            $addQuery= $getQuery[0];
+        }
+        if ($filtros['rpoblacion'] != [] && $filtros['año'] != []) {
+            foreach ($filtros['año'] as $key => $value) {
+                if($value == '2015') {
+                    $getQuery = Helpers::getQueryFiltro($filtros['rpoblacion'], 'R_POB_15', $addQuery, $addQuery2);
+                    $addQuery2= $getQuery[1];
+                }
+                if($value == '2020') {
+                    $getQuery = Helpers::getQueryFiltro($filtros['rpoblacion'], 'R_POB_20', $addQuery, $addQuery2);
+                    $addQuery2= $getQuery[1];
+                }
+                if($value == '2030') {
+                    $getQuery = Helpers::getQueryFiltro($filtros['rpoblacion'], 'R_POB_30', $addQuery, $addQuery2);
+                    $addQuery2= $getQuery[1];
+                }
+            }
+            $addQuery= $getQuery[0];
+        }
+        if ($filtros['pi'] != []) {
+            $getQuery = Helpers::getQueryFiltro($filtros['pi'], 'RANGO_PI', $addQuery, $addQuery2);
+            $addQuery2= $getQuery[1];
+            $addQuery= $getQuery[0];
+        }
 
         switch ($page) {
             case 'demanda':

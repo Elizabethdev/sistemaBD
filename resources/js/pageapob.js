@@ -51,7 +51,11 @@ const app = new Vue({
             subcuenca: [],
             region: [],
             estado: [],
-            tipo: []
+            tipo: [],
+            rcobertura: [],
+            rpoblacion: [],
+            año: [],
+            pi: [],
         }
     },
     methods: {

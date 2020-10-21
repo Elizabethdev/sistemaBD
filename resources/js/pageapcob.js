@@ -1,11 +1,11 @@
 import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
 import rangosComponent from './components/generales/filtrosrangos.vue';
-import tableComponent from './components/generales/tableapcob.vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import tableComponent from './components/generales/tableapcob.vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 import axios from './client/client.js';
-import { BOverlay} from 'bootstrap-vue'
+import { BOverlay} from 'bootstrap-vue';
 
 window.Vue = require('vue');
 

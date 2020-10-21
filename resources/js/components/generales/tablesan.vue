@@ -3,13 +3,13 @@
         <thead>
             <tr>
                 <template v-for="(header, key) in headers">
-                    <th v-if="header.visible" :key="key">{{header.name}}</th>
+                    <th v-if="header.visible" :key="key" :class="header.class">{{header.name}}</th>
                 </template>
             </tr>
         </thead>
         <tbody>
             <template v-for="(value, index) in datosTotales">
-                <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u+index">
+                <tr :key="value.cve_u+index">
                     <td>{{value.estado}}</td>
                     <td v-if="visible.consejo">{{value.consejo_cuenca}}</td>
                     <td v-if="visible.subcuenca">{{value.subcuenca}}</td>
@@ -119,6 +119,9 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
     }
     table th{ /* Added padding for better layout after collapsing */
         padding: 0.75em 0.75em;
+    }
+    .thWidth{
+        min-width: 500px;
     }
     
 </style>
