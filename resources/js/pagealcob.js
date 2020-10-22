@@ -92,11 +92,13 @@ const app = new Vue({
                     break;
                 case 'cobertura':
                     this.filtros.rcobertura = value
-                    this.getDatosByFiltros()
+                    if(this.filtros.año.length > 0)
+                        this.getDatosByFiltros()
                     break;
                 case 'poblacion':
                     this.filtros.rpoblacion = value
-                    this.getDatosByFiltros()
+                    if(this.filtros.año.length > 0)
+                        this.getDatosByFiltros()
                     break;
                 case 'PI':
                     this.filtros.pi = value
@@ -104,7 +106,8 @@ const app = new Vue({
                     break;
                 case 'año':
                     this.filtros.año = value
-                    this.getDatosByFiltros()
+                    if(this.filtros.rcobertura.length > 0 || this.filtros.rpoblacion.length > 0)
+                        this.getDatosByFiltros()
                     break;
                 default:
                     break;
