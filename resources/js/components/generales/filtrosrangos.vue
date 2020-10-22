@@ -126,13 +126,16 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
         },
         watch: {
             rangoCobSelected: function(newValue){
-                this.$emit('rangochange', 'cobertura', newValue, this.añoSelected );
+                this.$emit('rangochange', 'cobertura', newValue);
             },
             rangoPobSelected: function(newValue){
-                this.$emit('rangochange', 'poblacion', newValue, this.añoSelected );
+                this.$emit('rangochange', 'poblacion', newValue);
             },
             rangoPISelected: function(newValue){
-                this.$emit('rangochange', 'PI', newValue, this.añoSelected );
+                this.$emit('rangochange', 'PI', newValue);
+            },
+            añoSelected: function(newValue){
+                this.$emit('rangochange', 'año', newValue);
             }
         }
     }

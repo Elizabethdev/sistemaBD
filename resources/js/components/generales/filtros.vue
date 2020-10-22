@@ -24,7 +24,7 @@
             </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <BDropdown text="CONSEJOS DE CUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="CONSEJOS DE CUENCA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedC"

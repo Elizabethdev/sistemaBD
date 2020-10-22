@@ -90,25 +90,20 @@ const app = new Vue({
                     this.filtros.tipo = value
                     this.getDatosByFiltros()
                     break;
-                default:
-                    break;
-            }
-        },
-        rangochange(tipo, value, año){
-            this.show = true
-            switch (tipo) {
                 case 'cobertura':
                     this.filtros.rcobertura = value
-                    this.filtros.año = año
                     this.getDatosByFiltros()
                     break;
                 case 'poblacion':
                     this.filtros.rpoblacion = value
-                    this.filtros.año = año
                     this.getDatosByFiltros()
                     break;
                 case 'PI':
                     this.filtros.pi = value
+                    this.getDatosByFiltros()
+                    break;
+                case 'año':
+                    this.filtros.año = value
                     this.getDatosByFiltros()
                     break;
                 default:

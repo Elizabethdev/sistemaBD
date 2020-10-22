@@ -1,4 +1,3 @@
-import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
 import rangosComponent from './components/generales/filtrosrangos.vue';
 import tableComponent from './components/generales/tableapcob.vue';
@@ -14,7 +13,6 @@ const app = new Vue({
     components: {
         filtrosComponent,
         tableComponent,
-        vistaComponent,
         rangosComponent,
         BOverlay
     },
@@ -36,7 +34,6 @@ const app = new Vue({
         newdtotalesStatic: {},
         newdtotales: [],
         newdmunicipios: {},
-        tipoVista: 'consejo',
         visible: {
             municipio: false,
             consejo: false,
@@ -59,7 +56,6 @@ const app = new Vue({
     methods: {
         filterchange2(tipo, value){
             this.show = true
-            this.tipoVista = tipo
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
@@ -91,6 +87,22 @@ const app = new Vue({
                     break;
                 case 'tipo':
                     this.filtros.tipo = value
+                    this.getDatosByFiltros()
+                    break;
+                case 'cobertura':
+                    this.filtros.rcobertura = value
+                    this.getDatosByFiltros()
+                    break;
+                case 'poblacion':
+                    this.filtros.rpoblacion = value
+                    this.getDatosByFiltros()
+                    break;
+                case 'PI':
+                    this.filtros.pi = value
+                    this.getDatosByFiltros()
+                    break;
+                case 'año':
+                    this.filtros.año = value
                     this.getDatosByFiltros()
                     break;
                 default:

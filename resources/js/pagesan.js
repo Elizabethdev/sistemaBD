@@ -33,9 +33,9 @@ const app = new Vue({
             {name:'Descripción del proceso de tratamiento', visible: true, class: 'thWidth'},
             {name:'Observaciones', visible: true, class: 'thWidth'},
             {name:'Inversión de construcción', visible: true, class: ''},
-            {name:'Programa construyo', visible: true, class: ''},
+            {name:'Programa', visible: true, class: ''},
             {name:'Cuerpo Receptor', visible: true, class: ''},
-            {name:'Diagnostico', visible: true, class: ''}
+            {name:'Diagnóstico', visible: true, class: ''}
         ],
         newdtotalesStatic: {},
         newdtotales: [],

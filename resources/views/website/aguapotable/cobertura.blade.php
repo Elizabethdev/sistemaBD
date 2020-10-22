@@ -39,7 +39,7 @@ Agua Potable
                         v-on:filterchange2="filterchange2"
                     >  
                     </filtros-component>
-                    <rangos-component v-on:rangochange="rangochange"></rangos-component>
+                    <rangos-component v-on:rangochange="filterchange2"></rangos-component>
                 </div>
             </section>
             <section>		
