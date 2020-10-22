@@ -19,4 +19,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/pagealcob.js', 'public/js')
     .js('resources/js/pagealpob.js', 'public/js')
     .js('resources/js/pagesan.js', 'public/js')
+    .js('resources/js/pagecal.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

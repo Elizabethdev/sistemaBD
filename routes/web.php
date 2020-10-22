@@ -18,9 +18,9 @@ Auth::routes();
 
 Route::view('/inicio', 'website/home')->name('inicio');
 Route::view('/', 'website/home')->name('/');
-Route::view('/calidadagua', 'website/calidad/calidadagua')->name('calidadagua');
 
 Route::get('/saneamiento', 'SaneamientoController@index')->name('saneamiento');
+Route::get('/calidadagua', 'CalidadController@index')->name('calidadagua');
 
 Route::prefix('/aguapotable')->group(function () {
     Route::get('/demanda', 'AguaPotableController@index')->name('aguapotable');
@@ -55,5 +55,6 @@ Route::prefix('api')->group(function () {
     Route::post('/alc/consultarbyfiltros', 'AlcantarilladoController@consultarByFiltros')->name('consultaralcByFiltros');
 
     Route::post('/san/consultarbyfiltros', 'SaneamientoController@consultarByFiltros')->name('consultarsanByFiltros');
+    Route::post('/cal/consultarbyfiltros', 'CalidadController@consultarByFiltros')->name('consultarcalByFiltros');
 
 });

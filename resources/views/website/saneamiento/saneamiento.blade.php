@@ -25,7 +25,6 @@ Saneamiento
         <div class="inner">
             <section>
                 <h3 class="major">Datos</h3>
-                
             </section>
             <section>
                 <h4>Filtrar por:</h4>

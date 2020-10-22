@@ -62,11 +62,11 @@ Inicio
         <!-- Cuatro -->
         <section id="two" class="wrapper alt spotlight style4">
             <div class="inner">
-                <a href="#" class="image"><img src="{{ asset('assets/images/calidad_agua.jpg') }}" alt="" /></a>
+                <a href="{{ route('calidadagua') }}" class="image"><img src="{{ asset('assets/images/calidad_agua.jpg') }}" alt="" /></a>
                 <div class="content">
                     <h2 class="major">Calidad del Agua</h2>
                     <p>Es una medida de la condición del agua en relación con los requisitos de una o más especies bióticas o a cualquier necesidad humana o propósito.</p>
-                    <a href="#" class="special">Leer más</a>
+                    <a href="{{ route('calidadagua') }}" class="special">Leer más</a>
                 </div>
             </div>
         </section>
