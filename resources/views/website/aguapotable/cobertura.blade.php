@@ -42,7 +42,7 @@ Agua Potable
                     <rangos-component v-on:rangochange="filterchange2"></rangos-component>
                 </div>
             </section>
-            <section>		
+            <section id="header-fixed">		
             <b-overlay :show="show" rounded="sm" spinner-variant="primary">								
                 <div class="table-wrapper my-4">
                    <table-component :newdtotales="newdtotales" :headers-table="headersTable" :visible="visible"></table-component>
@@ -52,11 +52,35 @@ Agua Potable
             <section>										
                 <ul class="actions">
                     <li><a href="#" class="button primary icon solid fa-save">Guardar</a></li>
-                    <li><a href="#" class="button primary icon solid fa-print">Imprimir</a></li>
+                    <!-- <li><a href="#" class="button primary icon solid fa-print">Imprimir</a> -->
+                    <li>
+                    <!-- <input type="button" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" value="imprimir" /> -->
+                    <a href="javascript:void(0);" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" >Imprimir</a>
+                    </li>
                 </ul>
             </section>
         </div>
     </div>
 </section>
     
+@endsection
+
+@section('scripts')
+<script>
+function printDiv(nombreDiv) {
+
+    var w = window.open();
+    w.document.write('<html><head>');
+	w.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#4c5c96;text-align:left;font-size:15px;color: #fff;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');
+    w.document.write('</head><body >');
+    w.document.write(document.getElementById(nombreDiv).innerHTML);
+    w.document.write('</body></html>');
+    w.document.close(); // necesario para IE >= 10
+    w.focus(); // necesario para IE >= 10
+    w.print();
+    w.close();
+    return true;
+}
+</script>
+
 @endsection

@@ -53,7 +53,8 @@ Calidad del Agua
                     <li><a href="#" class="button primary icon solid fa-save">Guardar</a></li>
                     <li>
                     <input type="button" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" value="imprimir" />
-                    <!-- <a href="javascript:void(0);" onclick="printDiv('areaImprimir')" >Imprimir</a></li> -->
+                    <!-- <a href="javascript:void(0);" onclick="printDiv('areaImprimir')" >Imprimir</a> -->
+                    </li>
                 </ul>
             </section>
         </div>
@@ -86,7 +87,7 @@ function printDiv(nombreDiv) {
 
     var mywindow = window.open();
     mywindow.document.write('<html><head>');
-	mywindow.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#d4eefd;text-align:left;font-size:15px;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');
+	mywindow.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#4c5c96;text-align:left;font-size:15px;color: #fff;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');
     mywindow.document.write('</head><body >');
     mywindow.document.write(document.getElementById(nombreDiv).innerHTML);
     mywindow.document.write('</body></html>');
@@ -98,4 +99,12 @@ function printDiv(nombreDiv) {
 }
 </script>
 
+<!-- <style type="text/css" media="print">
+@media print {
+header {display:none;}
+#section1 {display:none;}
+#section2 {display:none;}
+#section3 {display:none;}
+}
+</style> -->
 @endsection

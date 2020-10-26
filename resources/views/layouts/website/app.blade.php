@@ -10,10 +10,10 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     
     <!-- Custom fonts for this template-->
-	<link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" type="text/css">
+	<link rel="stylesheet" media="all" href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" type="text/css">
 	
     <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" media="all" href="{{ asset('assets/css/main.css') }}" />
 	<noscript><link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" /></noscript>
      
 	@yield('css')
