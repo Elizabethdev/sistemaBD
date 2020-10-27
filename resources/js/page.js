@@ -53,6 +53,7 @@ const app = new Vue({
             rpoblacion: [],
             año: [],
             pi: [],
+            order: 5
         }
     },
     methods: {
@@ -61,24 +62,32 @@ const app = new Vue({
             this.tipoVista = tipo
             switch (tipo) {
                 case 'consejo':
+                    var order = value.length > 0 ? 1 : 5
+                    this.filtros.order = this.filtros.order > order ? order : this.filtros.order
                     this.filtros.consejo = value
                     this.visible.consejo = value.length > 0 ? true : false
                     this.headersTable[1].visible = value.length > 0 ? true : false
                     this.getDatosByFiltros()
                     break;
                 case 'subcuenca':
+                    var order = value.length > 0 ? 2 : 5
+                    this.filtros.order = this.filtros.order > order ? order : this.filtros.order
                     this.filtros.subcuenca = value
                     this.visible.subcuenca = value.length > 0 ? true : false
                     this.headersTable[2].visible = value.length > 0 ? true : false
                     this.getDatosByFiltros()
                     break;
                 case 'region':
+                    var order = value.length > 0 ? 3 : 5
+                    this.filtros.order = this.filtros.order > order ? order : this.filtros.order
                     this.filtros.region = value
                     this.visible.region = value.length > 0 ? true : false
                     this.headersTable[3].visible = value.length > 0 ? true : false
                     this.getDatosByFiltros()
                     break;
                 case 'municipio':
+                    var order = value.length > 0 ? 4 : 5
+                    this.filtros.order = this.filtros.order > order ? order : this.filtros.order
                     this.filtros.municipio = value
                     this.visible.municipio = value.length > 0 ? true : false
                     this.headersTable[4].visible = value.length > 0 ? true : false
@@ -113,7 +122,9 @@ const app = new Vue({
             axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, page: 'demanda'})
             .then((response)=>{
                 this.show = false
-                this.newdtotales = response.data.datos
+                var aux = response.data.datos
+                aux.push(response.data.total[0])
+                this.newdtotales = aux
             })
             .catch(error => {
                 console.log(error)

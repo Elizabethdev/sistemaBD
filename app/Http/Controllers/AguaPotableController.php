@@ -82,6 +82,7 @@ class AguaPotableController extends Controller
         $page = $request->page;
         $addQuery = '';
         $addQuery2 = '';
+        $order = 'localidad';
         $consulta = collect([]);
 
         if ($filtros['consejo'] != []) {
@@ -153,10 +154,30 @@ class AguaPotableController extends Controller
             $addQuery2= $getQuery[1];
             $addQuery= $getQuery[0];
         }
-        // dd($addQuery2);
+
+        switch ($filtros['order']) {
+            case '1':
+                $order = 'consejo_cuenca';
+                break;
+            case '2':
+                $order = 'subcuenca';
+                break;
+            case '3':
+                $order = 'reg_economica';
+                break;
+            case '4':
+                $order = 'municipio';
+                break;
+            case '5':
+                $order = 'localidad';
+                break;
+            default:
+                break;
+        }
+        
         switch ($page) {
             case 'demanda':
-                $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2));
+                $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
                 break;
             case 'cobertura':
                 $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2));
@@ -169,7 +190,8 @@ class AguaPotableController extends Controller
         }
 
         return response()->json([
-            'datos' => $consulta
+            'datos' => $consulta[0],
+            'total' => $consulta[1]
         ]);
     }
 

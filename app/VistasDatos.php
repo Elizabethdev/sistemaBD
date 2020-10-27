@@ -63,16 +63,22 @@ class VistasDatos extends Model
         
     }
     //Agua Potable
-    public function getDatosTotalesAPBy($where)
+    public function getDatosTotalesAPBy($where, $order)
     {
-        $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        $total = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
         SUM(DEM_AP_10) as DEM_AP_10, SUM(DEM_AP_15) as DEM_AP_15, SUM(DEM_AP_20) as DEM_AP_20, 
-        SUM(DEM_AP_30) as DEM_AP_30 FROM vwdemanda_ap '.$where;
+        SUM(DEM_AP_30) as DEM_AP_30 FROM vwdemanda_ap '.$where);
 
-        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        // return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        // cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_AP_10, DEM_AP_15, 
+        // DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' UNION ALL '. $first);
+
+        $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_AP_10, DEM_AP_15, 
-        DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' UNION ALL '. $first);
+        DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' ORDER BY '.$order);
+
+        return [$datos, $total];
     }
     public function getDatosTotalesAP_COB($where)
     {
