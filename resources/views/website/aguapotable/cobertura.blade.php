@@ -51,7 +51,16 @@ Agua Potable
             </section>
             <section>										
                 <ul class="actions">
-                    <li><a href="#" class="button primary icon solid fa-save">Guardar</a></li>
+                <b-overlay
+                    :show="busy"
+                    rounded
+                    opacity="0.6"
+                    spinner-small
+                    spinner-variant="primary"
+                    class="d-inline-block"
+                >
+                    <btn-component v-on:guardarexcel="guardarexcel"></btn-component>
+                </b-overlay>
                     <!-- <li><a href="#" class="button primary icon solid fa-print">Imprimir</a> -->
                     <li>
                     <!-- <input type="button" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" value="imprimir" /> -->
@@ -68,7 +77,6 @@ Agua Potable
 @section('scripts')
 <script>
 function printDiv(nombreDiv) {
-
     var w = window.open();
     w.document.write('<html><head>');
 	w.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#4c5c96;text-align:left;font-size:15px;color: #fff;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');

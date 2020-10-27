@@ -80,16 +80,18 @@ class VistasDatos extends Model
 
         return [$datos, $total];
     }
-    public function getDatosTotalesAP_COB($where)
+    public function getDatosTotalesAP_COB($where, $order)
     {
-        $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        $total = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
         SUM(COB_AP_10) as COB_AP_10, SUM(COB_AP_15) as COB_AP_15, SUM(COB_AP_20) as COB_AP_20, 
-        SUM(COB_AP_30) as COB_AP_30 FROM vw_cobertura_AP '.$where;
+        SUM(COB_AP_30) as COB_AP_30 FROM vw_cobertura_AP '.$where);
 
-        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, COB_AP_10, COB_AP_15, 
-        COB_AP_20, COB_AP_30 FROM vw_cobertura_AP '.$where. ' UNION ALL '. $first);
+        COB_AP_20, COB_AP_30 FROM vw_cobertura_AP '.$where. ' ORDER BY '. $order);
+
+        return [$datos, $total];
     }
     public function getDatosTotalesAP_POB($where)
     {

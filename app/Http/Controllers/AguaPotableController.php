@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DatosExport;
 use App\VistasDatos;
 use App\Http\Helpers\Helpers;
 
@@ -180,7 +182,7 @@ class AguaPotableController extends Controller
                 $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
                 break;
             case 'cobertura':
-                $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2));
+                $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
                 break;
             case 'poblacion':
                 $consulta = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2));
@@ -193,6 +195,14 @@ class AguaPotableController extends Controller
             'datos' => $consulta[0],
             'total' => $consulta[1]
         ]);
+    }
+
+    public function exportExcel(Request $request)
+    {
+        $datos = $request->datos;
+        $export = new DatosExport($datos);
+    
+        return Excel::download($export, 'calculos.xlsx');
     }
 
     //depurando metodos
