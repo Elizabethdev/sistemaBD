@@ -5,7 +5,7 @@ Agua Potable
 
 @section('css')
 <!-- Scripts para vue-->
-<script src="{{ asset('js/page.js') }}" defer></script>
+<script src="{{ asset('js/pageap.js') }}" defer></script>
 @stop
 
 @section('menu')

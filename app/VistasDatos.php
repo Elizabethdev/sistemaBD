@@ -65,15 +65,11 @@ class VistasDatos extends Model
     //Agua Potable
     public function getDatosTotalesAPBy($where, $order)
     {
-        $total = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
+        $total = DB::select('SELECT UPPER(" ") as cve_u, UPPER(" ") as cve_edo, UPPER(" ") as estado, UPPER(" ") as consejo_cuenca, UPPER(" ") as cve_mun, UPPER(" ") as municipio, 
+        UPPER(" ") as cve_subcuenca, UPPER(" ") as subcuenca, UPPER(" ") as reg_economica, UPPER(" ") as num_region, UPPER(" ") as localidad, UPPER(" ") as POBTOT, UPPER("TOTAL") as TIPO_20,
         SUM(DEM_AP_10) as DEM_AP_10, SUM(DEM_AP_15) as DEM_AP_15, SUM(DEM_AP_20) as DEM_AP_20, 
         SUM(DEM_AP_30) as DEM_AP_30 FROM vwdemanda_ap '.$where);
-
-        // return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        // cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_AP_10, DEM_AP_15, 
-        // DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' UNION ALL '. $first);
-
+     
         $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_AP_10, DEM_AP_15, 
         DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' ORDER BY '.$order);
@@ -82,8 +78,8 @@ class VistasDatos extends Model
     }
     public function getDatosTotalesAP_COB($where, $order)
     {
-        $total = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
+        $total = DB::select('SELECT UPPER(" ") as cve_u, UPPER(" ") as cve_edo, UPPER("") as estado, UPPER("") as consejo_cuenca, UPPER("") as cve_mun, UPPER("") as municipio, 
+        UPPER("") as cve_subcuenca, UPPER("") as subcuenca, UPPER("") as reg_economica, UPPER("") as num_region, UPPER("") as localidad, UPPER("") as POBTOT, UPPER("TOTAL") as TIPO_20,
         SUM(COB_AP_10) as COB_AP_10, SUM(COB_AP_15) as COB_AP_15, SUM(COB_AP_20) as COB_AP_20, 
         SUM(COB_AP_30) as COB_AP_30 FROM vw_cobertura_AP '.$where);
 
@@ -93,16 +89,18 @@ class VistasDatos extends Model
 
         return [$datos, $total];
     }
-    public function getDatosTotalesAP_POB($where)
+    public function getDatosTotalesAP_POB($where, $order)
     {
-        $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,SUM(PO_CON_AP_10) as PO_CON_AP_10, SUM(PO_SIN_AP_10) as PO_SIN_AP_10, 
+        $total =  DB::select('SELECT UPPER(" ") as cve_u, cve_edo, UPPER(" ") as estado, UPPER(" ") as consejo_cuenca, UPPER(" ") as cve_mun, UPPER(" ") as municipio, 
+        UPPER(" ") as cve_subcuenca, UPPER(" ") as subcuenca, UPPER(" ") as reg_economica, UPPER(" ") as num_region, UPPER(" ") as localidad, UPPER(" ") as POBTOT, UPPER("TOTAL") as TIPO_20,SUM(PO_CON_AP_10) as PO_CON_AP_10, SUM(PO_SIN_AP_10) as PO_SIN_AP_10, 
         SUM(PO_CON_AP_15) as PO_CON_AP_15, SUM(PO_SIN_AP_15) as PO_SIN_AP_15, SUM(PO_CON_AP_20) as PO_CON_AP_20, SUM(PO_SIN_AP_20) as PO_SIN_AP_20, SUM(PO_CON_AP_30) as PO_CON_AP_30, SUM(PO_SIN_AP_30) as PO_SIN_AP_30 
-        FROM vwpob_con_sin_AP '.$where;
+        FROM vwpob_con_sin_AP '.$where);
 
-        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
+        $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, PO_CON_AP_10, PO_SIN_AP_10, PO_CON_AP_15, PO_SIN_AP_15, 
-        PO_CON_AP_20, PO_SIN_AP_20, PO_CON_AP_30, PO_SIN_AP_30 FROM vwpob_con_sin_AP '.$where. ' UNION ALL '. $first);
+        PO_CON_AP_20, PO_SIN_AP_20, PO_CON_AP_30, PO_SIN_AP_30 FROM vwpob_con_sin_AP '.$where. ' ORDER BY '. $order);
+
+        return [$datos, $total];
     }
 
     //Alcantarillado

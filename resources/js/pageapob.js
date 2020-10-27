@@ -1,4 +1,3 @@
-import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
 import tableComponent from './components/generales/tableapob.vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -13,7 +12,6 @@ const app = new Vue({
     components: {
         filtrosComponent,
         tableComponent,
-        vistaComponent,
         BOverlay
     },
     data: {
@@ -35,10 +33,7 @@ const app = new Vue({
             {name:'Población Con AP 2030', visible: true},
             {name:'Población Sin AP 2030', visible: true}
         ],
-        newdtotalesStatic: {},
         newdtotales: [],
-        newdmunicipios: {},
-        tipoVista: 'consejo',
         visible: {
             municipio: false,
             consejo: false,
@@ -61,7 +56,6 @@ const app = new Vue({
     methods: {
         filterchange2(tipo, value){
             this.show = true
-            this.tipoVista = tipo
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
@@ -99,24 +93,13 @@ const app = new Vue({
                     break;
             }
         },
-        filterDatos(filtros){
-            const totales = this.newdtotalesStatic
-            const result = {}
-            if(filtros.length > 0){
-                filtros.forEach(function(elem, index){
-                    if (totales.hasOwnProperty(elem)){
-                        result[elem] = totales[elem];
-                    }
-                });
-                this.newdtotales = result
-            } else{ this.newdtotales = totales}
-            this.show = false
-        },
         getDatosByFiltros(){
             axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, page: 'poblacion'})
             .then((response)=>{
                 this.show = false
-                this.newdtotales = response.data.datos
+                var aux = response.data.datos
+                aux.push(response.data.total[0])
+                this.newdtotales = aux
             })
             .catch(error => {
                 console.log(error)

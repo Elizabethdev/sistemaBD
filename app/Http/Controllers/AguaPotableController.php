@@ -85,25 +85,34 @@ class AguaPotableController extends Controller
         $addQuery = '';
         $addQuery2 = '';
         $order = 'localidad';
+        $orderValue = 5;
         $consulta = collect([]);
 
         if ($filtros['consejo'] != []) {
+            $orderTemp = 1;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
-        if ($filtros['municipio'] != []) {
-            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
-            $addQuery= $getQuery[0];
-            $addQuery2= $getQuery[1];
-        }
         if ($filtros['subcuenca'] != []) {
+            $orderTemp = 2;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['region'] != []) {
+            $orderTemp = 3;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['municipio'] != []) {
+            $orderTemp = 4;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
+            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
@@ -157,20 +166,20 @@ class AguaPotableController extends Controller
             $addQuery= $getQuery[0];
         }
 
-        switch ($filtros['order']) {
-            case '1':
+        switch ($orderValue) {
+            case 1:
                 $order = 'consejo_cuenca';
                 break;
-            case '2':
+            case 2:
                 $order = 'subcuenca';
                 break;
-            case '3':
+            case 3:
                 $order = 'reg_economica';
                 break;
-            case '4':
+            case 4:
                 $order = 'municipio';
                 break;
-            case '5':
+            case 5:
                 $order = 'localidad';
                 break;
             default:
@@ -185,7 +194,7 @@ class AguaPotableController extends Controller
                 $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
                 break;
             case 'poblacion':
-                $consulta = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2));
+                $consulta = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2, $order));
                 break;
             default:
                 break;
