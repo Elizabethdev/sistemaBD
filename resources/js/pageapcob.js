@@ -65,12 +65,20 @@ const app = new Vue({
             reg_economica:'reg_economica', 
             num_region:'num_region', 
             localidad:'localidad', 
-            POBTOT:'POBTOT', 
+            RANGO_PI:'Rango_PI', 
+            POBTOT_20:'POBTOT_20', 
+            R_POB_15: 'R_POB_15',
+            R_POB_20: 'R_POB_20',
+            R_POB_30: 'R_POB_30',
             TIPO_20:'TIPO_20', 
             COB_AP_10:'COB_AP_10', 
             COB_AP_15:'COB_AP_15', 
             COB_AP_20:'COB_AP_20', 
-            COB_AP_30:'COB_AP_30'
+            COB_AP_30:'COB_AP_30',
+            R_COB_AP_15:'R_COB_AP_15',
+            R_COB_AP_20:'R_COB_AP_20',
+            R_COB_AP_30:'R_COB_AP_30',
+            
         }
     },
     methods: {
@@ -195,6 +203,19 @@ const app = new Vue({
                 console.log(error)
                 this.busy = false
             })
+        },
+        print(nombreDiv){
+            var w = window.open();
+            w.document.write('<html><head>');
+            w.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#4c5c96;text-align:left;font-size:15px;color: #fff;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');
+            w.document.write('</head><body>');
+            w.document.write(document.getElementById(nombreDiv).innerHTML);
+            w.document.write('</body></html>');
+            w.document.close(); // necesario para IE >= 10
+            w.focus(); // necesario para IE >= 10
+            w.print();
+            w.close();
+            return true;
         }
     }
 });

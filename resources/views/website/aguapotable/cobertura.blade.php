@@ -51,20 +51,21 @@ Agua Potable
             </section>
             <section>										
                 <ul class="actions">
-                <b-overlay
-                    :show="busy"
-                    rounded
-                    opacity="0.6"
-                    spinner-small
-                    spinner-variant="primary"
-                    class="d-inline-block"
-                >
-                    <btn-component v-on:guardarexcel="guardarexcel"></btn-component>
-                </b-overlay>
-                    <!-- <li><a href="#" class="button primary icon solid fa-print">Imprimir</a> -->
                     <li>
-                    <!-- <input type="button" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" value="imprimir" /> -->
-                    <a href="javascript:void(0);" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" >Imprimir</a>
+                        <b-overlay
+                            :show="busy"
+                            rounded
+                            opacity="0.6"
+                            spinner-small
+                            spinner-variant="primary"
+                            class="d-inline-block"
+                        >
+                            <btn-component v-on:btnclick="guardarexcel" name="Guardar" classbtn="fa-save"></btn-component>
+                        </b-overlay>
+                    </li>
+                    <li>
+                        <btn-component v-on:btnclick="print('header-fixed')" name="Imprimir" classbtn="fa-print"></btn-component>
+                        <!-- <a href="javascript:void(0);" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" ></a> -->
                     </li>
                 </ul>
             </section>
@@ -72,23 +73,4 @@ Agua Potable
     </div>
 </section>
     
-@endsection
-
-@section('scripts')
-<script>
-function printDiv(nombreDiv) {
-    var w = window.open();
-    w.document.write('<html><head>');
-	w.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#4c5c96;text-align:left;font-size:15px;color: #fff;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');
-    w.document.write('</head><body>');
-    w.document.write(document.getElementById(nombreDiv).innerHTML);
-    w.document.write('</body></html>');
-    w.document.close(); // necesario para IE >= 10
-    w.focus(); // necesario para IE >= 10
-    w.print();
-    w.close();
-    return true;
-}
-</script>
-
 @endsection

@@ -66,12 +66,12 @@ class VistasDatos extends Model
     public function getDatosTotalesAPBy($where, $order)
     {
         $total = DB::select('SELECT UPPER(" ") as cve_u, UPPER(" ") as cve_edo, UPPER(" ") as estado, UPPER(" ") as consejo_cuenca, UPPER(" ") as cve_mun, UPPER(" ") as municipio, 
-        UPPER(" ") as cve_subcuenca, UPPER(" ") as subcuenca, UPPER(" ") as reg_economica, UPPER(" ") as num_region, UPPER(" ") as localidad, UPPER(" ") as POBTOT, UPPER("TOTAL") as TIPO_20,
+        UPPER(" ") as cve_subcuenca, UPPER(" ") as subcuenca, UPPER(" ") as reg_economica, UPPER(" ") as num_region, UPPER(" ") as localidad, UPPER(" ") as POBTOT_20, UPPER("TOTAL") as TIPO_20,
         SUM(DEM_AP_10) as DEM_AP_10, SUM(DEM_AP_15) as DEM_AP_15, SUM(DEM_AP_20) as DEM_AP_20, 
         SUM(DEM_AP_30) as DEM_AP_30 FROM vwdemanda_ap '.$where);
      
         $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_AP_10, DEM_AP_15, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, TIPO_20, DEM_AP_10, DEM_AP_15, 
         DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' ORDER BY '.$order);
 
         return [$datos, $total];
@@ -79,25 +79,25 @@ class VistasDatos extends Model
     public function getDatosTotalesAP_COB($where, $order)
     {
         $total = DB::select('SELECT UPPER(" ") as cve_u, UPPER(" ") as cve_edo, UPPER("") as estado, UPPER("") as consejo_cuenca, UPPER("") as cve_mun, UPPER("") as municipio, 
-        UPPER("") as cve_subcuenca, UPPER("") as subcuenca, UPPER("") as reg_economica, UPPER("") as num_region, UPPER("") as localidad, UPPER("") as POBTOT, UPPER("TOTAL") as TIPO_20,
-        SUM(COB_AP_10) as COB_AP_10, SUM(COB_AP_15) as COB_AP_15, SUM(COB_AP_20) as COB_AP_20, 
-        SUM(COB_AP_30) as COB_AP_30 FROM vw_cobertura_AP '.$where);
+        UPPER("") as cve_subcuenca, UPPER("") as subcuenca, UPPER("") as reg_economica, UPPER("") as num_region, UPPER("") as localidad, UPPER("") as RANGO_PI, UPPER("") as POBTOT_20, 
+        UPPER("") as R_POB_15, UPPER("") as R_POB_20, UPPER("") as R_POB_30, UPPER("TOTAL") as TIPO_20, SUM(COB_AP_10) as COB_AP_10, SUM(COB_AP_15) as COB_AP_15,  SUM(COB_AP_20) as COB_AP_20,  
+        SUM(COB_AP_30) as COB_AP_30, UPPER("") as R_COB_AP_15, UPPER("") as R_COB_AP_20, UPPER("") as R_COB_AP_30 FROM vw_cobertura_AP '.$where);
 
         $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, COB_AP_10, COB_AP_15, 
-        COB_AP_20, COB_AP_30 FROM vw_cobertura_AP '.$where. ' ORDER BY '. $order);
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, RANGO_PI, POBTOT_20, R_POB_15, R_POB_20,R_POB_30, TIPO_20, COB_AP_10, COB_AP_15,
+        COB_AP_20, COB_AP_30, R_COB_AP_15, R_COB_AP_20, R_COB_AP_30 FROM vw_cobertura_AP '.$where. ' ORDER BY '. $order);
 
         return [$datos, $total];
     }
     public function getDatosTotalesAP_POB($where, $order)
     {
         $total =  DB::select('SELECT UPPER(" ") as cve_u, cve_edo, UPPER(" ") as estado, UPPER(" ") as consejo_cuenca, UPPER(" ") as cve_mun, UPPER(" ") as municipio, 
-        UPPER(" ") as cve_subcuenca, UPPER(" ") as subcuenca, UPPER(" ") as reg_economica, UPPER(" ") as num_region, UPPER(" ") as localidad, UPPER(" ") as POBTOT, UPPER("TOTAL") as TIPO_20,SUM(PO_CON_AP_10) as PO_CON_AP_10, SUM(PO_SIN_AP_10) as PO_SIN_AP_10, 
+        UPPER(" ") as cve_subcuenca, UPPER(" ") as subcuenca, UPPER(" ") as reg_economica, UPPER(" ") as num_region, UPPER(" ") as localidad, UPPER(" ") as POBTOT_20, UPPER("TOTAL") as TIPO_20,SUM(PO_CON_AP_10) as PO_CON_AP_10, SUM(PO_SIN_AP_10) as PO_SIN_AP_10, 
         SUM(PO_CON_AP_15) as PO_CON_AP_15, SUM(PO_SIN_AP_15) as PO_SIN_AP_15, SUM(PO_CON_AP_20) as PO_CON_AP_20, SUM(PO_SIN_AP_20) as PO_SIN_AP_20, SUM(PO_CON_AP_30) as PO_CON_AP_30, SUM(PO_SIN_AP_30) as PO_SIN_AP_30 
         FROM vwpob_con_sin_AP '.$where);
 
         $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, PO_CON_AP_10, PO_SIN_AP_10, PO_CON_AP_15, PO_SIN_AP_15, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, TIPO_20, PO_CON_AP_10, PO_SIN_AP_10, PO_CON_AP_15, PO_SIN_AP_15, 
         PO_CON_AP_20, PO_SIN_AP_20, PO_CON_AP_30, PO_SIN_AP_30 FROM vwpob_con_sin_AP '.$where. ' ORDER BY '. $order);
 
         return [$datos, $total];
@@ -107,34 +107,34 @@ class VistasDatos extends Model
     public function getDatosTotalesALCBy($where)
     {
         $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, UPPER("TOTAL") as TIPO_20,
         SUM(DEM_ALC_10) as DEM_ALC_10, SUM(DEM_ALC_15) as DEM_ALC_15, SUM(DEM_ALC_20) as DEM_ALC_20, 
         SUM(DEM_ALC_30) as DEM_ALC_30 FROM vwdemanda_alc '.$where;
 
         return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, DEM_ALC_10, DEM_ALC_15, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, TIPO_20, DEM_ALC_10, DEM_ALC_15, 
         DEM_ALC_20, DEM_ALC_30 FROM vwdemanda_alc '.$where. ' UNION ALL '. $first);
     }
     public function getDatosTotalesALC_COB($where)
     {
         $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, UPPER("TOTAL") as TIPO_20,
         SUM(COB_ALC_10) as COB_ALC_10, SUM(COB_ALC_15) as COB_ALC_15, SUM(COB_ALC_20) as COB_ALC_20, 
         SUM(COB_ALC_30) as COB_ALC_30 FROM vw_cobertura_ALC '.$where;
 
         return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, COB_ALC_10, COB_ALC_15, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, TIPO_20, COB_ALC_10, COB_ALC_15, 
         COB_ALC_20, COB_ALC_30 FROM vw_cobertura_ALC '.$where. ' UNION ALL '. $first);
     }
     public function getDatosTotalesALC_POB($where)
     {
         $first = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, UPPER("TOTAL") as TIPO_20, SUM(PO_CON_ALC_10) as PO_CON_ALC_10, SUM(PO_SIN_ALC_10) as PO_SIN_ALC_10, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, UPPER("TOTAL") as TIPO_20, SUM(PO_CON_ALC_10) as PO_CON_ALC_10, SUM(PO_SIN_ALC_10) as PO_SIN_ALC_10, 
         SUM(PO_CON_ALC_15) as PO_CON_ALC_15, SUM(PO_SIN_ALC_15) as PO_SIN_ALC_15, SUM(PO_CON_ALC_20) as PO_CON_ALC_20, SUM(PO_SIN_ALC_20) as PO_SIN_ALC_20, SUM(PO_CON_ALC_30) as PO_CON_ALC_30, SUM(PO_SIN_ALC_30) as PO_SIN_ALC_30 
         FROM vwpob_con_sin_ALC '.$where;
 
         return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, PO_CON_ALC_10, PO_SIN_ALC_10, PO_CON_ALC_15, PO_SIN_ALC_15, 
+        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, TIPO_20, PO_CON_ALC_10, PO_SIN_ALC_10, PO_CON_ALC_15, PO_SIN_ALC_15, 
         PO_CON_ALC_20, PO_SIN_ALC_20, PO_CON_ALC_30, PO_SIN_ALC_30 FROM vwpob_con_sin_ALC '.$where. ' UNION ALL '. $first);
     }
     //Saneamiento
