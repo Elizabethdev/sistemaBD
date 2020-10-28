@@ -33,7 +33,6 @@ const app = new Vue({
             {name:'Población Con Alcantarillado 2030', visible: true},
             {name:'Población Sin Alcantarillado 2030', visible: true}
         ],
-        newdtotalesStatic: {},
         newdtotales: [],
         newdmunicipios: {},
         tipoVista: 'consejo',
@@ -100,7 +99,9 @@ const app = new Vue({
             axios.post('/alc/consultarbyfiltros',{filtros: this.filtros, page: 'poblacion'})
             .then((response)=>{
                 this.show = false
-                this.newdtotales = response.data.datos
+                var aux = response.data.datos
+                aux.push(response.data.total[0])
+                this.newdtotales = aux
             })
             .catch(error => {
                 console.log(error)

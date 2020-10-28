@@ -70,24 +70,34 @@ class AlcantarilladoController extends Controller
         $addQuery = '';
         $addQuery2 = '';
         $consulta = collect([]);
+        $order = 'localidad';
+        $orderValue = 5;
 
         if ($filtros['consejo'] != []) {
+            $orderTemp = 1;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
-        if ($filtros['municipio'] != []) {
-            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
-            $addQuery= $getQuery[0];
-            $addQuery2= $getQuery[1];
-        }
         if ($filtros['subcuenca'] != []) {
+            $orderTemp = 2;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['region'] != []) {
+            $orderTemp = 3;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['municipio'] != []) {
+            $orderTemp = 4;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
+            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'cve_mun', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
@@ -141,15 +151,35 @@ class AlcantarilladoController extends Controller
             $addQuery= $getQuery[0];
         }
 
+        switch ($orderValue) {
+            case 1:
+                $order = 'consejo_cuenca';
+                break;
+            case 2:
+                $order = 'subcuenca';
+                break;
+            case 3:
+                $order = 'reg_economica';
+                break;
+            case 4:
+                $order = 'municipio';
+                break;
+            case 5:
+                $order = 'localidad';
+                break;
+            default:
+                break;
+        }
+
         switch ($page) {
             case 'demanda':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALCBy($addQuery2));
+                $consulta = collect($this->vistaDatos->getDatosTotalesALCBy($addQuery2, $order));
                 break;
             case 'cobertura':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2));
+                $consulta = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2, $order));
                 break;
             case 'poblacion':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALC_POB($addQuery2));
+                $consulta = collect($this->vistaDatos->getDatosTotalesALC_POB($addQuery2, $order));
                 break;
             default:
                 # code...
@@ -157,7 +187,8 @@ class AlcantarilladoController extends Controller
         }
 
         return response()->json([
-            'datos' => $consulta
+            'datos' => $consulta[0],
+            'total' => $consulta[1]
         ]);
     }
 
