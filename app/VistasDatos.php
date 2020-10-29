@@ -27,7 +27,7 @@ class VistasDatos extends Model
     public function getMunicipios()
     {
         return $municipios = DB::table('municipios')
-                            ->select('clave_m as value', 'municipio as text')
+                            ->select('id_mun as value', 'municipio as text')
                             ->orderBy('municipio', 'ASC')
                             ->get();
     }
@@ -35,7 +35,7 @@ class VistasDatos extends Model
     public function getSubcuencas()
     {
         return $subcuencas = DB::table('subcuencas')
-                            ->select('cve_subcuenca as value', 'subcuenca as text')
+                            ->select('id_subcuenca as value', 'subcuenca as text')
                             ->orderBy('subcuenca', 'ASC')
                             ->get();
     }
@@ -43,7 +43,7 @@ class VistasDatos extends Model
     public function getRegionesEco()
     {
         return $regiones_eco = DB::table('regiones_economicas')
-                            ->select('num_region as value', 'region_economica as text')
+                            ->select('id_region as value', 'region_economica as text')
                             ->orderBy('region_economica', 'ASC')
                             ->get();
     }
@@ -161,6 +161,7 @@ class VistasDatos extends Model
         return $datos = DB::select('select * from '.$vista.' '.$where);
     }
 
+    //Ya no se usa
     public function getDatosMunicipiosByFiltros($filtro, $subfiltro)
     {
         $query = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, SUM(DEM_AP_20) as totaldemap_20, 
