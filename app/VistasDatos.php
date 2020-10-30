@@ -80,11 +80,11 @@ class VistasDatos extends Model
     {
         $total = DB::select('SELECT UPPER(" ") as cve_u, UPPER(" ") as cve_edo, UPPER("") as estado, UPPER("") as consejo_cuenca, UPPER("") as cve_mun, UPPER("") as municipio, 
         UPPER("") as cve_subcuenca, UPPER("") as subcuenca, UPPER("") as reg_economica, UPPER("") as num_region, UPPER("") as localidad, UPPER("") as RANGO_PI, UPPER("") as POBTOT_20, 
-        UPPER("") as R_POB_15, UPPER("") as R_POB_20, UPPER("") as R_POB_30, UPPER("TOTAL") as TIPO_20, SUM(COB_AP_10) as COB_AP_10, SUM(COB_AP_15) as COB_AP_15,  SUM(COB_AP_20) as COB_AP_20,  
+        UPPER("") as PO_CON_AP_15, UPPER("") as PO_CON_AP_20, UPPER("") as PO_CON_AP_30, UPPER("") as R_POB_15, UPPER("") as R_POB_20, UPPER("") as R_POB_30, UPPER("TOTAL") as TIPO_20, SUM(COB_AP_10) as COB_AP_10, SUM(COB_AP_15) as COB_AP_15,  SUM(COB_AP_20) as COB_AP_20,  
         SUM(COB_AP_30) as COB_AP_30, UPPER("") as R_COB_AP_15, UPPER("") as R_COB_AP_20, UPPER("") as R_COB_AP_30 FROM vw_cobertura_AP '.$where);
 
-        $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, RANGO_PI, POBTOT_20, R_POB_15, R_POB_20,R_POB_30, TIPO_20, COB_AP_10, COB_AP_15,
+        $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca,
+        reg_economica, num_region, localidad, RANGO_PI, POBTOT_20, PO_CON_AP_15, PO_CON_AP_20, PO_CON_AP_30, R_POB_15, R_POB_20,R_POB_30, TIPO_20, COB_AP_10, COB_AP_15,
         COB_AP_20, COB_AP_30, R_COB_AP_15, R_COB_AP_20, R_COB_AP_30 FROM vw_cobertura_AP '.$where. ' ORDER BY '. $order);
 
         return [$datos, $total];
@@ -119,14 +119,14 @@ class VistasDatos extends Model
     }
     public function getDatosTotalesALC_COB($where, $order)
     {
-        $total = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, UPPER("TOTAL") as TIPO_20,
-        SUM(COB_ALC_10) as COB_ALC_10, SUM(COB_ALC_15) as COB_ALC_15, SUM(COB_ALC_20) as COB_ALC_20, 
-        SUM(COB_ALC_30) as COB_ALC_30 FROM vw_cobertura_ALC '.$where);
+        $total = DB::select('SELECT UPPER("") as cve_u, UPPER("") as cve_edo, UPPER("") as estado, UPPER("") as consejo_cuenca, UPPER("") as cve_mun, UPPER("") as municipio, 
+        UPPER("") as cve_subcuenca, UPPER("") as subcuenca, UPPER("") as reg_economica, UPPER("") as num_region, UPPER("") as localidad, UPPER("") as RANGO_PI, UPPER("") as POBTOT_20, 
+        UPPER("") as PO_CON_ALC_15, UPPER("") as PO_CON_ALC_20, UPPER("") as PO_CON_ALC_30, UPPER("") as R_POB_15, UPPER("") as R_POB_20, UPPER("") as R_POB_30, UPPER("TOTAL") as TIPO_20, SUM(COB_ALC_10) as COB_ALC_10, SUM(COB_ALC_15) as COB_ALC_15, SUM(COB_ALC_20) as COB_ALC_20, 
+        SUM(COB_ALC_30) as COB_ALC_30, UPPER("") as R_COB_ALC_15, UPPER("") as R_COB_ALC_20, UPPER("") as R_COB_ALC_30 FROM vw_cobertura_ALC '.$where);
 
-        $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
-        cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_20, TIPO_20, COB_ALC_10, COB_ALC_15, 
-        COB_ALC_20, COB_ALC_30 FROM vw_cobertura_ALC '.$where. ' ORDER BY '. $order);
+        $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca,
+        reg_economica, num_region, localidad, RANGO_PI, POBTOT_20, PO_CON_ALC_15, PO_CON_ALC_20, PO_CON_ALC_30, R_POB_15, R_POB_20, R_POB_30, TIPO_20, COB_ALC_10, COB_ALC_15,
+        COB_ALC_20, COB_ALC_30, R_COB_ALC_15, R_COB_ALC_20, R_COB_ALC_30 FROM vw_cobertura_ALC '.$where. ' ORDER BY '. $order);
 
         return [$datos, $total];
     }

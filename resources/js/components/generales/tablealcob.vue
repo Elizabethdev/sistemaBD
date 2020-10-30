@@ -1,5 +1,5 @@
 <template>
-    <table class="alt" id="header-fixed">
+    <table class="alt tabla" id="header-fixed">
         <thead>
             <tr>
                 <template v-for="(header, key) in headers">
@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             <template v-for="(value, index) in datosTotales">
-                <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u">
+                <tr v-if="value.TIPO_20 == 'URBANA' || value.TIPO_20 == 'RURAL'" :key="value.cve_u" id="value.cve_u">
                     <td>{{value.estado}}</td>
                     <td v-if="visible.consejo">{{value.consejo_cuenca}}</td>
                     <td v-if="visible.subcuenca">{{value.subcuenca}}</td>
@@ -22,7 +22,7 @@
                     <td>{{value.COB_ALC_20}}</td>
                     <td>{{value.COB_ALC_30}}</td>
                 </tr>
-                <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
+                <tr v-if="value.TIPO_20 == 'TOTAL'" :key="index" id="index">
                     <td :colspan="colspan">TOTAL </td>
                     <td>{{value.COB_ALC_10}}</td>
                     <td>{{value.COB_ALC_15}}</td>

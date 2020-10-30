@@ -59,7 +59,7 @@ const app = new Vue({
             estado:"estado",
             consejo_cuenca: 'consejo_cuenca',
             cve_mun: 'cve_mun',
-            municipio:"municipio",
+            municipio:'municipio',
             cve_subcuenca:'cve_subcuenca', 
             subcuenca:'subcuenca', 
             reg_economica:'reg_economica', 
@@ -67,6 +67,9 @@ const app = new Vue({
             localidad:'localidad', 
             RANGO_PI:'Rango_PI', 
             POBTOT_20:'POBTOT_20', 
+            PO_CON_AP_15:'PO_CON_AP_15', 
+            PO_CON_AP_20:'PO_CON_AP_20',
+            PO_CON_AP_30:'PO_CON_AP_30',
             R_POB_15: 'R_POB_15',
             R_POB_20: 'R_POB_20',
             R_POB_30: 'R_POB_30',
@@ -78,7 +81,6 @@ const app = new Vue({
             R_COB_AP_15:'R_COB_AP_15',
             R_COB_AP_20:'R_COB_AP_20',
             R_COB_AP_30:'R_COB_AP_30',
-            
         }
     },
     methods: {
@@ -194,7 +196,7 @@ const app = new Vue({
                 }))
                 const link = document.createElement('a')
                 link.href = url
-                link.setAttribute('download', 'calculos.xlsx')
+                link.setAttribute('download', 'cobertura_ap.xlsx')
                 document.body.appendChild(link)
                 link.click()
                 this.busy = false
