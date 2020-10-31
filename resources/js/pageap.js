@@ -21,6 +21,7 @@ const app = new Vue({
     },
     data: {
         show:false,
+        busy:false,
         headersTable: [
             {name:'Estado', visible: true},
             {name:'Consejo de Cuenca', visible: false},
@@ -34,10 +35,7 @@ const app = new Vue({
             {name:'Demanda de Agua 2020', visible: true},
             {name:'Demanda de Agua 2030', visible: true}
         ],
-        newdtotalesStatic: {},
         newdtotales: [],
-        newdmunicipios: {},
-        tipoVista: 'consejo',
         visible: {
             municipio: false,
             consejo: false,
@@ -55,6 +53,31 @@ const app = new Vue({
             rpoblacion: [],
             año: [],
             pi: [],
+        },
+        headersFile: {
+            cve_u:"cve_u",
+            cve_edo: 'cve_edo',
+            estado:"estado",
+            consejo_cuenca: 'consejo_cuenca',
+            cve_mun: 'cve_mun',
+            municipio:'municipio',
+            cve_subcuenca:'cve_subcuenca', 
+            subcuenca:'subcuenca', 
+            reg_economica:'reg_economica', 
+            num_region:'num_region', 
+            localidad:'localidad',
+            POBTOT_10:'POBTOT_10', 
+            TIPO_10:'TIPO_10',
+            POBTOT_15:'POBTOT_15', 
+            TIPO_15:'TIPO_15',   
+            POBTOT_20:'POBTOT_20', 
+            TIPO_20:'TIPO_20', 
+            POBTOT_30:'POBTOT_30', 
+            TIPO_30:'TIPO_30', 
+            DEM_AP_10:'DEM_AP_10', 
+            DEM_AP_15:'DEM_AP_15',
+            DEM_AP_20:'DEM_AP_20',
+            DEM_AP_30:'DEM_AP_30', 
         }
     },
     methods: {
@@ -124,8 +147,42 @@ const app = new Vue({
                 this.show = false
             })
         },
-        guardarExcel(){
-            console.log(this.newdtotales)
+        guardarexcel(){
+            let data = [...this.newdtotales]
+            data.splice(0,0,this.headersFile)
+            this.busy = true
+            axios.post('/ap/export',{datos: data, page: 'demanda'}
+            , {
+                responseType: 'blob'
+            })
+            .then((response)=>{
+                const url = URL.createObjectURL(new Blob([response.data], {
+                    type: 'application/vnd.ms-excel'
+                }))
+                const link = document.createElement('a')
+                link.href = url
+                link.setAttribute('download', 'demanda_ap.xlsx')
+                document.body.appendChild(link)
+                link.click()
+                this.busy = false
+            })
+            .catch(error => {
+                console.log(error)
+                this.busy = false
+            })
+        },
+        print(nombreDiv){
+            var w = window.open();
+            w.document.write('<html><head>');
+            w.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#4c5c96;text-align:left;font-size:15px;color: #fff;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');
+            w.document.write('</head><body>');
+            w.document.write(document.getElementById(nombreDiv).innerHTML);
+            w.document.write('</body></html>');
+            w.document.close(); // necesario para IE >= 10
+            w.focus(); // necesario para IE >= 10
+            w.print();
+            w.close();
+            return true;
         }
     }
 });
