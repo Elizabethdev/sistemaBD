@@ -1,5 +1,5 @@
 <template>
-    <table class="alt" id="header-fixed">
+    <table class="alt tabla" id="header-fixed">
         <thead>
             <tr>
                 <template v-for="(header, key) in headers">

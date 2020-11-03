@@ -35,28 +35,37 @@ class CalidadController extends Controller
     public function consultarByFiltros(Request $request)
     {
         $filtros = $request->filtros;
-        // $page= $request->page;
         $addQuery = '';
         $addQuery2 = '';
         $consulta = collect([]);
+        $order = 'localidad';
+        $orderValue = 5;
 
         if ($filtros['consejo'] != []) {
+            $orderTemp = 1;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
-        if ($filtros['municipio'] != []) {
-            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'id_mun', $addQuery, $addQuery2);
-            $addQuery= $getQuery[0];
-            $addQuery2= $getQuery[1];
-        }
         if ($filtros['subcuenca'] != []) {
+            $orderTemp = 2;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'id_subcuenca', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
         if ($filtros['region'] != []) {
+            $orderTemp = 3;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['region'], 'id_region', $addQuery, $addQuery2);
+            $addQuery= $getQuery[0];
+            $addQuery2= $getQuery[1];
+        }
+        if ($filtros['municipio'] != []) {
+            $orderTemp = 4;
+            $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
+            $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'id_mun', $addQuery, $addQuery2);
             $addQuery= $getQuery[0];
             $addQuery2= $getQuery[1];
         }
@@ -71,7 +80,27 @@ class CalidadController extends Controller
             $addQuery2= $getQuery[1];
         }
 
-        $consulta = collect($this->vistaDatos->getDatos_Calidad($addQuery2));
+        switch ($orderValue) {
+            case 1:
+                $order = 'consejo_cuenca';
+                break;
+            case 2:
+                $order = 'subcuenca';
+                break;
+            case 3:
+                $order = 'reg_economica';
+                break;
+            case 4:
+                $order = 'municipio';
+                break;
+            case 5:
+                $order = 'localidad';
+                break;
+            default:
+                break;
+        }
+
+        $consulta = collect($this->vistaDatos->getDatos_Calidad($addQuery2, $order));
 
         return response()->json([
             'datos' => $consulta

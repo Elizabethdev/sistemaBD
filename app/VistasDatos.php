@@ -144,15 +144,15 @@ class VistasDatos extends Model
         return [$datos, $total];
     }
     //Saneamiento
-    public function getDatos_Saneamiento($where)
+    public function getDatos_Saneamiento($where, $order)
     {
-        return $datos = DB::select('SELECT * FROM vw_datos_saneamiento '.$where);
+        return $datos = DB::select('SELECT * FROM vw_datos_saneamiento '.$where. ' ORDER BY '. $order);
     }
 
     //Calidad
-    public function getDatos_Calidad($where)
+    public function getDatos_Calidad($where, $order)
     {
-        return $datos = DB::select('SELECT * FROM vw_datos_calidad '.$where);
+        return $datos = DB::select('SELECT * FROM vw_datos_calidad '.$where. ' ORDER BY '. $order);
     }
 
     public function getDatosTotalesByVista($vista, $where)
