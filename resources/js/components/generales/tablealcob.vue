@@ -95,22 +95,3 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
     }
 </script>
 
-<style >
-    table th {
-        position: -webkit-sticky!important; 
-        position: sticky!important;
-        top: 0!important;
-        z-index: 5!important;
-        background: #4c5c96!important;
-    }
-    table thead tr th{
-        border: solid 1px rgba(255, 255, 255, 0.125)!important;
-    }
-    table th {
-        border-left: 1px solid rgba(255, 255, 255, 0.125);
-        border-right: 1px solid rgba(255, 255, 255, 0.125);
-    }
-    table th{ /* Added padding for better layout after collapsing */
-        padding: 0.75em 0.75em;
-    }
-</style>

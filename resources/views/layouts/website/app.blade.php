@@ -15,7 +15,35 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" media="all" href="{{ asset('assets/css/main.css') }}" />
 	<noscript><link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" /></noscript>
-     
+    <style >
+    table th {
+        position: -webkit-sticky!important; 
+        position: sticky!important;
+        top: 0!important;
+        z-index: 5!important;
+        background: #4c5c96!important;
+    }
+    table thead tr th{
+        border: solid 1px rgba(255, 255, 255, 0.125)!important;
+    }
+    table th {
+        border-left: 1px solid rgba(255, 255, 255, 0.125);
+        border-right: 1px solid rgba(255, 255, 255, 0.125);
+    }
+    table th{ /* Added padding for better layout after collapsing */
+        padding: 0.75em 0.75em;
+    }
+    table.alt tbody tr td {
+        /* background-color: aliceblue; */
+        border: solid 1px #495057!important;
+        border-left-width: 0;
+        border-top-width: 0;
+    }
+    table.alt tbody {
+        background-color: white!important;
+        color: black!important;
+    }
+    </style>
 	@yield('css')
 
 </head>

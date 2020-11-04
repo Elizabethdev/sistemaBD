@@ -2,7 +2,7 @@
 <div>
     <div class="row gtr-uniform">
         <div class="field col-4 col-12-xsmall">
-            <BDropdown text="RANGO POR AÑOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="AÑO PARA COBERTURA O POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="añoSelected"
                     :options="años"
@@ -12,8 +12,10 @@
                 ></b-form-checkbox-group>
             </BDropdown>
         </div>
+    </div>
+    <div class="row gtr-uniform">
         <div class="field col-4 col-12-xsmall">
-            <BDropdown text="RANGO COBERTURA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="RANGO DE COBERTURA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoCobSelected"
                     :options="rangosCob"
@@ -24,7 +26,7 @@
             </BDropdown>
         </div>
         <div class="field col-4 col-12-xsmall">
-            <BDropdown text="RANGO POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="RANGO DE POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoPobSelected"
                     :options="rangosPob"
@@ -34,10 +36,8 @@
                 ></b-form-checkbox-group>
             </BDropdown>
         </div>
-    </div>
-    <div class="row gtr-uniform">
         <div class="field col-4 col-12-xsmall ">
-            <BDropdown text="RANGO POBLACIÓN INDÍGENA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="RANGO DE POBLACIÓN INDÍGENA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoPISelected"
                     :options="rangosPI"

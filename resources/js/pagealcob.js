@@ -159,6 +159,7 @@ const app = new Vue({
             .catch(error => {
                 console.log(error)
                 this.show = false
+                this.newdtotales = []
             })
         },
         guardarexcel(){
