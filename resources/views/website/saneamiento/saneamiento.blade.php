@@ -42,7 +42,7 @@ Saneamiento
                     </filtros-component>
                 </div>
             </section>
-            <section>										
+            <section id="header-fixed">										
             <b-overlay :show="show" rounded="sm" spinner-variant="primary">								
                 <div class="table-wrapper my-4">
                    <table-component :newdtotales="newdtotales" :headers-table="headersTable" :visible="visible"></table-component>

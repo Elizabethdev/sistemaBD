@@ -22,7 +22,7 @@
                     <td>{{formatNumber(value.DEM_ALC_20)}}</td>
                     <td>{{formatNumber(value.DEM_ALC_30)}}</td>
                 </tr>
-                <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
+                <tr v-if="value.TIPO_30 == 'TOTAL'" :key="value.cve_u+index">
                     <td :colspan="colspan">TOTAL </td>
                     <td>{{formatNumber(value.DEM_ALC_10)}}</td>
                     <td>{{formatNumber(value.DEM_ALC_15)}}</td>
