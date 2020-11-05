@@ -685,6 +685,8 @@ input, select, textarea {
 
 				.row > .col-4-xlarge {
 					width: 33.33333%;
+					padding-right: 15px;
+    				padding-left: 15px;
 				}
 
 				.row > .off-4-xlarge {
@@ -930,6 +932,8 @@ input, select, textarea {
 
 				.row > .col-4-large {
 					width: 33.33333%;
+					padding-right: 15px;
+    				padding-left: 15px;
 				}
 
 				.row > .off-4-large {
@@ -1191,6 +1195,8 @@ input, select, textarea {
 
 				.row > .col-6-medium {
 					width: 50%;
+					padding-right: 15px;
+    				padding-left: 15px;
 				}
 
 				.row > .off-6-medium {
@@ -1484,6 +1490,8 @@ input, select, textarea {
 
 				.row > .col-12-small {
 					width: 100%;
+					padding-right: 15px;
+    				padding-left: 15px;
 				}
 
 				.row > .off-12-small {

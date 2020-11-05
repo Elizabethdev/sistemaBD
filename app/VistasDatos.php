@@ -147,13 +147,17 @@ class VistasDatos extends Model
     //Saneamiento
     public function getDatos_Saneamiento($where, $order)
     {
-        return $datos = DB::select('SELECT * FROM vw_datos_saneamiento '.$where. ' ORDER BY '. $order);
+        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region,
+                                    localidad, ESTATUS, CVE_INEGI, CAP_INSTALADA, CAUDAL_TRATADO, POBTOT_20, TIPO_20, ORG_OPERADOR, PROC_TRATAMIENTO, DESC_PROC_TRATAMIENTO,
+                                    Observaciones, Inversion_Construccion, Programa_Construyo, Cuerpo_Receptor, Diagnostico FROM vw_datos_saneamiento '.$where. ' ORDER BY '. $order);
     }
 
     //Calidad
     public function getDatos_Calidad($where, $order)
     {
-        return $datos = DB::select('SELECT * FROM vw_datos_calidad '.$where. ' ORDER BY '. $order);
+        return $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region,
+                                    localidad, POBTOT, POBTOT_10, TIPO_10, TVIVHAB, VIVPAR_HAB, VPH_AGUADV, VPH_DRENAJ, LATITUD, LONGITUD, HIPOCLORADORES, 
+                                    PROGRAMA FROM vw_datos_calidad '.$where. ' ORDER BY '. $order);
     }
 
     public function getDatosTotalesByVista($vista, $where)

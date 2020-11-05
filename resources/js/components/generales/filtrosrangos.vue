@@ -1,8 +1,8 @@
 <template>
 <div>
-    <div class="row gtr-uniform">
-        <div class="field col-4 col-12-xsmall">
-            <BDropdown text="AÑO PARA COBERTURA O POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+    <div class="row">
+        <div class="col-4-xlarge col-6-medium col-12-small">
+            <BDropdown text="AÑO DE COBERTURA O POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="añoSelected"
                     :options="años"
@@ -13,8 +13,8 @@
             </BDropdown>
         </div>
     </div>
-    <div class="row gtr-uniform">
-        <div class="field col-4 col-12-xsmall">
+    <div class="row">
+        <div class="col-4-xlarge col-6-medium col-12-small">
             <BDropdown text="RANGO DE COBERTURA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoCobSelected"
@@ -25,7 +25,7 @@
                 ></b-form-checkbox-group>
             </BDropdown>
         </div>
-        <div class="field col-4 col-12-xsmall">
+        <div class="col-4-xlarge col-6-medium col-12-small">
             <BDropdown text="RANGO DE POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoPobSelected"
@@ -36,7 +36,7 @@
                 ></b-form-checkbox-group>
             </BDropdown>
         </div>
-        <div class="field col-4 col-12-xsmall ">
+        <div class="col-4-xlarge col-6-medium col-12-small ">
             <BDropdown text="RANGO DE POBLACIÓN INDÍGENA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoPISelected"

@@ -51,8 +51,21 @@ Saneamiento
             </section>
             <section>										
                 <ul class="actions">
-                    <li><a href="#" class="button primary icon solid fa-save">Guardar</a></li>
-                    <li><a href="#" class="button primary icon solid fa-print">Imprimir</a></li>
+                    <li>
+                        <b-overlay
+                            :show="busy"
+                            rounded
+                            opacity="0.6"
+                            spinner-small
+                            spinner-variant="primary"
+                            class="d-inline-block"
+                        >
+                            <btn-component v-on:btnclick="guardarexcel" name="Guardar" classbtn="fa-save"></btn-component>
+                        </b-overlay>
+                    </li>
+                    <li>
+                        <btn-component v-on:btnclick="print('header-fixed')" name="Imprimir" classbtn="fa-print"></btn-component>
+                    </li>
                 </ul>
             </section>
         </div>

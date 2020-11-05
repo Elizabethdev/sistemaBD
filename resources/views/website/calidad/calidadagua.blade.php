@@ -50,10 +50,20 @@ Calidad del Agua
             </section>
             <section id="section3">										
                 <ul class="actions">
-                    <li><a href="#" class="button primary icon solid fa-save">Guardar</a></li>
                     <li>
-                    <input type="button" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" value="imprimir" />
-                    <!-- <a href="javascript:void(0);" onclick="printDiv('areaImprimir')" >Imprimir</a> -->
+                        <b-overlay
+                            :show="busy"
+                            rounded
+                            opacity="0.6"
+                            spinner-small
+                            spinner-variant="primary"
+                            class="d-inline-block"
+                        >
+                            <btn-component v-on:btnclick="guardarexcel" name="Guardar" classbtn="fa-save"></btn-component>
+                        </b-overlay>
+                    </li>
+                    <li>
+                        <btn-component v-on:btnclick="print('header-fixed')" name="Imprimir" classbtn="fa-print"></btn-component>
                     </li>
                 </ul>
             </section>
@@ -64,47 +74,13 @@ Calidad del Agua
 @endsection
 
 @section('scripts')
-<script>
+<!-- <script>
 function printDiv(nombreDiv) {
-    // var contenido= document.getElementById(nombreDiv).innerHTML;
-   
-    // var contenidoOriginal= document.body.innerHTML;
-
-    // document.body.innerHTML = contenido;
-
-    // window.print();
-
-    // document.body.innerHTML = contenidoOriginal;
-
-    // var printContents = document.getElementById(nombreDiv).innerHTML;
-    // w = window.open();
-    //     w.document.write(printContents);
-    //     w.document.close(); // necessary for IE >= 10
-    //     w.focus(); // necessary for IE >= 10
-	// 	w.print();
-	// 	w.close();
-    //     return true;
-
-    var mywindow = window.open();
-    mywindow.document.write('<html><head>');
-	mywindow.document.write('<style>.tabla{width:100%;border-collapse:collapse;margin:16px 0 16px 0;}.tabla th{border:1px solid #ddd;padding:4px;background-color:#4c5c96;text-align:left;font-size:15px;color: #fff;}.tabla td{border:1px solid #ddd;text-align:left;padding:6px;}</style>');
-    mywindow.document.write('</head><body >');
-    mywindow.document.write(document.getElementById(nombreDiv).innerHTML);
-    mywindow.document.write('</body></html>');
-    mywindow.document.close(); // necesario para IE >= 10
-    mywindow.focus(); // necesario para IE >= 10
-    mywindow.print();
-    mywindow.close();
-    return true;
+    var contenido= document.getElementById(nombreDiv).innerHTML;
+    var contenidoOriginal= document.body.innerHTML;
+    document.body.innerHTML = contenido;
+    window.print();
+    document.body.innerHTML = contenidoOriginal;
 }
-</script>
-
-<!-- <style type="text/css" media="print">
-@media print {
-header {display:none;}
-#section1 {display:none;}
-#section2 {display:none;}
-#section3 {display:none;}
-}
-</style> -->
+</script> -->
 @endsection
