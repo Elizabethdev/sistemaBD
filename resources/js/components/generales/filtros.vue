@@ -1,7 +1,6 @@
 <template>
-<div>
     <div class="row">
-        <div class="col-4-xlarge col-12-small">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-4">
             <BDropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
@@ -23,7 +22,7 @@
                 </b-form-group>
             </BDropdown>
         </div>
-        <div class="col-4-xlarge col-12-small">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-4">
             <BDropdown text="CONSEJOS DE CUENCA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
@@ -45,7 +44,7 @@
                 </b-form-group>
             </BDropdown>
         </div>
-        <div class="col-4-xlarge col-12-small">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-4">
             <BDropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
@@ -67,9 +66,7 @@
                 </b-form-group>
             </BDropdown>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-4-xlarge col-12-small">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-4">
             <BDropdown text="REGIONES ECONÓMICAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
@@ -91,7 +88,7 @@
                 </b-form-group>
             </BDropdown>
         </div>
-        <div class="col-4-xlarge col-12-small">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-4">
             <BDropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
@@ -113,7 +110,7 @@
                 </b-form-group>
             </BDropdown>
         </div>
-        <div class="col-4-xlarge col-12-small">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-4">
             <BDropdown :text="titulo " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="tipoSelected"
@@ -125,7 +122,6 @@
             </BDropdown>
         </div>
     </div>
-</div>
 </template>
 
 <script>
