@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2265,10 +2265,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/tablesan.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablealpob.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/tablealpob.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2319,9 +2319,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "tbsaneamiento",
+  name: "tbpoblacionALC",
   props: {
     dtotales: {
       type: Array,
@@ -49978,25 +49979,6 @@ exports.push([module.i, "\n.drop-overflow{\n    max-height: 200px;\n    min-heig
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.thWidth{\n    min-width: 500px;\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -53765,36 +53747,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./tablesan.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -54838,10 +54790,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=template&id=7dfd43b6&":
-/*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/tablesan.vue?vue&type=template&id=7dfd43b6& ***!
-  \*********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablealpob.vue?vue&type=template&id=55d412e4&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/tablealpob.vue?vue&type=template&id=55d412e4& ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54864,9 +54816,7 @@ var render = function() {
             _vm._l(_vm.headers, function(header, key) {
               return [
                 header.visible
-                  ? _c("th", { key: key, class: header.class }, [
-                      _vm._v(_vm._s(header.name))
-                    ])
+                  ? _c("th", { key: key }, [_vm._v(_vm._s(header.name))])
                   : _vm._e()
               ]
             })
@@ -54880,53 +54830,103 @@ var render = function() {
         [
           _vm._l(_vm.datosTotales, function(value, index) {
             return [
-              _c("tr", { key: value.cve_u + index }, [
-                _c("td", [_vm._v(_vm._s(value.estado))]),
-                _vm._v(" "),
-                _vm.visible.consejo
-                  ? _c("td", [_vm._v(_vm._s(value.consejo_cuenca))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.visible.subcuenca
-                  ? _c("td", [_vm._v(_vm._s(value.subcuenca))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.visible.region
-                  ? _c("td", [_vm._v(_vm._s(value.reg_economica))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.visible.municipio
-                  ? _c("td", [_vm._v(_vm._s(value.municipio))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.localidad))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.ESTATUS))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.CVE_INEGI))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.CAP_INSTALADA))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.CAUDAL_TRATADO))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.POBTOT_20))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.ORG_OPERADOR))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.PROC_TRATAMIENTO))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.DESC_PROC_TRATAMIENTO))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.Observaciones))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.Inversion_Construccion))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.Programa_Construyo))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.Cuerpo_Receptor))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(value.Diagnostico))])
-              ])
+              value.TIPO_20 == "URBANA" || value.TIPO_20 == "RURAL"
+                ? _c("tr", { key: value.cve_u }, [
+                    _c("td", [_vm._v(_vm._s(value.estado))]),
+                    _vm._v(" "),
+                    _vm.visible.consejo
+                      ? _c("td", [_vm._v(_vm._s(value.consejo_cuenca))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.visible.subcuenca
+                      ? _c("td", [_vm._v(_vm._s(value.subcuenca))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.visible.region
+                      ? _c("td", [_vm._v(_vm._s(value.reg_economica))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.visible.municipio
+                      ? _c("td", [_vm._v(_vm._s(value.municipio))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(value.localidad))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(value.TIPO_20))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_10)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_10)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_15)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_15)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_20)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_20)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_30)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_30)))
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              value.TIPO_20 == "TOTAL"
+                ? _c("tr", { key: value.cve_u + index }, [
+                    _c("td", { attrs: { colspan: _vm.colspan } }, [
+                      _vm._v("TOTAL ")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_10)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_10)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_15)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_15)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_20)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_20)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_CON_ALC_30)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.formatNumber(value.PO_SIN_ALC_30)))
+                    ])
+                  ])
+                : _vm._e()
             ]
           })
         ],
@@ -67246,20 +67246,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/generales/tablesan.vue":
-/*!********************************************************!*\
-  !*** ./resources/js/components/generales/tablesan.vue ***!
-  \********************************************************/
+/***/ "./resources/js/components/generales/tablealpob.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/generales/tablealpob.vue ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _tablesan_vue_vue_type_template_id_7dfd43b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tablesan.vue?vue&type=template&id=7dfd43b6& */ "./resources/js/components/generales/tablesan.vue?vue&type=template&id=7dfd43b6&");
-/* harmony import */ var _tablesan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tablesan.vue?vue&type=script&lang=js& */ "./resources/js/components/generales/tablesan.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _tablesan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tablesan.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* harmony import */ var _tablealpob_vue_vue_type_template_id_55d412e4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tablealpob.vue?vue&type=template&id=55d412e4& */ "./resources/js/components/generales/tablealpob.vue?vue&type=template&id=55d412e4&");
+/* harmony import */ var _tablealpob_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tablealpob.vue?vue&type=script&lang=js& */ "./resources/js/components/generales/tablealpob.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -67267,10 +67265,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _tablesan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _tablesan_vue_vue_type_template_id_7dfd43b6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _tablesan_vue_vue_type_template_id_7dfd43b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _tablealpob_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _tablealpob_vue_vue_type_template_id_55d412e4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _tablealpob_vue_vue_type_template_id_55d412e4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -67280,70 +67278,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/generales/tablesan.vue"
+component.options.__file = "resources/js/components/generales/tablealpob.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/generales/tablesan.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/components/generales/tablesan.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************/
+/***/ "./resources/js/components/generales/tablealpob.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/generales/tablealpob.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./tablesan.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_tablealpob_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./tablealpob.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablealpob.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_tablealpob_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css&":
+/***/ "./resources/js/components/generales/tablealpob.vue?vue&type=template&id=55d412e4&":
 /*!*****************************************************************************************!*\
-  !*** ./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./resources/js/components/generales/tablealpob.vue?vue&type=template&id=55d412e4& ***!
   \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./tablesan.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/components/generales/tablesan.vue?vue&type=template&id=7dfd43b6&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/generales/tablesan.vue?vue&type=template&id=7dfd43b6& ***!
-  \***************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_template_id_7dfd43b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./tablesan.vue?vue&type=template&id=7dfd43b6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablesan.vue?vue&type=template&id=7dfd43b6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_template_id_7dfd43b6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tablealpob_vue_vue_type_template_id_55d412e4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./tablealpob.vue?vue&type=template&id=55d412e4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/tablealpob.vue?vue&type=template&id=55d412e4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tablealpob_vue_vue_type_template_id_55d412e4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tablesan_vue_vue_type_template_id_7dfd43b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_tablealpob_vue_vue_type_template_id_55d412e4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/pagesan.js":
-/*!*********************************!*\
-  !*** ./resources/js/pagesan.js ***!
-  \*********************************/
+/***/ "./resources/js/pagealpob.js":
+/*!***********************************!*\
+  !*** ./resources/js/pagealpob.js ***!
+  \***********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_generales_filtros_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/generales/filtros.vue */ "./resources/js/components/generales/filtros.vue");
-/* harmony import */ var _components_generales_tablesan_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/generales/tablesan.vue */ "./resources/js/components/generales/tablesan.vue");
+/* harmony import */ var _components_generales_tablealpob_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/generales/tablealpob.vue */ "./resources/js/components/generales/tablealpob.vue");
 /* harmony import */ var _components_generales_btn_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/generales/btn.vue */ "./resources/js/components/generales/btn.vue");
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3__);
@@ -67375,7 +67357,7 @@ var app = new Vue({
   el: '#app',
   components: {
     filtrosComponent: _components_generales_filtros_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    tableComponent: _components_generales_tablesan_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    tableComponent: _components_generales_tablealpob_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     btnComponent: _components_generales_btn_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     BOverlay: bootstrap_vue__WEBPACK_IMPORTED_MODULE_6__["BOverlay"]
   },
@@ -67384,104 +67366,51 @@ var app = new Vue({
     busy: false,
     headersTable: [{
       name: 'Estado',
-      visible: true,
-      "class": ''
+      visible: true
     }, {
       name: 'Consejo de Cuenca',
-      visible: false,
-      "class": ''
+      visible: false
     }, {
       name: 'Subcuenca',
-      visible: false,
-      "class": ''
+      visible: false
     }, {
       name: 'Región Económica',
-      visible: false,
-      "class": ''
+      visible: false
     }, {
       name: 'Municipio',
-      visible: false,
-      "class": ''
+      visible: false
     }, {
       name: 'Localidad',
-      visible: true,
-      "class": ''
+      visible: true
     }, {
-      name: 'Estatus',
-      visible: true,
-      "class": ''
+      name: 'Tipo de Población 2020',
+      visible: true
     }, {
-      name: 'Clave Inegi',
-      visible: true,
-      "class": ''
+      name: 'Población Con Alcantarillado 2010',
+      visible: true
     }, {
-      name: 'Capacidad instalada (l/s)',
-      visible: true,
-      "class": ''
+      name: 'Población Sin Alcantarillado 2010',
+      visible: true
     }, {
-      name: 'Caudal tratado',
-      visible: true,
-      "class": ''
+      name: 'Población Con Alcantarillado 2015',
+      visible: true
     }, {
-      name: 'Población total',
-      visible: true,
-      "class": ''
+      name: 'Población Sin Alcantarillado 2015',
+      visible: true
     }, {
-      name: 'Organismo Operador',
-      visible: true,
-      "class": ''
+      name: 'Población Con Alcantarillado 2020',
+      visible: true
     }, {
-      name: 'Proceso de tratamiento del agua',
-      visible: true,
-      "class": ''
+      name: 'Población Sin Alcantarillado 2020',
+      visible: true
     }, {
-      name: 'Descripción del proceso de tratamiento',
-      visible: true,
-      "class": 'thWidth'
+      name: 'Población Con Alcantarillado 2030',
+      visible: true
     }, {
-      name: 'Observaciones',
-      visible: true,
-      "class": 'thWidth'
-    }, {
-      name: 'Inversión de construcción',
-      visible: true,
-      "class": ''
-    }, {
-      name: 'Programa',
-      visible: true,
-      "class": ''
-    }, {
-      name: 'Cuerpo Receptor',
-      visible: true,
-      "class": ''
-    }, {
-      name: 'Diagnóstico',
-      visible: true,
-      "class": ''
+      name: 'Población Sin Alcantarillado 2030',
+      visible: true
     }],
-    newdtotalesStatic: {},
     newdtotales: [],
-    newdmunicipios: {},
-    titulo: 'ESTATUS',
-    tipos: [{
-      value: 'Activa',
-      text: 'Activa'
-    }, {
-      value: 'Baja',
-      text: 'Baja'
-    }, {
-      value: 'En proceso',
-      text: 'En proceso'
-    }, {
-      value: 'Fuera de operacion',
-      text: 'Fuera de operación'
-    }, {
-      value: 'No construida',
-      text: 'No construida'
-    }, {
-      value: 'Operando ineficientemente',
-      text: 'Operando ineficientemente'
-    }],
     visible: {
       municipio: false,
       consejo: false,
@@ -67494,7 +67423,11 @@ var app = new Vue({
       subcuenca: [],
       region: [],
       estado: [],
-      tipo: []
+      tipo: [],
+      rcobertura: [],
+      rpoblacion: [],
+      año: [],
+      pi: []
     },
     headersFile: {
       cve_u: "cve_u",
@@ -67508,20 +67441,19 @@ var app = new Vue({
       reg_economica: 'reg_economica',
       num_region: 'num_region',
       localidad: 'localidad',
-      ESTATUS: 'ESTATUS',
-      CVE_INEGI: 'CVE_INEGI',
-      CAP_INSTALADA: 'CAP_INSTALADA',
-      CAUDAL_TRATADO: 'CAUDAL_TRATADO',
+      // POBTOT_10:'POBTOT_10', 
+      // POBTOT_15:'POBTOT_15', 
+      // POBTOT_30:'POBTOT_30', 
       POBTOT_20: 'POBTOT_20',
       TIPO_20: 'TIPO_20',
-      ORG_OPERADOR: 'ORG_OPERADOR',
-      PROC_TRATAMIENTO: 'PROC_TRATAMIENTO',
-      DESC_PROC_TRATAMIENTO: 'DESC_PROC_TRATAMIENTO',
-      Observaciones: 'Observaciones',
-      Inversion_Construccion: 'Inversion_Construccion',
-      Programa_Construyo: 'Programa_Construyo',
-      Cuerpo_Receptor: 'Cuerpo_Receptor',
-      Diagnostico: 'Diagnostico'
+      PO_CON_ALC_10: 'PO_CON_ALC_10',
+      PO_SIN_ALC_10: 'PO_SIN_ALC_10',
+      PO_CON_ALC_15: 'PO_CON_ALC_15',
+      PO_SIN_ALC_15: 'PO_SIN_ALC_15',
+      PO_CON_ALC_20: 'PO_CON_ALC_20',
+      PO_SIN_ALC_20: 'PO_SIN_ALC_20',
+      PO_CON_ALC_30: 'PO_CON_ALC_30',
+      PO_SIN_ALC_30: 'PO_SIN_ALC_30'
     }
   },
   methods: {
@@ -67571,31 +67503,17 @@ var app = new Vue({
           break;
       }
     },
-    filterDatos: function filterDatos(filtros) {
-      var totales = this.newdtotalesStatic;
-      var result = {};
-
-      if (filtros.length > 0) {
-        filtros.forEach(function (elem, index) {
-          if (totales.hasOwnProperty(elem)) {
-            result[elem] = totales[elem];
-          }
-        });
-        this.newdtotales = result;
-      } else {
-        this.newdtotales = totales;
-      }
-
-      this.show = false;
-    },
     getDatosByFiltros: function getDatosByFiltros() {
       var _this = this;
 
-      _client_client_js__WEBPACK_IMPORTED_MODULE_5__["default"].post('/san/consultarbyfiltros', {
-        filtros: this.filtros
+      _client_client_js__WEBPACK_IMPORTED_MODULE_5__["default"].post('/alc/consultarbyfiltros', {
+        filtros: this.filtros,
+        page: 'poblacion'
       }).then(function (response) {
         _this.show = false;
-        _this.newdtotales = response.data.datos;
+        var aux = response.data.datos;
+        aux.push(response.data.total[0]);
+        _this.newdtotales = aux;
       })["catch"](function (error) {
         console.log(error);
         _this.show = false;
@@ -67611,7 +67529,7 @@ var app = new Vue({
       this.busy = true;
       _client_client_js__WEBPACK_IMPORTED_MODULE_5__["default"].post('/ap/export', {
         datos: data,
-        page: 'saneamiento'
+        page: 'poblacion'
       }, {
         responseType: 'blob'
       }).then(function (response) {
@@ -67620,7 +67538,7 @@ var app = new Vue({
         }));
         var link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', 'saneamiento_datos.xlsx');
+        link.setAttribute('download', 'pob_con_sin_alc.xlsx');
         document.body.appendChild(link);
         link.click();
         _this2.busy = false;
@@ -67649,14 +67567,14 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 7:
-/*!***************************************!*\
-  !*** multi ./resources/js/pagesan.js ***!
-  \***************************************/
+/***/ 6:
+/*!*****************************************!*\
+  !*** multi ./resources/js/pagealpob.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\sistemaBD\resources\js\pagesan.js */"./resources/js/pagesan.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\sistemaBD\resources\js\pagealpob.js */"./resources/js/pagealpob.js");
 
 
 /***/ })

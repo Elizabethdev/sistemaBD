@@ -1,5 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/page.js": "/js/page.js"
+    "/js/pagealc.js": "/js/pagealc.js",
+    "/js/pagealcob.js": "/js/pagealcob.js",
+    "/js/pagealpob.js": "/js/pagealpob.js",
+    "/js/pageap.js": "/js/pageap.js",
+    "/js/pageapcob.js": "/js/pageapcob.js",
+    "/js/pageapob.js": "/js/pageapob.js",
+    "/js/pagecal.js": "/js/pagecal.js",
+    "/js/pagesan.js": "/js/pagesan.js"
 }

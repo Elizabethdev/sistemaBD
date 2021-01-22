@@ -177,7 +177,7 @@ class AguaPotableController extends Controller
                 $order = 'reg_economica';
                 break;
             case 4:
-                $order = 'municipio';
+                $order = 'municipio ASC, localidad ASC';
                 break;
             case 5:
                 $order = 'localidad';
