@@ -54621,7 +54621,7 @@ var render = function() {
   return _c("div", { staticClass: "row" }, [
     _c(
       "div",
-      { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+      { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
       [
         _c(
           "BDropdown",
@@ -54689,7 +54689,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+      { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
       [
         _c(
           "BDropdown",
@@ -54761,7 +54761,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+      { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
       [
         _c(
           "BDropdown",
@@ -54833,7 +54833,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+      { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
       [
         _c(
           "BDropdown",
@@ -54901,7 +54901,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+      { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
       [
         _c(
           "BDropdown",
@@ -54973,7 +54973,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+      { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
       [
         _c(
           "BDropdown",
@@ -55032,7 +55032,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+        { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
         [
           _c(
             "BDropdown",
@@ -55068,7 +55068,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+        { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
         [
           _c(
             "BDropdown",
@@ -55102,7 +55102,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4" },
+        { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
         [
           _c(
             "BDropdown",
@@ -55136,7 +55136,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-lg-4 col-md-6 col-sm-12 col-4 " },
+        { staticClass: "col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" },
         [
           _c(
             "BDropdown",

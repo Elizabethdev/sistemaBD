@@ -84,11 +84,12 @@ class AguaPotableController extends Controller
         $page = $request->page;
         $addQuery = '';
         $addQuery2 = '';
-        $order = 'localidad';
+        $order = '';
         $orderValue = 5;
         $consulta = collect([]);
 
         if ($filtros['consejo'] != []) {
+            $order .= 'consejo_cuenca ASC, ';
             $orderTemp = 1;
             $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
@@ -96,6 +97,7 @@ class AguaPotableController extends Controller
             $addQuery2= $getQuery[1];
         }
         if ($filtros['subcuenca'] != []) {
+            $order .= 'subcuenca ASC, ';
             $orderTemp = 2;
             $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'id_subcuenca', $addQuery, $addQuery2);
@@ -103,6 +105,7 @@ class AguaPotableController extends Controller
             $addQuery2= $getQuery[1];
         }
         if ($filtros['region'] != []) {
+            $order .= 'reg_economica ASC, ';
             $orderTemp = 3;
             $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['region'], 'id_region', $addQuery, $addQuery2);
@@ -110,6 +113,7 @@ class AguaPotableController extends Controller
             $addQuery2= $getQuery[1];
         }
         if ($filtros['municipio'] != []) {
+            $order .= 'municipio ASC, ';
             $orderTemp = 4;
             $orderValue = $orderValue > $orderTemp ? $orderTemp : $orderValue;
             $getQuery = Helpers::getQueryFiltro($filtros['municipio'], 'id_mun', $addQuery, $addQuery2);
@@ -166,25 +170,7 @@ class AguaPotableController extends Controller
             $addQuery= $getQuery[0];
         }
 
-        switch ($orderValue) {
-            case 1:
-                $order = 'consejo_cuenca';
-                break;
-            case 2:
-                $order = 'subcuenca';
-                break;
-            case 3:
-                $order = 'reg_economica';
-                break;
-            case 4:
-                $order = 'municipio ASC, localidad ASC';
-                break;
-            case 5:
-                $order = 'localidad';
-                break;
-            default:
-                break;
-        }
+        $order .= 'localidad ASC';
         
         switch ($page) {
             case 'demanda':
