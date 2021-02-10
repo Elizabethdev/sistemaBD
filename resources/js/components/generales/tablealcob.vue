@@ -21,6 +21,13 @@
                     <td>{{value.COB_ALC_15}}</td>
                     <td>{{value.COB_ALC_20}}</td>
                     <td>{{value.COB_ALC_30}}</td>
+                    <td>{{value.R_COB_ALC_15}}</td>
+                    <td>{{value.R_COB_ALC_20}}</td>
+                    <td>{{value.R_COB_ALC_30}}</td>
+                    <td>{{value.R_POB_15}}</td>
+                    <td>{{value.R_POB_20}}</td>
+                    <td>{{value.R_POB_30}}</td>
+                    <td>{{value.RANGO_PI}}</td>
                 </tr>
                 <tr v-if="value.TIPO_20 == 'TOTAL'" :key="value.cve_u+index">
                     <td :colspan="colspan">TOTAL </td>
@@ -28,6 +35,7 @@
                     <td>{{value.COB_ALC_15}}</td>
                     <td>{{value.COB_ALC_20}}</td>
                     <td>{{value.COB_ALC_30}}</td>
+                    <td colspan="7"> </td>
                 </tr>
             </template>
         </tbody>												

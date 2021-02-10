@@ -32,7 +32,14 @@ const app = new Vue({
             {name:'Cobertura de Agua 2010', visible: true},
             {name:'Cobertura de Agua 2015', visible: true},
             {name:'Cobertura de Agua 2020', visible: true},
-            {name:'Cobertura de Agua 2030', visible: true}
+            {name:'Cobertura de Agua 2030', visible: true},
+            {name:'Rango Cobertura 2015', visible: true},
+            {name:'Rango Cobertura 2020', visible: true},
+            {name:'Rango Cobertura 2030', visible: true},
+            {name:'Rango Población 2015', visible: true},
+            {name:'Rango Población 2020', visible: true},
+            {name:'Rango Población 2030', visible: true},
+            {name:'Rango Población Indígena', visible: true},
         ],
         newdtotales: [],
         visible: {
@@ -139,7 +146,7 @@ const app = new Vue({
                     break;
                 case 'año':
                     this.filtros.año = value
-                    if(this.filtros.rcobertura.length > 0 || this.filtros.rpoblacion.length > 0)
+                    if(this.filtros.rcobertura.length > 0 && this.filtros.año.length > 0 || this.filtros.rpoblacion.length > 0 && this.filtros.año.length > 0)
                         this.getDatosByFiltros()
                     else
                         this.show = false
