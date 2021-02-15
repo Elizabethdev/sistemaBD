@@ -92,64 +92,64 @@ const app = new Vue({
     },
     methods: {
         filterchange2(tipo, value){
-            this.show = true
+            // this.show = true
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
                     this.visible.consejo = value.length > 0 ? true : false
                     this.headersTable[1].visible = value.length > 0 ? true : false
-                    this.getDatosByFiltros()
+                    // this.getDatosByFiltros()
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
                     this.visible.subcuenca = value.length > 0 ? true : false
                     this.headersTable[2].visible = value.length > 0 ? true : false
-                    this.getDatosByFiltros()
+                    // this.getDatosByFiltros()
                     break;
                 case 'region':
                     this.filtros.region = value
                     this.visible.region = value.length > 0 ? true : false
                     this.headersTable[3].visible = value.length > 0 ? true : false
-                    this.getDatosByFiltros()
+                    // this.getDatosByFiltros()
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
                     this.visible.municipio = value.length > 0 ? true : false
                     this.headersTable[4].visible = value.length > 0 ? true : false
-                    this.getDatosByFiltros()
+                    // this.getDatosByFiltros()
                     break;
                 case 'estado':
                     this.filtros.estado = value
-                    this.getDatosByFiltros()
+                    // this.getDatosByFiltros()
                     break;
                 case 'tipo':
                     this.filtros.tipo = value
-                    this.getDatosByFiltros()
+                    // this.getDatosByFiltros()
                     break;
                 case 'cobertura':
                     this.filtros.rcobertura = value
-                    if(this.filtros.año.length > 0)
-                        this.getDatosByFiltros()
-                    else
-                        this.show = false
+                    // if(this.filtros.año.length > 0)
+                    //     this.getDatosByFiltros()
+                    // else
+                    //     this.show = false
                     break;
                 case 'poblacion':
                     this.filtros.rpoblacion = value
-                    if(this.filtros.año.length > 0)
-                        this.getDatosByFiltros()
-                    else
-                        this.show = false
+                    // if(this.filtros.año.length > 0)
+                    //     this.getDatosByFiltros()
+                    // else
+                    //     this.show = false
                     break;
                 case 'PI':
                     this.filtros.pi = value
-                    this.getDatosByFiltros()
+                    // this.getDatosByFiltros()
                     break;
                 case 'año':
                     this.filtros.año = value
-                    if(this.filtros.rcobertura.length > 0 && this.filtros.año.length > 0 || this.filtros.rpoblacion.length > 0 && this.filtros.año.length > 0)
-                        this.getDatosByFiltros()
-                    else
-                        this.show = false
+                    // if(this.filtros.rcobertura.length > 0 && this.filtros.año.length > 0 || this.filtros.rpoblacion.length > 0 && this.filtros.año.length > 0)
+                    //     this.getDatosByFiltros()
+                    // else
+                    //     this.show = false
                     break;
                 default:
                     break;
@@ -205,6 +205,13 @@ const app = new Vue({
             w.print();
             w.close();
             return true;
+        },
+        consultar(){
+            this.show = true
+            if(this.filtros.consejo.length > 0 || this.filtros.subcuenca.length > 0 || this.filtros.region.length > 0 || this.filtros.municipio.length > 0 || this.filtros.estado.length > 0 || this.filtros.tipo.length > 0 || this.filtros.pi.length > 0 || this.filtros.rcobertura.length > 0 && this.filtros.año.length > 0 || this.filtros.rpoblacion.length > 0 && this.filtros.año.length > 0)
+                this.getDatosByFiltros()
+            else
+                this.show = false
         }
     }
 });

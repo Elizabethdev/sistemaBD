@@ -39,6 +39,20 @@ Agua Potable
                         v-on:filterchange2="filterchange2"
                     >  
                     </filtros-component>
+                    <ul class="actions p-2">
+                        <li>
+                            <b-overlay
+                                :show="show"
+                                rounded
+                                opacity="0.6"
+                                spinner-small
+                                spinner-variant="primary"
+                                class="d-inline-block"
+                            >
+                                <btn-component v-on:btnclick="consultar" name="Consultar" classbtn="fa-search"></btn-component>
+                            </b-overlay>
+                        </li>
+                    </ul>
                 </div>
             </section>
             <section id="header-fixed">		
