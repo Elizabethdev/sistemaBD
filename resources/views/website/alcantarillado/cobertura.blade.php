@@ -30,7 +30,7 @@ Alcantarillado
             </section>
             <section >
                 <h4>Filtrar por:</h4> 
-                <div class="" style="border: solid 2px rgba(255, 255, 255, 0.125); padding: 2rem; border-radius: 5px;">
+                <div class="" style="border: solid 2px rgba(255, 255, 255, 0.125); padding: 1rem; border-radius: 5px;">
                     <filtros-component
                         :destados= "{{$estados}}"
                         :dconsejos= "{{$consejos}}"
@@ -41,20 +41,12 @@ Alcantarillado
                     >  
                     </filtros-component>
                     <rangos-component v-on:rangochange="filterchange2"></rangos-component>
-                    <ul class="actions p-2">
-                        <li>
-                            <b-overlay
-                                :show="show"
-                                rounded
-                                opacity="0.6"
-                                spinner-small
-                                spinner-variant="primary"
-                                class="d-inline-block"
-                            >
-                                <btn-component v-on:btnclick="consultar" name="Consultar" classbtn="fa-search"></btn-component>
-                            </b-overlay>
-                        </li>
-                    </ul>
+                    <div class="row justify-content-end pr-3">
+                        <button v-if="show" class="button primary icon solid fa-search" disabled>
+                            Consultar
+                        </button>
+                        <btn-component v-else v-on:btnclick="consultar" :disabled="show" name="Consultar" classbtn="fa-search"></btn-component>
+                    </div>
                 </div>
             </section>
             <section id="header-fixed">										

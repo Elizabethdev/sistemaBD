@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="ESTADOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="ESTADOS " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedE"
@@ -23,7 +23,7 @@
             </BDropdown>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="CONSEJOS DE CUENCA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="CONSEJOS DE CUENCA " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedC"
@@ -45,7 +45,7 @@
             </BDropdown>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="SUBCUENCAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="SUBCUENCAS " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedS"
@@ -67,7 +67,7 @@
             </BDropdown>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="REGIONES ECONÓMICAS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="REGIONES ECONÓMICAS " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedR"
@@ -89,7 +89,7 @@
             </BDropdown>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="MUNICIPIOS " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="MUNICIPIOS " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-group>
                     <b-form-checkbox class="ml-3"
                         v-model="allSelectedM"
@@ -111,7 +111,7 @@
             </BDropdown>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown :text="titulo " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown :text="titulo " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="tipoSelected"
                     :options="tipos"
