@@ -2,7 +2,7 @@
 <div>
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="AÑO DE COBERTURA O POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="AÑO DE COBERTURA O POBLACIÓN " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="añoSelected"
                     :options="años"
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="RANGO DE COBERTURA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="RANGO DE COBERTURA " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoCobSelected"
                     :options="rangosCob"
@@ -26,7 +26,7 @@
             </BDropdown>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="RANGO DE POBLACIÓN " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="RANGO DE POBLACIÓN " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoPobSelected"
                     :options="rangosPob"
@@ -37,7 +37,7 @@
             </BDropdown>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <BDropdown text="RANGO DE POBLACIÓN INDÍGENA " class="m-2 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
+            <BDropdown text="RANGO DE POBLACIÓN INDÍGENA " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
                 <b-form-checkbox-group
                     v-model="rangoPISelected"
                     :options="rangosPI"
