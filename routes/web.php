@@ -58,5 +58,7 @@ Route::prefix('api')->group(function () {
 
     Route::post('/san/consultarbyfiltros', 'SaneamientoController@consultarByFiltros')->name('consultarsanByFiltros');
     Route::post('/cal/consultarbyfiltros', 'CalidadController@consultarByFiltros')->name('consultarcalByFiltros');
-
+    
+    
+    Route::post('/ap/calculardatosAP', 'DatosController@calcularDatosAP')->name('calcularDatos');
 });

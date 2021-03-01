@@ -17,7 +17,65 @@ Ver Datos
             <!-- <p class="mb-4">Selecciona el archivo Excel con los datos que desea guardar en la base de datos.</p> -->
 
         </div>
-        <div class="col col-md-12 mb-4">
+        <div class="col-lg-4 col-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardDemAP" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardDemAP">
+                    <h6 class="m-0 font-weight-bold text-primary">Datos Demanda AP</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardDemAP" style="">
+                    <div class="card-body">
+                        <a v-on:click="calcular" href="javascript:void(0);" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="text">Calcular</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardPobAP" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardPobAP">
+                    <h6 class="m-0 font-weight-bold text-primary">Datos Población AP</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardPobAP" style="">
+                    <div class="card-body">
+                        <a href="#" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="text">Calcular</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardCobAP" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardCobAP">
+                    <h6 class="m-0 font-weight-bold text-primary">Datos Cobertura AP</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCardCobAP" style="">
+                    <div class="card-body">
+                        <a href="#" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="text">Calcular</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col col-md-12 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Tabla de datos de la hoja calculos.</h6>
@@ -107,7 +165,7 @@ Ver Datos
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 @endsection
 

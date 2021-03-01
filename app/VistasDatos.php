@@ -68,11 +68,11 @@ class VistasDatos extends Model
         $total = DB::select('SELECT UPPER(" ") as cve_u, UPPER(" ") as cve_edo, UPPER(" ") as estado, UPPER(" ") as consejo_cuenca, UPPER(" ") as cve_mun, UPPER(" ") as municipio, 
         UPPER(" ") as cve_subcuenca, UPPER(" ") as subcuenca, UPPER(" ") as reg_economica, UPPER(" ") as num_region, UPPER(" ") as localidad, UPPER(" ") as POBTOT_10, UPPER("") as TIPO_10, UPPER(" ") as POBTOT_15, UPPER("") as TIPO_15,
         UPPER(" ") as POBTOT_20, UPPER("") as TIPO_20, UPPER(" ") as POBTOT_30, UPPER("TOTAL") as TIPO_30, SUM(DEM_AP_10) as DEM_AP_10, SUM(DEM_AP_15) as DEM_AP_15, SUM(DEM_AP_20) as DEM_AP_20, 
-        SUM(DEM_AP_30) as DEM_AP_30 FROM vwdemanda_ap '.$where);
+        SUM(DEM_AP_30) as DEM_AP_30 FROM demanda_ap '.$where);
      
         $datos = DB::select('SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, 
         cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT_10, TIPO_10, POBTOT_15, TIPO_15, POBTOT_20, TIPO_20, POBTOT_30, TIPO_30, DEM_AP_10, DEM_AP_15, 
-        DEM_AP_20, DEM_AP_30 FROM vwdemanda_ap '.$where. ' ORDER BY '.$order);
+        DEM_AP_20, DEM_AP_30 FROM demanda_ap '.$where. ' ORDER BY '.$order);
 
         return [$datos, $total];
     }
@@ -166,60 +166,5 @@ class VistasDatos extends Model
         return $datos = DB::select('select * from '.$vista.' '.$where);
     }
 
-    //Ya no se usa
-    public function getDatosMunicipiosByFiltros($filtro, $subfiltro)
-    {
-        $query = 'SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, SUM(DEM_AP_20) as totaldemap_20, 
-                    (SELECT SUM(DEM_AP_10) FROM vwdemanda_ap
-                        WHERE TIPO_10 = "RURAL" 
-                        AND cve_mun = a.cve_mun
-                        '.$filtro.'
-                        GROUP BY cve_mun) as totaldemap_10,
-                    (SELECT SUM(DEM_AP_15) FROM vwdemanda_ap
-                        WHERE TIPO_15 = "RURAL" 
-                        AND cve_mun = a.cve_mun
-                        '.$filtro.'
-                        GROUP BY cve_mun) as totaldemap_15,
-                    (SELECT SUM(DEM_AP_30) FROM vwdemanda_ap
-                        WHERE TIPO_30 = "RURAL" 
-                        AND cve_mun = a.cve_mun
-                    '.$filtro.'
-                        GROUP BY cve_mun) as totaldemap_30
-                FROM vwdemanda_ap a
-                WHERE TIPO_20 = "RURAL"
-                '.$filtro.'
-                GROUP BY cve_mun 
-                UNION ALL
-                SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region, localidad, POBTOT, TIPO_20, SUM(DEM_AP_20) as totaldemap_20, 
-                    (SELECT SUM(DEM_AP_10) FROM vwdemanda_ap
-                        WHERE TIPO_10 = "URBANA" AND cve_mun = a.cve_mun
-                        '.$filtro.'
-                        GROUP BY cve_mun) as totaldemap_10,
-                    (SELECT SUM(DEM_AP_15) FROM vwdemanda_ap
-                        WHERE TIPO_15 = "URBANA" 
-                        AND cve_mun = a.cve_mun
-                    '.$filtro.'
-                        GROUP BY cve_mun) as totaldemap_15,
-                    (SELECT SUM(DEM_AP_30) FROM vwdemanda_ap
-                        WHERE TIPO_30 = "URBANA" 
-                        AND cve_mun = a.cve_mun
-                    '.$filtro.'
-                        GROUP BY cve_mun) as totaldemap_30
-                FROM vwdemanda_ap a
-                WHERE TIPO_20 = "URBANA" 
-                '.$filtro.'
-                GROUP BY cve_mun 
-                UNION ALL
-                SELECT cve_u, cve_edo, estado, consejo_cuenca, cve_mun, municipio, cve_subcuenca, subcuenca, reg_economica, num_region,
-                    localidad, POBTOT, UPPER("TOTAL") as TIPO_20,
-                    SUM(DEM_AP_20) as totaldemap_20, SUM(DEM_AP_10) as totaldemap_10, SUM(DEM_AP_15) as totaldemap_15, SUM(DEM_AP_30) as totaldemap_30
-                FROM vwdemanda_ap 
-                '.$subfiltro.'
-                GROUP BY cve_mun
-                ORDER BY municipio ASC';
-
-        return $datos = DB::select($query);
-    }
-
-
+   
 }

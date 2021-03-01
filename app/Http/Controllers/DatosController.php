@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DatosImport;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class DatosController extends Controller
 {
@@ -44,6 +45,24 @@ class DatosController extends Controller
         return view('datos.verdatos');
     }
 
+    public function calcularDatosAP()
+    {
+        // Cache::forget('demandaap');
+        // $value = Cache::rememberForever('demandaap', function () {
+        //     return DB::table('vwdemanda_ap')->get();
+        // });
+        
+        DB::table('demanda_ap')->truncate();
+        $value =  DB::select('INSERT INTO demanda_ap (cve_u, cve_edo, estado, consejo_cuenca, cve_mun, id_mun, municipio, cve_subcuenca,
+        id_subcuenca, subcuenca, reg_economica, id_region, num_region, localidad, LONGITUD, LATITUD, P3YM_HLI, TVIVHAB, VIVPAR_HAB, PROM_OCUP, VPH_AGUADV, VPH_DRENAJ, POB_IND,
+        RANGO_PI, POBTOT, POBTOT_10, TIPO_10, POBTOT_15, TIPO_15, POBTOT_20, TIPO_20, POBTOT_30, TIPO_30, DEM_AP_10, DEM_AP_15, DEM_AP_20, DEM_AP_30)
+        SELECT * FROM vwdemanda_ap');
+
+        return response()->json([
+            'datos' => $value,
+        ]);
+    }
+
     public function filtrarDatosdemanda()
     {
         return view('datos.resumendemanda');
@@ -59,5 +78,5 @@ class DatosController extends Controller
         return view('datos.resumenrangos');
     }
 
-   
+    
 }
