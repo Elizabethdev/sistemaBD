@@ -7,6 +7,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DatosExport;
 use App\VistasDatos;
 use App\Http\Helpers\Helpers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class AguaPotableController extends Controller
 {
@@ -174,7 +176,15 @@ class AguaPotableController extends Controller
         
         switch ($page) {
             case 'demanda':
-                $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
+                if (Cache::has('demanda'.$addQuery2)) {
+                    $cache = Cache::get('demanda'.$addQuery2);
+                } else{
+                    $cache = Cache::rememberForever('demanda'.$addQuery2, function () use ($addQuery2, $order) {
+                        return $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
+                    });
+                }
+                
+                // $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
                 break;
             case 'cobertura':
                 $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
@@ -187,8 +197,8 @@ class AguaPotableController extends Controller
         }
 
         return response()->json([
-            'datos' => $consulta[0],
-            'total' => $consulta[1]
+            'datos' => $cache[0],
+            'total' => $cache[1]
         ]);
     }
 

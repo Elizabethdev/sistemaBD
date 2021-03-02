@@ -41,22 +41,19 @@
         
     </li>
 
-    <li class="nav-item {{Route::currentRouteNamed('verdatos') ? 'active' : ''}}">
-      <a class="nav-link collapsed" href="{{ route('verdatos') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+    <li class="nav-item {{Route::currentRouteNamed('calculardatos') ? 'active' : ''}}">
+      <a class="nav-link collapsed" href="{{ route('calculardatos') }}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Calcular Datos</span>
       </a>
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">AP:</h6>
-              <a class="collapse-item" href="{{ route('verdatos') }}">Demanda</a>
-              <a class="collapse-item" href="{{ route('verdatos') }}">Población</a>
-              <a class="collapse-item" href="{{ route('verdatos') }}">Cobertura</a>
+              <a class="collapse-item" href="{{ route('calculardatos') }}">Demanda</a>
+              <a class="collapse-item" href="{{ route('calculardatos') }}">Población</a>
+              <a class="collapse-item" href="{{ route('calculardatos') }}">Cobertura</a>
               <div class="collapse-divider"></div>
-              <h6 class="collapse-header">ALC:</h6>
-              <a class="collapse-item" href="{{ route('verdatos') }}">Demanda</a>
-              <a class="collapse-item" href="{{ route('verdatos') }}">Población</a>
-              <a class="collapse-item" href="{{ route('verdatos') }}">Cobertura</a>
+              
           </div>
       </div>
     </li>

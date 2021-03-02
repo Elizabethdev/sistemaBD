@@ -41,6 +41,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/subirarchivo', 'DatosController@cargarArchivo')->name('uploadfile');
     Route::post('/importarExcel', 'DatosController@importExcel')->name('importarExcel');
     Route::get('/verdatos', 'DatosController@verDatos')->name('verdatos');
+    Route::get('/calcular', 'DatosController@verCalcular')->name('calculardatos');
     Route::get('/resumendemandas', 'DatosController@filtrarDatosdemanda')->name('resumendemanda');
     Route::get('/resumenservicios', 'DatosController@filtrarDatosServicio')->name('resumenservicios');
     Route::get('/resumenrango', 'DatosController@filtrarDatosRango')->name('resumenrango');
