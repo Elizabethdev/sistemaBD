@@ -7,6 +7,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 // import axios from 'axios'
 import axios from './client/client.js';
 import { BOverlay} from 'bootstrap-vue';
+import { BPagination} from 'bootstrap-vue';
+import { BTable} from 'bootstrap-vue';
 
 window.Vue = require('vue');
 
@@ -17,11 +19,15 @@ const app = new Vue({
         tableComponent,
         vistaComponent,
         btnComponent,
-        BOverlay
+        BOverlay,
+        BPagination,
+        BTable
     },
     data: {
         show:false,
         busy:false,
+        perPage: 1000,
+        currentPage: 1,
         headersTable: [
             {name:'Estado', visible: true},
             {name:'Consejo de Cuenca', visible: false},
@@ -35,7 +41,8 @@ const app = new Vue({
             {name:'Demanda de Agua 2020', visible: true},
             {name:'Demanda de Agua 2030', visible: true}
         ],
-        newdtotales: [],
+        // newdtotales: [],
+        newdtotales: {},
         visible: {
             municipio: false,
             consejo: false,
@@ -135,17 +142,19 @@ const app = new Vue({
             this.show = false
         },
         getDatosByFiltros(){
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, page: 'demanda'})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: this.currentPage})
             .then((response)=>{
                 this.show = false
-                var aux = response.data.datos
-                aux.push(response.data.total[0])
-                this.newdtotales = aux
+                // var aux = response.data.datos
+                // aux.push(response.data.total[0])
+                // this.newdtotales = aux
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
                 console.log(error)
                 this.show = false
-                this.newdtotales = []
+                this.newdtotales = {}
             })
         },
         guardarexcel(){
@@ -191,6 +200,62 @@ const app = new Vue({
                 this.getDatosByFiltros()
             else
                 this.show = false
-        }
-    }
+        },
+        getFirstPage(){
+            this.show = true
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: 1})
+            .then((response)=>{
+                this.show = false
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
+            })
+            .catch(error => {
+                console.log(error)
+                this.show = false
+                this.newdtotales = {}
+            })
+        },
+        getPreviousPage(){
+            this.show = true
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: this.currentPage-1 })
+            .then((response)=>{
+                this.show = false
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
+            })
+            .catch(error => {
+                console.log(error)
+                this.show = false
+                this.newdtotales = {}
+            })
+        },
+        getNextPage(){
+            this.show = true
+            axios.post('/ap/consultarbyfiltros', {filtros: this.filtros, pagina: 'demanda', page: this.currentPage+1})
+            .then((response)=>{
+                this.show = false
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
+            })
+            .catch(error => {
+                console.log(error)
+                this.show = false
+                this.newdtotales = {}
+            })
+        },
+        getLastPage(){
+            this.show = true
+            axios.post('/ap/consultarbyfiltros', {filtros: this.filtros, pagina: 'demanda', page: this.newdtotales.last_page})
+            .then((response)=>{
+                this.show = false
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
+            })
+            .catch(error => {
+                this.show = false
+                this.newdtotales = {}
+            })
+        },
+    },
+    
 });

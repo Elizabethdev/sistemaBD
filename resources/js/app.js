@@ -1,24 +1,27 @@
 import uploadComponent from './components/uploadfileComponent.vue';
 import axios from './client/client.js';
+import { BAlert } from 'bootstrap-vue'
 
 window.Vue = require('vue');
 
 const app = new Vue({
     el: '#app',
     components: {
-        uploadComponent
+        uploadComponent,
+        BAlert
     },
     data: {
-        datos:''
+        datos:'',
+        mensaje:'',
+        showDismissibleAlert: false
     },
     methods:{
         calcular(){
             console.log('calcular')
             axios.post('/ap/calculardatosAP',{page: 'demanda'})
             .then((response)=>{
-                // this.show = false
-                this.datos = response.data.datos
-               
+                this.showDismissibleAlert = response.data.res
+                this.mensaje = response.data.msg
             })
             .catch(error => {
                 console.log(error)

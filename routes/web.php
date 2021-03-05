@@ -50,6 +50,9 @@ Route::prefix('admin')->group(function () {
 Route::prefix('api')->group(function () {
     Route::post('/ap/consultabyvista', 'AguaPotableController@consultarByvista')->name('consultarapByvista');
     Route::post('/ap/consultarmunbyfiltros', 'AguaPotableController@consultarMunByFiltros')->name('consultarMunByFiltros');
+    
+    // Route::get('/ap/consultarbyfiltros', 'AguaPotableController@consultarByFiltros')->name('ap.getconsultarByFiltros');
+
     Route::post('/ap/consultarbyfiltros', 'AguaPotableController@consultarByFiltros')->name('ap.consultarByFiltros');
     Route::post('/ap/export', 'AguaPotableController@exportExcel')->name('ap.export');
     

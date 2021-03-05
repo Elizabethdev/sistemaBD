@@ -9,6 +9,7 @@ use App\VistasDatos;
 use App\Http\Helpers\Helpers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class AguaPotableController extends Controller
 {
@@ -83,7 +84,7 @@ class AguaPotableController extends Controller
     public function consultarByFiltros(Request $request)
     {
         $filtros = $request->filtros;
-        $page = $request->page;
+        $page = $request->pagina;
         $addQuery = '';
         $addQuery2 = '';
         $order = '';
@@ -180,11 +181,12 @@ class AguaPotableController extends Controller
                     $cache = Cache::get('demanda'.$addQuery2);
                 } else{
                     $cache = Cache::rememberForever('demanda'.$addQuery2, function () use ($addQuery2, $order) {
-                        return $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
+                        return collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
                     });
                 }
                 
                 // $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
+
                 break;
             case 'cobertura':
                 $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
@@ -195,10 +197,22 @@ class AguaPotableController extends Controller
             default:
                 break;
         }
+        // dd($cache[1]);
+        $consulta = collect($cache[0])->push($cache[1][0]);
+        $total = count($consulta);
+        $per_page = 1000;
+        $current_page = $request->page ?? 1;
+        $starting_point = ($current_page * $per_page) - $per_page;
+        $consulta = $consulta->toArray();
+        $array = array_slice($consulta, $starting_point, $per_page, true);
+
+        $array = new Paginator($array, $total, $per_page, $current_page, [
+            'path' => $request->url(),
+        ]);
 
         return response()->json([
-            'datos' => $cache[0],
-            'total' => $cache[1]
+            'datos' => $array,
+            // 'total' => $cache[1]
         ]);
     }
 

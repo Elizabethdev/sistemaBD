@@ -42,15 +42,14 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         name:"tbdemandasAP",
         props:{
             dtotales: {
-                type: Array,
+                type: Object,
                 default: function () {
-                    return []
+                    return {}
                 }
             },
             newdtotales: {
-                type: Array,
                 default: function () {
-                    return []
+                    return {}
                 }
             },
             headersTable: {
