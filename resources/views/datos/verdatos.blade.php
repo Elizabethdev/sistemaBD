@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title')
-Ver Datos
+Calcular Datos
 @stop
 
 @section('css')
@@ -18,7 +18,7 @@ Ver Datos
 
         </div>
         <div class="col-lg-4 col-12">
-        <b-alert v-model="showDismissibleAlert" variant="success" dismissible>
+        <b-alert v-model="showDismissibleAlert" :variant="variant" dismissible>
            @{{ mensaje }}  
         </b-alert>
             <div class="card shadow mb-4">

@@ -13,18 +13,22 @@ const app = new Vue({
     data: {
         datos:'',
         mensaje:'',
+        variant:'',
         showDismissibleAlert: false
     },
     methods:{
         calcular(){
-            console.log('calcular')
             axios.post('/ap/calculardatosAP',{page: 'demanda'})
             .then((response)=>{
                 this.showDismissibleAlert = response.data.res
                 this.mensaje = response.data.msg
+                this.variant = response.data.variant
             })
             .catch(error => {
                 console.log(error)
+                this.showDismissibleAlert = response.data.res
+                this.mensaje = response.data.msg
+                this.variant = response.data.variant
             })
         }
 

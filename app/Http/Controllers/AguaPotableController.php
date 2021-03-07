@@ -184,9 +184,7 @@ class AguaPotableController extends Controller
                         return collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
                     });
                 }
-                
                 // $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
-
                 break;
             case 'cobertura':
                 $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
@@ -197,7 +195,6 @@ class AguaPotableController extends Controller
             default:
                 break;
         }
-        // dd($cache[1]);
         $consulta = collect($cache[0])->push($cache[1][0]);
         $total = count($consulta);
         $per_page = 1000;

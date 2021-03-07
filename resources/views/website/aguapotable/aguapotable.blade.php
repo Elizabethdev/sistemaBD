@@ -55,48 +55,31 @@ Agua Potable
             </b-overlay>
             <nav>
                 <ul class="pagination">
-                    <li class="page-item" v-show="newdtotales['prev_page_url']">
+                    <li class="page-item" v-show="newdtotales.prev_page_url">
                         <a role="menuitem" href="#"  @click.prevent="getFirstPage">
                             <span class="page-link" aria-hidden="true">«</span>
                         </a>
                     </li>
-                    <li role="presentation" aria-hidden="true" class="page-item disabled" v-show="newdtotales['prev_page_url']">
+                    <li role="presentation" aria-hidden="true" class="page-item disabled" v-show="newdtotales.prev_page_url">
                         <a role="menuitem" href="#"  @click.prevent="getPreviousPage">
                             <span class="page-link" aria-hidden="true">‹</span>
                         </a>
                     </li>
-                    <li role="presentation" class="page-item active">
+                    <li role="presentation" class="page-item active" v-show="newdtotales.data">
                         <button role="menuitemradio" type="button" aria-controls="my-table" aria-label="Go to page 1" aria-checked="true" aria-posinset="1" aria-setsize="1" tabindex="0" class="page-link">@{{ currentPage }}</button>
                     </li>
-                    <li role="presentation" aria-hidden="true" class="page-item disabled" v-show="newdtotales['next_page_url']">
+                    <li role="presentation" aria-hidden="true" class="page-item disabled" v-show="newdtotales.next_page_url">
                         <a role="menuitem" href="#"  @click.prevent="getNextPage">
                             <span class="page-link" aria-hidden="true">›</span>
                         </a>
                     </li>
-                    <li class="page-item" v-show="newdtotales['next_page_url']">
+                    <li class="page-item" v-show="newdtotales.next_page_url">
                         <a href="#"  @click.prevent="getLastPage">
                             <span class="page-link" aria-hidden="true">»</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-            <!-- <ul role="menubar" aria-disabled="false" aria-label="Pagination" class="pagination mt-2 b-pagination">
-                <li role="presentation" aria-hidden="true" class="page-item disabled" v-show="newdtotales['prev_page_url']">
-                    <span @click.prevent="getPreviousPage" role="menuitem" aria-label="Go to first page" aria-controls="my-table" aria-disabled="true" class="page-link">«</span>
-                </li>
-                <li role="presentation" aria-hidden="true" class="page-item disabled">
-                    <span @click.prevent="getPreviousPage" role="menuitem" aria-label="Go to previous page" aria-controls="my-table" aria-disabled="true" class="page-link">‹</span>
-                </li>
-                <li role="presentation" class="page-item active">
-                    <button role="menuitemradio" type="button" aria-controls="my-table" aria-label="Go to page 1" aria-checked="true" aria-posinset="1" aria-setsize="1" tabindex="0" class="page-link">@{{ currentPage }}</button>
-                </li>
-                <li role="presentation" aria-hidden="true" class="page-item disabled" v-show="newdtotales['next_page_url']">
-                    <span @click.prevent="getLastPage" role="menuitem" aria-label="Go to next page" aria-controls="my-table" aria-disabled="true" class="page-link">›</span>
-                </li>
-                <li role="presentation" aria-hidden="true" class="page-item disabled">
-                    <span role="menuitem" aria-label="Go to last page" aria-controls="my-table" aria-disabled="true" class="page-link">»</span>
-                </li>
-            </ul> -->
 
             </section>
             <section>										

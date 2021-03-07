@@ -4,7 +4,6 @@ import tableComponent from './components/generales/tableap.vue';
 import btnComponent from './components/generales/btn.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-// import axios from 'axios'
 import axios from './client/client.js';
 import { BOverlay} from 'bootstrap-vue';
 import { BPagination} from 'bootstrap-vue';
@@ -41,7 +40,6 @@ const app = new Vue({
             {name:'Demanda de Agua 2020', visible: true},
             {name:'Demanda de Agua 2030', visible: true}
         ],
-        // newdtotales: [],
         newdtotales: {},
         visible: {
             municipio: false,
