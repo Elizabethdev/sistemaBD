@@ -1,6 +1,7 @@
 import filtrosComponent from './components/generales/filtros.vue';
 import tableComponent from './components/generales/tableapob.vue';
 import btnComponent from './components/generales/btn.vue';
+import btnC from './components/generales/btnC.vue';
 import paginateComponent from './components/generales/paginate.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -15,6 +16,7 @@ const app = new Vue({
         filtrosComponent,
         tableComponent,
         btnComponent,
+        btnC,
         paginateComponent,
         BOverlay
     },
