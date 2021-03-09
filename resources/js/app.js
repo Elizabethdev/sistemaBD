@@ -14,19 +14,37 @@ const app = new Vue({
         datos:'',
         mensaje:'',
         variant:'',
-        showDismissibleAlert: false
+        showDismissibleAlert: false,
+        disable:'',
+        url:'/ap/calculardatosAPDEM'
     },
     methods:{
-        calcular(){
-            axios.post('/ap/calculardatosAP',{page: 'demanda'})
+        calcularap(page){
+            this.disable = 'disabled'
+            switch (page) {
+                case 'cobertura':
+                    this.url = '/ap/calculardatosAPCOB';
+                    break;
+                case 'demanda':
+                    this.url = '/ap/calculardatosAPDEM';
+                    break;
+                case 'poblacion':
+                    this.url = '/ap/calculardatosAPPOB';
+                    break;
+                default:
+                    break;
+            }
+            axios.post(this.url,{page: page})
             .then((response)=>{
-                this.showDismissibleAlert = response.data.res
+                this.disable = ''
+                this.showDismissibleAlert = true
                 this.mensaje = response.data.msg
                 this.variant = response.data.variant
             })
             .catch(error => {
                 console.log(error)
-                this.showDismissibleAlert = response.data.res
+                this.disable = ''
+                this.showDismissibleAlert = true
                 this.mensaje = response.data.msg
                 this.variant = response.data.variant
             })

@@ -51,9 +51,10 @@ Agua Potable
             <section id="header-fixed">		
             <b-overlay :show="show" rounded="sm" spinner-variant="primary">								
                 <div class="table-wrapper my-4">
-                   <table-component :newdtotales="newdtotales" :headers-table="headersTable" :visible="visible"></table-component>
+                   <table-component :newdtotales="newdtotales.data" :headers-table="headersTable" :visible="visible"></table-component>
                 </div>
             </b-overlay>
+            <paginate-component :newdtotales="newdtotales" v-on:getpage="getpage"></paginate-component>
             </section>
             <section>										
                 <ul class="actions">
@@ -71,7 +72,6 @@ Agua Potable
                     </li>
                     <li>
                         <btn-component v-on:btnclick="print('header-fixed')" name="Imprimir" classbtn="fa-print"></btn-component>
-                        <!-- <a href="javascript:void(0);" class="button primary icon solid fa-print" onclick="printDiv('header-fixed')" ></a> -->
                     </li>
                 </ul>
             </section>

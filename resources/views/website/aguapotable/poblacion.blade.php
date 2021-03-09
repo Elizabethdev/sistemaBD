@@ -50,9 +50,10 @@ Agua Potable
             <section id="header-fixed">		
             <b-overlay :show="show" rounded="sm" spinner-variant="primary">								
                 <div class="table-wrapper my-4">
-                   <table-component :newdtotales="newdtotales" :headers-table="headersTable" :visible="visible"></table-component>
+                   <table-component :newdtotales="newdtotales.data" :headers-table="headersTable" :visible="visible"></table-component>
                 </div>
             </b-overlay>
+            <paginate-component :newdtotales="newdtotales" v-on:getpage="getpage"></paginate-component>
             </section>
             <section>										
                 <ul class="actions">

@@ -2,6 +2,7 @@ import filtrosComponent from './components/generales/filtros.vue';
 import rangosComponent from './components/generales/filtrosrangos.vue';
 import tableComponent from './components/generales/tableapcob.vue';
 import btnComponent from './components/generales/btn.vue';
+import paginateComponent from './components/generales/paginate.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import axios from './client/client.js';
@@ -16,10 +17,12 @@ const app = new Vue({
         tableComponent,
         rangosComponent,
         btnComponent,
+        paginateComponent,
         BOverlay
     },
     data: {
         show:false,
+        currentPage: 1,
         busy:false,
         headersTable: [
             {name:'Estado', visible: true},
@@ -41,7 +44,7 @@ const app = new Vue({
             {name:'Rango Población 2030', visible: true},
             {name:'Rango Población Indígena', visible: true},
         ],
-        newdtotales: [],
+        newdtotales: {},
         visible: {
             municipio: false,
             consejo: false,
@@ -92,39 +95,32 @@ const app = new Vue({
     },
     methods: {
         filterchange2(tipo, value){
-            // this.show = true
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
                     this.visible.consejo = value.length > 0 ? true : false
                     this.headersTable[1].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
                     this.visible.subcuenca = value.length > 0 ? true : false
                     this.headersTable[2].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'region':
                      this.filtros.region = value
                     this.visible.region = value.length > 0 ? true : false
                     this.headersTable[3].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
                     this.visible.municipio = value.length > 0 ? true : false
                     this.headersTable[4].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'estado':
                     this.filtros.estado = value
-                    // this.getDatosByFiltros()
                     break;
                 case 'tipo':
                     this.filtros.tipo = value
-                    // this.getDatosByFiltros()
                     break;
                 case 'cobertura':
                     this.filtros.rcobertura = value
@@ -155,39 +151,17 @@ const app = new Vue({
                     break;
             }
         },
-        rangochange(tipo, value, año){
-            this.show = true
-            switch (tipo) {
-                case 'cobertura':
-                    this.filtros.rcobertura = value
-                    this.filtros.año = año
-                    this.getDatosByFiltros()
-                    break;
-                case 'poblacion':
-                    this.filtros.rpoblacion = value
-                    this.filtros.año = año
-                    this.getDatosByFiltros()
-                    break;
-                case 'PI':
-                    this.filtros.pi = value
-                    this.getDatosByFiltros()
-                    break;
-                default:
-                    break;
-            }
-        },
         getDatosByFiltros(){
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, page: 'cobertura'})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'cobertura', page: 1})
             .then((response)=>{
                 this.show = false
-                var aux = response.data.datos
-                aux.push(response.data.total[0])
-                this.newdtotales = aux
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
                 console.log(error)
                 this.show = false
-                this.newdtotales = []
+                this.newdtotales = {}
             })
         },
         guardarexcel(){
@@ -233,6 +207,20 @@ const app = new Vue({
                 this.getDatosByFiltros()
             else
                 this.show = false
-        }
+        },
+        getpage(page){
+            this.show = true
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'cobertura', page: page})
+            .then((response)=>{
+                this.show = false
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
+            })
+            .catch(error => {
+                console.log(error)
+                this.show = false
+                this.newdtotales = {}
+            })
+        },
     }
 });

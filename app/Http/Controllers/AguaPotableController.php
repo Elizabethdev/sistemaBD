@@ -177,20 +177,20 @@ class AguaPotableController extends Controller
         
         switch ($page) {
             case 'demanda':
-                if (Cache::has('demanda'.$addQuery2)) {
-                    $cache = Cache::get('demanda'.$addQuery2);
-                } else{
-                    $cache = Cache::rememberForever('demanda'.$addQuery2, function () use ($addQuery2, $order) {
-                        return collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
-                    });
-                }
-                // $consulta = collect($this->vistaDatos->getDatosTotalesAPBy($addQuery2, $order));
+                $cache = collect($this->vistaDatos->getDatosTotalesAP_DEM($addQuery2, $order));
+                // if (Cache::has('demanda'.$addQuery2)) {
+                //     $cache = Cache::get('demanda'.$addQuery2);
+                // } else{
+                //     $cache = Cache::rememberForever('demanda'.$addQuery2, function () use ($addQuery2, $order) {
+                //         return collect($this->vistaDatos->getDatosTotalesAP_DEM($addQuery2, $order));
+                //     });
+                // }
                 break;
             case 'cobertura':
-                $consulta = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
+                $cache = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
                 break;
             case 'poblacion':
-                $consulta = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2, $order));
+                $cache = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2, $order));
                 break;
             default:
                 break;
@@ -215,148 +215,14 @@ class AguaPotableController extends Controller
 
     public function exportExcel(Request $request)
     {
-        $datos = $request->datos;
-        $export = new DatosExport($datos);
-    
-        return Excel::download($export, 'calculos.xlsx');
-    }
-
-    //depurando metodos
-    public function consultarMunByFiltros(Request $request)
-    {
-        $filtros = $request->filtros;
-        $tipoVista= $request->tipoVista;
-        $addQuery = '';
-        $addQuery2 = '';
-        $consulta = collect([]);
-
-        switch ($tipoVista) {
-            case 'municipio':
-                if ($filtros['consejo'] != []) {
-                    $getQuery = Helpers::getQueryFiltro($filtros['consejo'], 'consejo_cuenca', $addQuery, $addQuery2);
-                    $addQuery= $getQuery[0];
-                    $addQuery2= $getQuery[1];
-                }
-                if ($filtros['subcuenca'] != []) {
-                    $getQuery = Helpers::getQueryFiltro($filtros['subcuenca'], 'cve_subcuenca', $addQuery, $addQuery2);
-                    $addQuery= $getQuery[0];
-                    $addQuery2= $getQuery[1];
-                }
-                if ($filtros['region'] != []) {
-                    $getQuery = Helpers::getQueryFiltro($filtros['region'], 'num_region', $addQuery, $addQuery2);
-                    $addQuery= $getQuery[0];
-                    $addQuery2= $getQuery[1];
-                }
-                $consulta = collect($this->vistaDatos->getDatosMunicipiosByFiltros($addQuery, $addQuery2));
-                $consulta->groupBy('cve_mun');
-                break;
-            case 'consejo':
-                # code...
-                break;
-            case 'subcuenca':
-                # code...
-                break;
-            case 'region':
-                # code...
-                break;
-            default:
-                break;
+        try {
+            $datos = $request->datos;
+            $export = new DatosExport($datos);
+        
+            return Excel::download($export, 'calculos.xlsx');
+        } catch (\Throwable $th) {
+            return $th;
         }
-
-        return response()->json([
-            'datos' => $consulta
-        ]);
-    }
-
-    public function consultarByMun(Request $request)
-    {
-        $municipios = $request->municipios;
-        $vista = 'vwDemanda_AP_by_mun ';
-        $where = '';
-
-        foreach ($municipios as $key => $value) {
-            if($key == 0 && array_key_last($municipios) == $key)
-                $where.=  "WHERE cve_mun IN ('".$value ."')";
-            elseif($key==0 && array_key_last($municipios) != $key)
-                $where.=  "WHERE cve_mun IN ('".$value ."',";
-            elseif(array_key_last($municipios) == $key && $key != 0)
-                $where.=  "'".$value ."')";
-            else
-                $where.=  "'".$value."',";
-        }
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
-
-        return response()->json([
-            'municipios' => $consulta->groupBy('cve_mun')
-        ]);
-    }
-
-    public function consultarByconsejo(Request $request)
-    {
-        $consejos = $request->consejos;
-        $vista = 'vwDemanda_AP_BY_CONSEJO ';
-        $where = '';
-
-        foreach ($consejos as $key => $value) {
-            if($key == 0 && array_key_last($consejos) == $key)
-                $where.=  "WHERE consejo_cuenca IN ('".$value ."')";
-            elseif($key==0 && array_key_last($consejos) != $key)
-                $where.=  "WHERE consejo_cuenca IN ('".$value ."',";
-            elseif(array_key_last($consejos) == $key && $key != 0)
-                $where.=  "'".$value ."')";
-            else
-                $where.=  "'".$value."',";
-        }
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
-
-        return response()->json([
-            'consejos' => $consulta->groupBy('cve_mun')
-        ]);
-    }
-    
-    public function consultarBysubcuenca(Request $request)
-    {
-        $subcuencas = $request->subcuencas;
-        $vista = 'vwDemanda_AP_BY_subcuenca ';
-        $where = '';
-
-        foreach ($subcuencas as $key => $value) {
-            if($key == 0 && array_key_last($subcuencas) == $key)
-                $where.=  "WHERE cve_subcuenca IN ('".$value ."')";
-            elseif($key==0 && array_key_last($subcuencas) != $key)
-                $where.=  "WHERE cve_subcuenca IN ('".$value ."',";
-            elseif(array_key_last($subcuencas) == $key && $key != 0)
-                $where.=  "'".$value ."')";
-            else
-                $where.=  "'".$value."',";
-        }
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
-
-        return response()->json([
-            'subcuencas' => $consulta->groupBy('cve_subcuenca')
-        ]);
-    }
-    public function consultarByregion(Request $request)
-    {
-        $regiones = $request->regiones;
-        $vista = 'vwDemanda_AP_BY_region_eco ';
-        $where = ''; 
-
-        foreach ($regiones as $key => $value) {
-            if($key == 0 && array_key_last($regiones) == $key)
-                $where.=  "WHERE num_region IN ('".$value ."')";
-            elseif($key==0 && array_key_last($regiones) != $key)
-                $where.=  "WHERE num_region IN ('".$value ."',";
-            elseif(array_key_last($regiones) == $key && $key != 0)
-                $where.=  "'".$value ."')";
-            else
-                $where.=  "'".$value."',";
-        }
-        $consulta = collect($this->vistaDatos->getDatosTotalesBy($vista, $where));
-
-        return response()->json([
-            'regiones' => $consulta->groupBy('num_region')
-        ]);
     }
 
 }

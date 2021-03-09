@@ -57,9 +57,8 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
                 }
             },
             newdtotales: {
-                type: Array,
                 default: function () {
-                    return []
+                    return {}
                 }
             },
             headersTable: {

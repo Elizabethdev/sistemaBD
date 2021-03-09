@@ -64,5 +64,7 @@ Route::prefix('api')->group(function () {
     Route::post('/cal/consultarbyfiltros', 'CalidadController@consultarByFiltros')->name('consultarcalByFiltros');
     
     
-    Route::post('/ap/calculardatosAP', 'DatosController@calcularDatosAP')->name('calcularDatos');
+    Route::post('/ap/calculardatosAPDEM', 'DatosController@calcularDatosAP_DEM')->name('calcularDatos');
+    Route::post('/ap/calculardatosAPPOB', 'DatosController@calcularDatosAP_POB')->name('calcularDatos');
+    Route::post('/ap/calculardatosAPCOB', 'DatosController@calcularDatosAP_COB')->name('calcularDatos');
 });

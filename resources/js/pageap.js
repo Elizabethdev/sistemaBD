@@ -2,12 +2,11 @@ import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
 import tableComponent from './components/generales/tableap.vue';
 import btnComponent from './components/generales/btn.vue';
+import paginateComponent from './components/generales/paginate.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import axios from './client/client.js';
 import { BOverlay} from 'bootstrap-vue';
-import { BPagination} from 'bootstrap-vue';
-import { BTable} from 'bootstrap-vue';
 
 window.Vue = require('vue');
 
@@ -18,14 +17,13 @@ const app = new Vue({
         tableComponent,
         vistaComponent,
         btnComponent,
+        paginateComponent,
         BOverlay,
-        BPagination,
-        BTable
     },
     data: {
         show:false,
         busy:false,
-        perPage: 1000,
+        // perPage: 1000,
         currentPage: 1,
         headersTable: [
             {name:'Estado', visible: true},
@@ -140,7 +138,7 @@ const app = new Vue({
             this.show = false
         },
         getDatosByFiltros(){
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: this.currentPage})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: 1})
             .then((response)=>{
                 this.show = false
                 // var aux = response.data.datos
@@ -199,9 +197,9 @@ const app = new Vue({
             else
                 this.show = false
         },
-        getFirstPage(){
+        getpage(page){
             this.show = true
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: 1})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: page})
             .then((response)=>{
                 this.show = false
                 this.newdtotales = response.data.datos
@@ -213,47 +211,61 @@ const app = new Vue({
                 this.newdtotales = {}
             })
         },
-        getPreviousPage(){
-            this.show = true
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: this.currentPage-1 })
-            .then((response)=>{
-                this.show = false
-                this.newdtotales = response.data.datos
-                this.currentPage = this.newdtotales.current_page
-            })
-            .catch(error => {
-                console.log(error)
-                this.show = false
-                this.newdtotales = {}
-            })
-        },
-        getNextPage(){
-            this.show = true
-            axios.post('/ap/consultarbyfiltros', {filtros: this.filtros, pagina: 'demanda', page: this.currentPage+1})
-            .then((response)=>{
-                this.show = false
-                this.newdtotales = response.data.datos
-                this.currentPage = this.newdtotales.current_page
-            })
-            .catch(error => {
-                console.log(error)
-                this.show = false
-                this.newdtotales = {}
-            })
-        },
-        getLastPage(){
-            this.show = true
-            axios.post('/ap/consultarbyfiltros', {filtros: this.filtros, pagina: 'demanda', page: this.newdtotales.last_page})
-            .then((response)=>{
-                this.show = false
-                this.newdtotales = response.data.datos
-                this.currentPage = this.newdtotales.current_page
-            })
-            .catch(error => {
-                this.show = false
-                this.newdtotales = {}
-            })
-        },
+        // getFirstPage(){
+        //     this.show = true
+        //     axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: 1})
+        //     .then((response)=>{
+        //         this.show = false
+        //         this.newdtotales = response.data.datos
+        //         this.currentPage = this.newdtotales.current_page
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //         this.show = false
+        //         this.newdtotales = {}
+        //     })
+        // },
+        // getPreviousPage(){
+        //     this.show = true
+        //     axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: this.currentPage-1 })
+        //     .then((response)=>{
+        //         this.show = false
+        //         this.newdtotales = response.data.datos
+        //         this.currentPage = this.newdtotales.current_page
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //         this.show = false
+        //         this.newdtotales = {}
+        //     })
+        // },
+        // getNextPage(){
+        //     this.show = true
+        //     axios.post('/ap/consultarbyfiltros', {filtros: this.filtros, pagina: 'demanda', page: this.currentPage+1})
+        //     .then((response)=>{
+        //         this.show = false
+        //         this.newdtotales = response.data.datos
+        //         this.currentPage = this.newdtotales.current_page
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //         this.show = false
+        //         this.newdtotales = {}
+        //     })
+        // },
+        // getLastPage(){
+        //     this.show = true
+        //     axios.post('/ap/consultarbyfiltros', {filtros: this.filtros, pagina: 'demanda', page: this.newdtotales.last_page})
+        //     .then((response)=>{
+        //         this.show = false
+        //         this.newdtotales = response.data.datos
+        //         this.currentPage = this.newdtotales.current_page
+        //     })
+        //     .catch(error => {
+        //         this.show = false
+        //         this.newdtotales = {}
+        //     })
+        // },
     },
     
 });

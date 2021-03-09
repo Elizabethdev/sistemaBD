@@ -9,27 +9,24 @@ Calcular Datos
 @stop
 
 @section('contenido')
-    <!-- <upload-component></upload-component> -->
-    
     <div class="row">
         <div class="col col-md-12 mb-4">
             <h1 class="h3 mb-2 text-gray-800">Cálculos</h1>
-            <!-- <p class="mb-4">Selecciona el archivo Excel con los datos que desea guardar en la base de datos.</p> -->
-
+        </div>
+        <div class="col-lg-12 col-12">
+            <b-alert v-model="showDismissibleAlert" :variant="variant" dismissible>
+            @{{ mensaje }}  
+            </b-alert>
         </div>
         <div class="col-lg-4 col-12">
-        <b-alert v-model="showDismissibleAlert" :variant="variant" dismissible>
-           @{{ mensaje }}  
-        </b-alert>
             <div class="card shadow mb-4">
-                <!-- Card Header - Accordion -->
                 <a href="#collapseCardDemAP" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardDemAP">
                     <h6 class="m-0 font-weight-bold text-primary">Datos Demanda AP</h6>
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardDemAP" style="">
                     <div class="card-body">
-                        <a v-on:click="calcular" href="javascript:void(0);" class="btn btn-success btn-icon-split">
+                        <a @click.prevent="calcularap('demanda')" href="#" class="btn btn-success btn-icon-split " :class="disable">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
@@ -48,7 +45,7 @@ Calcular Datos
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardPobAP" style="">
                     <div class="card-body">
-                        <a href="#" class="btn btn-success btn-icon-split">
+                        <a @click.prevent="calcularap('poblacion')" href="#" class="btn btn-success btn-icon-split " :class="disable">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
@@ -67,7 +64,7 @@ Calcular Datos
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardCobAP" style="">
                     <div class="card-body">
-                        <a href="#" class="btn btn-success btn-icon-split">
+                        <a @click.prevent="calcularap('cobertura')" href="#" class="btn btn-success btn-icon-split " :class="disable">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
@@ -87,7 +84,7 @@ Calcular Datos
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardDemALC" style="">
                     <div class="card-body">
-                        <a v-on:click="calcular" href="javascript:void(0);" class="btn btn-success btn-icon-split">
+                        <a v-on:click="calcularap" href="javascript:void(0);" class="btn btn-success btn-icon-split">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
