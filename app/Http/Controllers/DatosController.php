@@ -123,6 +123,79 @@ class DatosController extends Controller
         }
     }
 
+    public function calcularDatosALC_DEM(Request $request)
+    {
+        try {
+            DB::transaction(function () {
+                DB::table('demanda_alc')->truncate();
+                
+                $value =  DB::select('INSERT INTO demanda_alc (cve_u, cve_edo, estado, consejo_cuenca, cve_mun, id_mun, municipio, cve_subcuenca,
+                id_subcuenca, subcuenca, reg_economica, id_region, num_region, localidad, LONGITUD, LATITUD, P3YM_HLI, TVIVHAB, VIVPAR_HAB, PROM_OCUP, VPH_AGUADV, VPH_DRENAJ, POB_IND,
+                RANGO_PI, POBTOT, POBTOT_10, TIPO_10, POBTOT_15, TIPO_15, POBTOT_20, TIPO_20, POBTOT_30, TIPO_30, DEM_AP_10, DEM_AP_15, DEM_AP_20, DEM_AP_30, DEM_ALC_10, DEM_ALC_15, DEM_ALC_20, DEM_ALC_30)
+                SELECT * FROM vwdemanda_alc');
+            });
+            
+            return response()->json([
+                'msg' => 'Datos Demanda ALC guardados correctamente',
+                'variant' => 'success'
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'msg' => 'Datos Demanda ALC No guardados',
+                'variant' => 'danger'
+            ]);
+        }
+    }
+
+    public function calcularDatosALC_COB(Request $request)
+    {
+        try {
+                DB::transaction(function () {
+                    DB::table('cobertura_alc')->truncate();
+                    
+                    $value =  DB::select('INSERT INTO cobertura_alc (cve_u, cve_edo, estado, consejo_cuenca, cve_mun, id_mun, municipio, cve_subcuenca,
+                    id_subcuenca, subcuenca, reg_economica, id_region, num_region, localidad, POBTOT, TIPO_20, RANGO_PI, POBTOT_10, VPH_AGUADV, VPH_DRENAJ, VIVPAR_HAB, PROM_OCUP, POBTOT_15, R_POB_15,
+                    POBTOT_20, R_POB_20, POBTOT_30, R_POB_30, PO_CON_ALC_10, PO_CON_ALC_15, PO_CON_ALC_20, PO_CON_ALC_30, COB_ALC_10, COB_ALC_15, R_COB_ALC_15, COB_ALC_20, R_COB_ALC_20, COB_ALC_30, R_COB_ALC_30)
+                    SELECT * FROM vw_cobertura_alc');
+                });
+            
+                return response()->json([
+                    'msg' => 'Datos Cobertura ALC guardados correctamente',
+                    'variant' => 'success'
+                ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'msg' => 'Datos Cobertura ALC No guardados',
+                'variant' => 'danger'
+            ]);
+        }
+    }
+
+    public function calcularDatosALC_POB(Request $request)
+    {
+        try {
+
+            DB::transaction(function () {
+                DB::table('pob_con_sin_alc')->truncate();
+                
+                $value =  DB::select('INSERT INTO pob_con_sin_alc (cve_u, cve_edo, estado, consejo_cuenca, cve_mun, id_mun, municipio, cve_subcuenca,
+                id_subcuenca, subcuenca, reg_economica, id_region, num_region, localidad, POBTOT, POBTOT_10, TIPO_20, VPH_AGUADV, VPH_DRENAJ, VIVPAR_HAB, PROM_OCUP, POBTOT_15,
+                POBTOT_20, POBTOT_30, POB_IND, RANGO_PI, COB_ALC_2010, PO_CON_ALC_10, PO_SIN_ALC_10, PO_CON_ALC_15, PO_SIN_ALC_15, PO_CON_ALC_20, PO_SIN_ALC_20, PO_CON_ALC_30, PO_SIN_ALC_30)
+                SELECT * FROM vwpob_con_sin_alc');
+            });
+                   
+            return response()->json([
+                'msg' => 'Datos Población ALC guardados correctamente',
+                'variant' => 'success'
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'msg' => 'Datos Población ALC No guardados',
+                'variant' => 'danger'
+            ]);
+        }
+    }
+
     public function filtrarDatosdemanda()
     {
         return view('datos.resumendemanda');

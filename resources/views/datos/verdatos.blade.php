@@ -84,7 +84,7 @@ Calcular Datos
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardDemALC" style="">
                     <div class="card-body">
-                        <a v-on:click="calcularap" href="javascript:void(0);" class="btn btn-success btn-icon-split">
+                        <a @click.prevent="calcularalc('demanda')" href="#" class="btn btn-success btn-icon-split " :class="disable">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
@@ -101,7 +101,7 @@ Calcular Datos
                 </a>
                 <div class="collapse show" id="collapseCardPobALC" style="">
                     <div class="card-body">
-                        <a href="#" class="btn btn-success btn-icon-split">
+                        <a @click.prevent="calcularalc('poblacion')" href="#" class="btn btn-success btn-icon-split " :class="disable">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>
@@ -118,7 +118,7 @@ Calcular Datos
                 </a>
                 <div class="collapse show" id="collapseCardCobALC" style="">
                     <div class="card-body">
-                        <a href="#" class="btn btn-success btn-icon-split">
+                        <a @click.prevent="calcularalc('cobertura')" href="#" class="btn btn-success btn-icon-split " :class="disable">
                             <span class="icon text-white-50">
                                 <i class="fas fa-check"></i>
                             </span>

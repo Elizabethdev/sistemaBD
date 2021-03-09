@@ -178,7 +178,7 @@ class AlcantarilladoController extends Controller
 
         switch ($page) {
             case 'demanda':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALCBy($addQuery2, $order));
+                $consulta = collect($this->vistaDatos->getDatosTotalesALC_DEM($addQuery2, $order));
                 break;
             case 'cobertura':
                 $consulta = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2, $order));

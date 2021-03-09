@@ -48,6 +48,36 @@ const app = new Vue({
                 this.mensaje = response.data.msg
                 this.variant = response.data.variant
             })
+        },
+        calcularalc(page){
+            this.disable = 'disabled'
+            switch (page) {
+                case 'cobertura':
+                    this.url = '/ap/calculardatosALCCOB';
+                    break;
+                case 'demanda':
+                    this.url = '/ap/calculardatosALCDEM';
+                    break;
+                case 'poblacion':
+                    this.url = '/ap/calculardatosALCPOB';
+                    break;
+                default:
+                    break;
+            }
+            axios.post(this.url,{page: page})
+            .then((response)=>{
+                this.disable = ''
+                this.showDismissibleAlert = true
+                this.mensaje = response.data.msg
+                this.variant = response.data.variant
+            })
+            .catch(error => {
+                console.log(error)
+                this.disable = ''
+                this.showDismissibleAlert = true
+                this.mensaje = response.data.msg
+                this.variant = response.data.variant
+            })
         }
 
     }
