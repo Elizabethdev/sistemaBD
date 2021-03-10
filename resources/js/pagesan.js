@@ -1,6 +1,7 @@
 import filtrosComponent from './components/generales/filtros.vue';
 import tableComponent from './components/generales/tablesan.vue';
 import btnComponent from './components/generales/btn.vue';
+import btnC from './components/generales/btnC.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import axios from './client/client.js';
@@ -14,6 +15,7 @@ const app = new Vue({
         filtrosComponent,
         tableComponent,
         btnComponent,
+        btnC,
         BOverlay
     },
     data: {

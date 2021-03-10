@@ -42,19 +42,18 @@ Alcantarillado
                     </filtros-component>
                     <rangos-component v-on:rangochange="filterchange2"></rangos-component>
                     <div class="row justify-content-end pr-3">
-                        <button v-if="show" class="button primary icon solid fa-search" disabled>
-                            Consultar
-                        </button>
-                        <btn-component v-else v-on:btnclick="consultar" :disabled="show" name="Consultar" classbtn="fa-search"></btn-component>
+                        <btn-component v-show="!show" v-on:btnclick="consultar"  name="Consultar" classbtn="fa-search"></btn-component>
+                        <btn-c name="Consultar" v-show="show"></btn-c>
                     </div>
                 </div>
             </section>
             <section id="header-fixed">										
             <b-overlay :show="show" rounded="sm" spinner-variant="primary">								
                 <div class="table-wrapper my-4">
-                   <table-component :newdtotales="newdtotales" :headers-table="headersTable" :visible="visible"></table-component>
+                   <table-component :newdtotales="newdtotales.data" :headers-table="headersTable" :visible="visible"></table-component>
                 </div>
             </b-overlay>
+            <paginate-component :newdtotales="newdtotales" v-on:getpage="getpage"></paginate-component>
             </section>
             <section>										
                 <ul class="actions">

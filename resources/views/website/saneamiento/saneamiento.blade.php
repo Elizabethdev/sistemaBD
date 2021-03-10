@@ -41,10 +41,8 @@ Saneamiento
                     >  
                     </filtros-component>
                     <div class="row justify-content-end pr-3">
-                        <button v-if="show" class="button primary icon solid fa-search" disabled>
-                            Consultar
-                        </button>
-                        <btn-component v-else v-on:btnclick="consultar" :disabled="show" name="Consultar" classbtn="fa-search"></btn-component>
+                        <btn-component v-show="!show" v-on:btnclick="consultar" name="Consultar" classbtn="fa-search"></btn-component>
+                        <btn-c name="Consultar" v-show="show"></btn-c>
                     </div>
                 </div>
             </section>
