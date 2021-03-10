@@ -196,6 +196,7 @@ class AguaPotableController extends Controller
                 break;
         }
         $consulta = collect($cache[0])->push($cache[1][0]);
+        $DatosT = $consulta;
         $total = count($consulta);
         $per_page = 1000;
         $current_page = $request->page ?? 1;
@@ -209,7 +210,7 @@ class AguaPotableController extends Controller
 
         return response()->json([
             'datos' => $array,
-            // 'total' => $cache[1]
+            'datostotales' => $DatosT
         ]);
     }
 

@@ -1,6 +1,8 @@
 import filtrosComponent from './components/generales/filtros.vue';
 import tableComponent from './components/generales/tablealc.vue';
 import btnComponent from './components/generales/btn.vue';
+import btnC from './components/generales/btnC.vue';
+import paginateComponent from './components/generales/paginate.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import axios from './client/client.js';
@@ -14,11 +16,15 @@ const app = new Vue({
         filtrosComponent,
         tableComponent,
         btnComponent,
+        paginateComponent,
+        btnC,
         BOverlay
     },
     data: {
         show:false,
         busy:false,
+        datostotales: [],
+        currentPage: 1,
         headersTable: [
             {name:'Estado', visible: true},
             {name:'Consejo de Cuenca', visible: false},
@@ -32,7 +38,7 @@ const app = new Vue({
             {name:'Volúmen de descarga 2020', visible: true},
             {name:'Volúmen de descarga 2030', visible: true}
         ],
-        newdtotales: [],
+        newdtotales: {},
         visible: {
             municipio: false,
             consejo: false,
@@ -75,65 +81,60 @@ const app = new Vue({
             DEM_ALC_15:'DEM_ALC_15',
             DEM_ALC_20:'DEM_ALC_20',
             DEM_ALC_30:'DEM_ALC_30', 
-        }
+        },
+        auxFiltros: {}
     },
     methods: {
         filterchange2(tipo, value){
-            // this.show = true
             this.tipoVista = tipo
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
                     this.visible.consejo = value.length > 0 ? true : false
                     this.headersTable[1].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
                     this.visible.subcuenca = value.length > 0 ? true : false
                     this.headersTable[2].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'region':
                     this.filtros.region = value
                     this.visible.region = value.length > 0 ? true : false
                     this.headersTable[3].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
                     this.visible.municipio = value.length > 0 ? true : false
                     this.headersTable[4].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
                     break;
                 case 'estado':
                     this.filtros.estado = value
-                    // this.getDatosByFiltros()
                     break;
                 case 'tipo':
                     this.filtros.tipo = value
-                    // this.getDatosByFiltros()
                     break;
                 default:
                     break;
             }
         },
         getDatosByFiltros(){
-            axios.post('/alc/consultarbyfiltros',{filtros: this.filtros, page: 'demanda'})
+            this.auxFiltros = this.filtros
+            axios.post('/alc/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: 1})
             .then((response)=>{
                 this.show = false
-                var aux = response.data.datos
-                aux.push(response.data.total[0])
-                this.newdtotales = aux
+                this.newdtotales = response.data.datos
+                this.datostotales = response.data.datostotales
+                this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
                 console.log(error)
                 this.show = false
-                this.newdtotales = []
+                this.newdtotales = {}
             })
         },
         guardarexcel(){
-            let data = [...this.newdtotales]
+            let data = [...this.datostotales]
             data.splice(0,0,this.headersFile)
             this.busy = true
             axios.post('/ap/export',{datos: data, page: 'demanda'}
@@ -175,6 +176,20 @@ const app = new Vue({
                 this.getDatosByFiltros()
             else
                 this.show = false
-        }
+        },
+        getpage(page){
+            this.show = true
+            axios.post('/alc/consultarbyfiltros',{filtros: this.auxFiltros, pagina: 'demanda', page: page})
+            .then((response)=>{
+                this.show = false
+                this.newdtotales = response.data.datos
+                this.currentPage = this.newdtotales.current_page
+            })
+            .catch(error => {
+                console.log(error)
+                this.show = false
+                this.newdtotales = {}
+            })
+        },
     }
 });

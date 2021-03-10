@@ -1,4 +1,3 @@
-import vistaComponent from './components/generales/tipoVista.vue';
 import filtrosComponent from './components/generales/filtros.vue';
 import tableComponent from './components/generales/tableap.vue';
 import btnComponent from './components/generales/btn.vue';
@@ -16,7 +15,6 @@ const app = new Vue({
     components: {
         filtrosComponent,
         tableComponent,
-        vistaComponent,
         btnComponent,
         btnC,
         paginateComponent,
@@ -25,7 +23,7 @@ const app = new Vue({
     data: {
         show:false,
         busy:false,
-        // perPage: 1000,
+        datostotales: [],
         currentPage: 1,
         headersTable: [
             {name:'Estado', visible: true},
@@ -83,7 +81,8 @@ const app = new Vue({
             DEM_AP_15:'DEM_AP_15',
             DEM_AP_20:'DEM_AP_20',
             DEM_AP_30:'DEM_AP_30', 
-        }
+        },
+        auxFiltros: {}
     },
     methods: {
         filterchange2(tipo, value){
@@ -140,6 +139,7 @@ const app = new Vue({
             this.show = false
         },
         getDatosByFiltros(){
+            this.auxFiltros = this.filtros
             axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: 1})
             .then((response)=>{
                 this.show = false
@@ -147,6 +147,7 @@ const app = new Vue({
                 // aux.push(response.data.total[0])
                 // this.newdtotales = aux
                 this.newdtotales = response.data.datos
+                this.datostotales = response.data.datostotales
                 this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
@@ -156,7 +157,7 @@ const app = new Vue({
             })
         },
         guardarexcel(){
-            let data = [...this.newdtotales]
+            let data = [...this.datostotales]
             data.splice(0,0,this.headersFile)
             this.busy = true
             axios.post('/ap/export',{datos: data, page: 'demanda'}
@@ -201,7 +202,7 @@ const app = new Vue({
         },
         getpage(page){
             this.show = true
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: page})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.auxFiltros, pagina: 'demanda', page: page})
             .then((response)=>{
                 this.show = false
                 this.newdtotales = response.data.datos

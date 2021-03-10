@@ -25,6 +25,7 @@ const app = new Vue({
     data: {
         show:false,
         currentPage: 1,
+        datostotales: [],
         busy:false,
         headersTable: [
             {name:'Estado', visible: true},
@@ -158,6 +159,7 @@ const app = new Vue({
             .then((response)=>{
                 this.show = false
                 this.newdtotales = response.data.datos
+                this.datostotales = response.data.datostotales
                 this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
@@ -167,7 +169,7 @@ const app = new Vue({
             })
         },
         guardarexcel(){
-            let data = [...this.newdtotales]
+            let data = [...this.datostotales]
             data.splice(0,0,this.headersFile)
             this.busy = true
             axios.post('/ap/export',{datos: data, page: 'cobertura'}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\VistasDatos;
 use App\Http\Helpers\Helpers;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class AlcantarilladoController extends Controller
 {
@@ -66,7 +67,7 @@ class AlcantarilladoController extends Controller
     public function consultarByFiltros(Request $request)
     {
         $filtros = $request->filtros;
-        $page= $request->page;
+        $page= $request->pagina;
         $addQuery = '';
         $addQuery2 = '';
         $consulta = collect([]);
@@ -178,22 +179,35 @@ class AlcantarilladoController extends Controller
 
         switch ($page) {
             case 'demanda':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALC_DEM($addQuery2, $order));
+                $cache = collect($this->vistaDatos->getDatosTotalesALC_DEM($addQuery2, $order));
                 break;
             case 'cobertura':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2, $order));
+                $cache = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2, $order));
                 break;
             case 'poblacion':
-                $consulta = collect($this->vistaDatos->getDatosTotalesALC_POB($addQuery2, $order));
+                $cache = collect($this->vistaDatos->getDatosTotalesALC_POB($addQuery2, $order));
                 break;
             default:
                 # code...
                 break;
         }
 
+        $consulta = collect($cache[0])->push($cache[1][0]);
+        $DatosT = $consulta;
+        $total = count($consulta);
+        $per_page = 1000;
+        $current_page = $request->page ?? 1;
+        $starting_point = ($current_page * $per_page) - $per_page;
+        $consulta = $consulta->toArray();
+        $array = array_slice($consulta, $starting_point, $per_page, true);
+
+        $array = new Paginator($array, $total, $per_page, $current_page, [
+            'path' => $request->url(),
+        ]);
+
         return response()->json([
-            'datos' => $consulta[0],
-            'total' => $consulta[1]
+            'datos' => $array,
+            'datostotales' => $DatosT
         ]);
     }
 
