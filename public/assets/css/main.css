@@ -2767,24 +2767,24 @@ input, select, textarea {
 		@media screen and (max-width: 480px) {
 
 			ul.pagination li:nth-child(n+2):nth-last-child(n+2) {
-				display: none;
+				display: block;
 			}
 
 			ul.pagination li .button {
 				width: 100%;
 			}
 
-			ul.pagination li:first-child {
+			/* ul.pagination li:first-child {
 				width: calc(50% - 2px);
 				text-align: left;
 				padding-right: 0.325em;
-			}
+			} */
 
-			ul.pagination li:last-child {
+			/* ul.pagination li:last-child {
 				width: calc(50% - 2px);
 				text-align: right;
 				padding-left: 0.325em;
-			}
+			} */
 
 		}
 
