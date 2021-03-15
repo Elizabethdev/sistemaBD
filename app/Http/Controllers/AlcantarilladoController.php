@@ -207,7 +207,7 @@ class AlcantarilladoController extends Controller
 
         return response()->json([
             'datos' => $array,
-            'datostotales' => $DatosT
+            'datostotales' => []
         ]);
     }
 

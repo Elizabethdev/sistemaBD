@@ -29,10 +29,10 @@ const app = new Vue({
         currentPage: 1,
         headersTable: [
             {name:'Estado', visible: true},
-            {name:'Consejo de Cuenca', visible: false},
-            {name:'Subcuenca', visible: false},
-            {name:'Región Económica', visible: false},
-            {name:'Municipio', visible: false},
+            {name:'Consejo de Cuenca', visible: true},
+            {name:'Subcuenca', visible: true},
+            {name:'Región Económica', visible: true},
+            {name:'Municipio', visible: true},
             {name:'Localidad', visible: true},
             {name:'Tipo de Población 2020', visible: true},
             {name:'Cobertura Alcantarillado 2010', visible: true},
@@ -49,10 +49,10 @@ const app = new Vue({
         ],
         newdtotales: {},
         visible: {
-            municipio: false,
-            consejo: false,
-            subcuenca: false,
-            region: false
+            municipio: true,
+            consejo: true,
+            subcuenca: true,
+            region: true
         },
         filtros: {   
             municipio: [],
@@ -102,23 +102,23 @@ const app = new Vue({
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
-                    this.visible.consejo = value.length > 0 ? true : false
-                    this.headersTable[1].visible = value.length > 0 ? true : false
+                    // this.visible.consejo = value.length > 0 ? true : false
+                    // this.headersTable[1].visible = value.length > 0 ? true : false
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
-                    this.visible.subcuenca = value.length > 0 ? true : false
-                    this.headersTable[2].visible = value.length > 0 ? true : false
+                    // this.visible.subcuenca = value.length > 0 ? true : false
+                    // this.headersTable[2].visible = value.length > 0 ? true : false
                     break;
                 case 'region':
                     this.filtros.region = value
-                    this.visible.region = value.length > 0 ? true : false
-                    this.headersTable[3].visible = value.length > 0 ? true : false
+                    // this.visible.region = value.length > 0 ? true : false
+                    // this.headersTable[3].visible = value.length > 0 ? true : false
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
-                    this.visible.municipio = value.length > 0 ? true : false
-                    this.headersTable[4].visible = value.length > 0 ? true : false
+                    // this.visible.municipio = value.length > 0 ? true : false
+                    // this.headersTable[4].visible = value.length > 0 ? true : false
                     break;
                 case 'estado':
                     this.filtros.estado = value
@@ -174,7 +174,7 @@ const app = new Vue({
             let data = [...this.datostotales]
             data.splice(0,0,this.headersFile)
             this.busy = true
-            axios.post('/ap/export',{datos: data, page: 'cobertura'}
+            axios.post('/ap/export',{filtros: this.filtros, datos: data, page: 'cobertura_alc', headerTable: this.headersFile}
             , {
                 responseType: 'blob'
             })

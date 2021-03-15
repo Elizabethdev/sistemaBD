@@ -85,12 +85,116 @@ class AguaPotableController extends Controller
     {
         $filtros = $request->filtros;
         $page = $request->pagina;
+        $consulta = collect([]);
+        $addQuery2 = '';
+        $order = '';
+        
+        $aux = $this->getFiltros($filtros);
+        $addQuery2 = $aux[0];
+        $order = $aux[1];
+        
+        switch ($page) {
+            case 'demanda':
+                $cache = collect($this->vistaDatos->getDatosTotalesAP_DEM($addQuery2, $order));
+                // if (Cache::has('demanda'.$addQuery2)) {
+                //     $cache = Cache::get('demanda'.$addQuery2);
+                // } else{
+                //     $cache = Cache::rememberForever('demanda'.$addQuery2, function () use ($addQuery2, $order) {
+                //         return collect($this->vistaDatos->getDatosTotalesAP_DEM($addQuery2, $order));
+                //     });
+                // }
+                break;
+            case 'cobertura':
+                $cache = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
+                break;
+            case 'poblacion':
+                $cache = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2, $order));
+                break;
+            default:
+                break;
+        }
+        $consulta = collect($cache[0])->push($cache[1][0]);
+        $DatosT = $consulta;
+        $total = count($consulta);
+        $per_page = 1000;
+        $current_page = $request->page ?? 1;
+        $starting_point = ($current_page * $per_page) - $per_page;
+        $consulta = $consulta->toArray();
+        $array = array_slice($consulta, $starting_point, $per_page, true);
+
+        $array = new Paginator($array, $total, $per_page, $current_page, [
+            'path' => $request->url(),
+        ]);
+
+        return response()->json([
+            'datos' => $array,
+            'datostotales' => []
+        ]);
+    }
+
+    public function exportExcel(Request $request)
+    {
+        try {
+            $filtros = $request->filtros;
+            $datos = $request->datos;
+            $page = $request->page;
+            $addQuery2 = '';
+            $order = '';
+            $headers = $request->headerTable;
+
+            $aux = $this->getFiltros($filtros);
+            $addQuery2 = $aux[0];
+            $order = $aux[1];
+        
+            switch ($page) {
+                case 'demanda':
+                    $cache = collect($this->vistaDatos->getDatosTotalesAP_DEM($addQuery2, $order));
+                    break;
+                case 'cobertura':
+                    $cache = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
+                    break;
+                case 'poblacion':
+                    $cache = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2, $order));
+                    break;
+                case 'demanda_alc':
+                    $cache = collect($this->vistaDatos->getDatosTotalesALC_DEM($addQuery2, $order));
+                    break;
+                case 'cobertura_alc':
+                    $cache = collect($this->vistaDatos->getDatosTotalesALC_COB($addQuery2, $order));
+                    break;
+                case 'poblacion_alc':
+                    $cache = collect($this->vistaDatos->getDatosTotalesALC_POB($addQuery2, $order));
+                    break;
+                case 'saneamiento':
+                    $cache = collect($this->vistaDatos->getDatos_Saneamiento($addQuery2, $order));
+                    break;
+                case 'calidad':
+                    $cache = collect($this->vistaDatos->getDatos_Calidad($addQuery2, $order));
+                    break;
+                default:
+                    break;
+            }
+            
+            $headers = collect($headers);
+            $consulta = $cache[0];
+            
+            array_push($consulta, $cache[1][0]);
+            array_splice($consulta, 0, 0, $headers);
+            
+            $export = new DatosExport($consulta);
+        
+            return Excel::download($export, 'calculos.xlsx');
+        } catch (\Throwable $th) {
+            return $th;
+        }
+    }
+
+    public function getFiltros($filtros)
+    {
         $addQuery = '';
         $addQuery2 = '';
         $order = '';
         $orderValue = 5;
-        $consulta = collect([]);
-
         if ($filtros['consejo'] != []) {
             $order .= 'consejo_cuenca ASC, ';
             $orderTemp = 1;
@@ -174,56 +278,8 @@ class AguaPotableController extends Controller
         }
 
         $order .= 'localidad ASC';
-        
-        switch ($page) {
-            case 'demanda':
-                $cache = collect($this->vistaDatos->getDatosTotalesAP_DEM($addQuery2, $order));
-                // if (Cache::has('demanda'.$addQuery2)) {
-                //     $cache = Cache::get('demanda'.$addQuery2);
-                // } else{
-                //     $cache = Cache::rememberForever('demanda'.$addQuery2, function () use ($addQuery2, $order) {
-                //         return collect($this->vistaDatos->getDatosTotalesAP_DEM($addQuery2, $order));
-                //     });
-                // }
-                break;
-            case 'cobertura':
-                $cache = collect($this->vistaDatos->getDatosTotalesAP_COB($addQuery2, $order));
-                break;
-            case 'poblacion':
-                $cache = collect($this->vistaDatos->getDatosTotalesAP_POB($addQuery2, $order));
-                break;
-            default:
-                break;
-        }
-        $consulta = collect($cache[0])->push($cache[1][0]);
-        $DatosT = $consulta;
-        $total = count($consulta);
-        $per_page = 1000;
-        $current_page = $request->page ?? 1;
-        $starting_point = ($current_page * $per_page) - $per_page;
-        $consulta = $consulta->toArray();
-        $array = array_slice($consulta, $starting_point, $per_page, true);
 
-        $array = new Paginator($array, $total, $per_page, $current_page, [
-            'path' => $request->url(),
-        ]);
-
-        return response()->json([
-            'datos' => $array,
-            'datostotales' => $DatosT
-        ]);
-    }
-
-    public function exportExcel(Request $request)
-    {
-        try {
-            $datos = $request->datos;
-            $export = new DatosExport($datos);
-        
-            return Excel::download($export, 'calculos.xlsx');
-        } catch (\Throwable $th) {
-            return $th;
-        }
+        return [$addQuery2, $order];
     }
 
 }

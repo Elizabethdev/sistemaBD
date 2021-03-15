@@ -163,6 +163,12 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                         { value: 'RURAL', text: 'Rural' },
                     ]
                 }
+            },
+            clear: {
+                type: Boolean,
+                default: function () {
+                    return false
+                }
             }
         },
         components: {
@@ -288,6 +294,17 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
             },
             tipoSelected: function(newValue){
                 this.$emit('filterchange2', 'tipo', newValue );
+            },
+            clear: function (clear) {
+                if(clear){
+                    this.estadoSelected = []
+                    this.consejoSelected = []
+                    this.municipioSelected = []
+                    this.subcuencaSelected = []
+                    this.regionSelected = []
+                    this.localidadSelected = []
+                    this.tipoSelected = []
+                }
             }
         }
     }

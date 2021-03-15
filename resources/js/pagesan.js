@@ -23,10 +23,10 @@ const app = new Vue({
         busy:false,
         headersTable: [
             {name:'Estado', visible: true, class: ''},
-            {name:'Consejo de Cuenca', visible: false, class: ''},
-            {name:'Subcuenca', visible: false, class: ''},
-            {name:'Región Económica', visible: false, class: ''},
-            {name:'Municipio', visible: false, class: ''},
+            {name:'Consejo de Cuenca', visible: true, class: ''},
+            {name:'Subcuenca', visible: true, class: ''},
+            {name:'Región Económica', visible: true, class: ''},
+            {name:'Municipio', visible: true, class: ''},
             {name:'Localidad', visible: true, class: ''},
             {name:'Estatus', visible: true, class: ''},
             {name:'Clave Inegi', visible: true, class: ''},
@@ -55,10 +55,10 @@ const app = new Vue({
             { value: 'Operando ineficientemente', text: 'Operando ineficientemente' },
         ],
         visible: {
-            municipio: false,
-            consejo: false,
-            subcuenca: false,
-            region: false
+            municipio: true,
+            consejo: true,
+            subcuenca: true,
+            region: true
         },
         filtros: {   
             municipio: [],
@@ -98,39 +98,32 @@ const app = new Vue({
     },
     methods: {
         filterchange2(tipo, value){
-            // this.show = true
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
-                    this.visible.consejo = value.length > 0 ? true : false
-                    this.headersTable[1].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    // this.visible.consejo = value.length > 0 ? true : false
+                    // this.headersTable[1].visible = value.length > 0 ? true : false
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
-                    this.visible.subcuenca = value.length > 0 ? true : false
-                    this.headersTable[2].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    // this.visible.subcuenca = value.length > 0 ? true : false
+                    // this.headersTable[2].visible = value.length > 0 ? true : false
                     break;
                 case 'region':
                     this.filtros.region = value
-                    this.visible.region = value.length > 0 ? true : false
-                    this.headersTable[3].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    // this.visible.region = value.length > 0 ? true : false
+                    // this.headersTable[3].visible = value.length > 0 ? true : false
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
-                    this.visible.municipio = value.length > 0 ? true : false
-                    this.headersTable[4].visible = value.length > 0 ? true : false
-                    // this.getDatosByFiltros()
+                    // this.visible.municipio = value.length > 0 ? true : false
+                    // this.headersTable[4].visible = value.length > 0 ? true : false
                     break;
                 case 'estado':
                     this.filtros.estado = value
-                    // this.getDatosByFiltros()
                     break;
                 case 'tipo':
                     this.filtros.tipo = value
-                    // this.getDatosByFiltros()
                     break;
                 default:
                     break;
@@ -165,7 +158,7 @@ const app = new Vue({
             let data = [...this.newdtotales]
             data.splice(0,0,this.headersFile)
             this.busy = true
-            axios.post('/ap/export',{datos: data, page: 'saneamiento'}
+            axios.post('/ap/export',{filtros: this.filtros, datos: data, page: 'saneamiento', headerTable: this.headersFile}
             , {
                 responseType: 'blob'
             })

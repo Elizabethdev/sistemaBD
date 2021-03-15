@@ -1,5 +1,6 @@
 <template>
-<div>
+<div> 
+    <h4>Elegir previamente el año.</h4> 
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <BDropdown text="AÑO DE COBERTURA O POBLACIÓN " class="pb-3 w-100"  menu-class="drop-overflow w-100" no-flip boundary="scrollParent">
