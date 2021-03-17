@@ -18,9 +18,9 @@
                     <td>{{value.localidad}}</td>
                     <td>{{value.TIPO_20}}</td>
                     <td>{{value.COB_AP_10}}</td>
-                    <td>{{value.COB_AP_15}}</td>
-                    <td>{{value.COB_AP_20}}</td>
-                    <td>{{value.COB_AP_30}}</td>
+                    <td>{{formartDecimal(value.COB_AP_15)}}</td>
+                    <td>{{formartDecimal(value.COB_AP_20)}}</td>
+                    <td>{{formartDecimal(value.COB_AP_30)}}</td>
                     <td>{{value.R_COB_AP_15}}</td>
                     <td>{{value.R_COB_AP_20}}</td>
                     <td>{{value.R_COB_AP_30}}</td>
@@ -87,6 +87,9 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup  } from 'bootstrap-vue'
         methods: {
             formatNumber(number){
                 return new Intl.NumberFormat("es-MX").format(number)
+            },
+            formartDecimal(number){
+                return number.toLocaleString("es-MX", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
             }
         },
         computed: {
