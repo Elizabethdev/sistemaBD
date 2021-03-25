@@ -105,6 +105,12 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
                     ]
                 }
             },
+            clear: {
+                type: Boolean,
+                default: function () {
+                    return false
+                }
+            }
         },
         components: {
             BFormCheckboxGroup,
@@ -137,6 +143,14 @@ import { BFormCheckboxGroup, BDropdown, BFormGroup, BFormCheckbox, BDropdownDivi
             },
             añoSelected: function(newValue){
                 this.$emit('rangochange', 'año', newValue);
+            },
+            clear: function (clear) {
+                if(clear){
+                    this.añoSelected = []
+                    this.rangoCobSelected = []
+                    this.rangoPobSelected = []
+                    this.rangoPISelected = []
+                }
             }
         }
     }

@@ -26,6 +26,7 @@ const app = new Vue({
         show:false,
         currentPage: 1,
         datostotales: [],
+        clearfiltros: false,
         busy:false,
         headersTable: [
             {name:'Estado', visible: true},
@@ -94,7 +95,8 @@ const app = new Vue({
             R_COB_AP_15:'R_COB_AP_15',
             R_COB_AP_20:'R_COB_AP_20',
             R_COB_AP_30:'R_COB_AP_30',
-        }
+        },
+        auxFiltros: {}
     },
     methods: {
         filterchange2(tipo, value){
@@ -157,22 +159,23 @@ const app = new Vue({
         getDatosByFiltros(){
             axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'cobertura', page: 1})
             .then((response)=>{
+                this.clearfiltros = true
                 this.show = false
                 this.newdtotales = response.data.datos
-                this.datostotales = response.data.datostotales
                 this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
-                console.log(error)
                 this.show = false
                 this.newdtotales = {}
             })
         },
         guardarexcel(){
-            let data = [...this.datostotales]
-            data.splice(0,0,this.headersFile)
+            // let data = [...this.datostotales]
+            // data.splice(0,0,this.headersFile)
+            if(Object.keys(this.auxFiltros).length == 0)
+                return false
             this.busy = true
-            axios.post('/ap/export',{filtros: this.filtros, datos: data, page: 'cobertura', headerTable: this.headersFile}
+            axios.post('/ap/export',{filtros: this.auxFiltros, datos: this.datostotales, page: 'cobertura', headerTable: this.headersFile}
             , {
                 responseType: 'blob'
             })
@@ -207,6 +210,8 @@ const app = new Vue({
         },
         consultar(){
             this.show = true
+            this.clearfiltros = false
+            this.auxFiltros = JSON.parse(JSON.stringify(this.filtros));
             if(this.filtros.consejo.length > 0 || this.filtros.subcuenca.length > 0 || this.filtros.region.length > 0 || this.filtros.municipio.length > 0 || this.filtros.estado.length > 0 || this.filtros.tipo.length > 0 || this.filtros.pi.length > 0 || this.filtros.rcobertura.length > 0 && this.filtros.año.length > 0 || this.filtros.rpoblacion.length > 0 && this.filtros.año.length > 0)
                 this.getDatosByFiltros()
             else
@@ -214,7 +219,7 @@ const app = new Vue({
         },
         getpage(page){
             this.show = true
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'cobertura', page: page})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.auxFiltros, pagina: 'cobertura', page: page})
             .then((response)=>{
                 this.show = false
                 this.newdtotales = response.data.datos

@@ -36,6 +36,7 @@ Calidad del Agua
                         :dmunicipios= "{{$municipios}}"
                         :dsubcuencas= "{{$subcuencas}}"
                         :dregiones= "{{$regionesEco}}"
+                        :clear ="clearfiltros"
                         v-on:filterchange2="filterchange2"
                     >  
                     </filtros-component>

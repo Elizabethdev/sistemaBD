@@ -25,6 +25,7 @@ const app = new Vue({
         busy:false,
         currentPage: 1,
         datostotales: [],
+        clearfiltros: false,
         headersTable: [
             {name:'Estado', visible: true},
             {name:'Consejo de Cuenca', visible: true},
@@ -86,30 +87,23 @@ const app = new Vue({
             PO_SIN_AP_20:'PO_SIN_AP_20', 
             PO_CON_AP_30:'PO_CON_AP_30', 
             PO_SIN_AP_30:'PO_SIN_AP_30', 
-        }
+        },
+        auxFiltros: {}
     },
     methods: {
         filterchange2(tipo, value){
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
-                    // this.visible.consejo = value.length > 0 ? true : false
-                    // this.headersTable[1].visible = value.length > 0 ? true : false
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
-                    // this.visible.subcuenca = value.length > 0 ? true : false
-                    // this.headersTable[2].visible = value.length > 0 ? true : false
                     break;
                 case 'region':
                     this.filtros.region = value
-                    // this.visible.region = value.length > 0 ? true : false
-                    // this.headersTable[3].visible = value.length > 0 ? true : false
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
-                    // this.visible.municipio = value.length > 0 ? true : false
-                    // this.headersTable[4].visible = value.length > 0 ? true : false
                     break;
                 case 'estado':
                     this.filtros.estado = value
@@ -125,8 +119,8 @@ const app = new Vue({
             axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'poblacion', page: 1})
             .then((response)=>{
                 this.show = false
+                this.clearfiltros = true
                 this.newdtotales = response.data.datos
-                this.datostotales = response.data.datostotales
                 this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
@@ -136,10 +130,10 @@ const app = new Vue({
             })
         },
         guardarexcel(){
-            let data = [...this.datostotales]
-            data.splice(0,0,this.headersFile)
+            if(Object.keys(this.auxFiltros).length == 0)
+                return false
             this.busy = true
-            axios.post('/ap/export',{filtros: this.filtros, datos: data, page: 'poblacion', headerTable: this.headersFile}
+            axios.post('/ap/export',{filtros: this.auxFiltros, datos: this.datostotales, page: 'poblacion', headerTable: this.headersFile}
             , {
                 responseType: 'blob'
             })
@@ -174,6 +168,8 @@ const app = new Vue({
         },
         consultar(){
             this.show = true
+            this.clearfiltros = false
+            this.auxFiltros = JSON.parse(JSON.stringify(this.filtros));
             if(this.filtros.consejo.length > 0 || this.filtros.subcuenca.length > 0 || this.filtros.region.length > 0 || this.filtros.municipio.length > 0 || this.filtros.estado.length > 0 || this.filtros.tipo.length > 0)
                 this.getDatosByFiltros()
             else
@@ -181,7 +177,7 @@ const app = new Vue({
         },
         getpage(page){
             this.show = true
-            axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'poblacion', page: page})
+            axios.post('/ap/consultarbyfiltros',{filtros: this.auxFiltros, pagina: 'poblacion', page: page})
             .then((response)=>{
                 this.show = false
                 this.newdtotales = response.data.datos

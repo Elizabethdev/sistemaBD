@@ -37,6 +37,7 @@ Saneamiento
                         :dregiones= "{{$regionesEco}}"
                         :titulof= "titulo"
                         :tiposf= "tipos"
+                        :clear ="clearfiltros"
                         v-on:filterchange2="filterchange2"
                     >  
                     </filtros-component>

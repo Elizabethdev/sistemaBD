@@ -87,8 +87,6 @@ const app = new Vue({
     },
     methods: {
         filterchange2(tipo, value){
-            // this.show = true
-            this.tipoVista = tipo
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
@@ -127,16 +125,16 @@ const app = new Vue({
             }
         },
         getDatosByFiltros(){
-            
             axios.post('/ap/consultarbyfiltros',{filtros: this.filtros, pagina: 'demanda', page: 1})
             .then((response)=>{
                 this.show = false
-                // this.clearfiltros = true
+                this.clearfiltros = true
                 // var aux = response.data.datos
                 // aux.push(response.data.total[0])
                 // this.newdtotales = aux
+                // this.datostotales = response.data.datostotales
+
                 this.newdtotales = response.data.datos
-                this.datostotales = response.data.datostotales
                 this.currentPage = this.newdtotales.current_page
             })
             .catch(error => {
@@ -146,10 +144,11 @@ const app = new Vue({
             })
         },
         guardarexcel(){
-            let data = [...this.datostotales]
-            data.splice(0,0,this.headersFile)
+            if(Object.keys(this.auxFiltros).length == 0)
+                return false
+            
             this.busy = true
-            axios.post('/ap/export',{filtros: this.filtros, datos: data, page: 'demanda', headerTable: this.headersFile}
+            axios.post('/ap/export',{filtros: this.auxFiltros, datos: this.datostotales, page: 'demanda', headerTable: this.headersFile}
             , {
                 responseType: 'blob'
             })
@@ -183,9 +182,9 @@ const app = new Vue({
             return true;
         },
         consultar(){
-            // this.clearfiltros = false
             this.show = true
-            this.auxFiltros = this.filtros
+            this.clearfiltros = false
+            this.auxFiltros = JSON.parse(JSON.stringify(this.filtros));
             if(this.filtros.consejo.length > 0 || this.filtros.subcuenca.length > 0 || this.filtros.region.length > 0 || this.filtros.municipio.length > 0 || this.filtros.estado.length > 0 || this.filtros.tipo.length > 0)
                 this.getDatosByFiltros()
             else
@@ -205,7 +204,6 @@ const app = new Vue({
                 this.newdtotales = {}
             })
         },
-       
     },
     
 });

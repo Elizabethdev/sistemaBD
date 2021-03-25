@@ -36,10 +36,11 @@ Agua Potable
                         :dmunicipios= "{{$municipios}}"
                         :dsubcuencas= "{{$subcuencas}}"
                         :dregiones= "{{$regionesEco}}"
+                        :clear ="clearfiltros"
                         v-on:filterchange2="filterchange2"
                     >  
                     </filtros-component>
-                    <rangos-component v-on:rangochange="filterchange2"></rangos-component>
+                    <rangos-component v-on:rangochange="filterchange2" :clear ="clearfiltros"></rangos-component>
                     <div class="row justify-content-end pr-3">
                         <btn-component v-show="!show" v-on:btnclick="consultar"  name="Consultar" classbtn="fa-search"></btn-component>
                         <btn-c name="Consultar" v-show="show"></btn-c>
