@@ -21,6 +21,8 @@ const app = new Vue({
     data: {
         show:false,
         busy:false,
+        datostotales: [],
+        clearfiltros: false,
         headersTable: [
             {name:'Estado', visible: true, class: ''},
             {name:'Consejo de Cuenca', visible: true, class: ''},
@@ -40,7 +42,6 @@ const app = new Vue({
             {name:'Hipocloradores', visible: true, class: ''},
             {name:'Programa', visible: true, class: ''},
         ],
-        newdtotalesStatic: {},
         newdtotales: [],
         visible: {
             municipio: true,
@@ -79,30 +80,23 @@ const app = new Vue({
             LONGITUD:'LONGITUD', 
             HIPOCLORADORES:'HIPOCLORADORES', 
             PROGRAMA:'PROGRAMA', 
-        }
+        },
+        auxFiltros: {}
     },
     methods: {
         filterchange2(tipo, value){
             switch (tipo) {
                 case 'consejo':
                     this.filtros.consejo = value
-                    // this.visible.consejo = value.length > 0 ? true : false
-                    // this.headersTable[1].visible = value.length > 0 ? true : false
                     break;
                 case 'subcuenca':
                     this.filtros.subcuenca = value
-                    // this.visible.subcuenca = value.length > 0 ? true : false
-                    // this.headersTable[2].visible = value.length > 0 ? true : false
                     break;
                 case 'region':
                     this.filtros.region = value
-                    // this.visible.region = value.length > 0 ? true : false
-                    // this.headersTable[3].visible = value.length > 0 ? true : false
                     break;
                 case 'municipio':
                     this.filtros.municipio = value
-                    // this.visible.municipio = value.length > 0 ? true : false
-                    // this.headersTable[4].visible = value.length > 0 ? true : false
                     break;
                 case 'estado':
                     this.filtros.estado = value
@@ -118,6 +112,7 @@ const app = new Vue({
             axios.post('/cal/consultarbyfiltros',{filtros: this.filtros})
             .then((response)=>{
                 this.show = false
+                this.clearfiltros = true
                 this.newdtotales = response.data.datos
             })
             .catch(error => {
@@ -127,10 +122,12 @@ const app = new Vue({
             })
         },
         guardarexcel(){
-            let data = [...this.newdtotales]
-            data.splice(0,0,this.headersFile)
+            // let data = [...this.newdtotales]
+            // data.splice(0,0,this.headersFile)
+            if(Object.keys(this.auxFiltros).length == 0)
+                return false
             this.busy = true
-            axios.post('/ap/export',{filtros: this.filtros, datos: data, page: 'calidad', headerTable: this.headersFile}
+            axios.post('/ap/export',{filtros: this.auxFiltros, datos: this.datostotales, page: 'calidad', headerTable: this.headersFile}
             , {
                 responseType: 'blob'
             })
@@ -165,6 +162,8 @@ const app = new Vue({
         },
         consultar(){
             this.show = true
+            this.clearfiltros = false
+            this.auxFiltros = JSON.parse(JSON.stringify(this.filtros));
             if(this.filtros.consejo.length > 0 || this.filtros.subcuenca.length > 0 || this.filtros.region.length > 0 || this.filtros.municipio.length > 0 || this.filtros.estado.length > 0 || this.filtros.tipo.length > 0)
                 this.getDatosByFiltros()
             else
